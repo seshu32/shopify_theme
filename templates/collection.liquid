@@ -1,0 +1,77 @@
+{% paginate collection.products by 24 %}
+
+<div class="container mx-auto px-6 py-12">
+  <!-- Collection Header -->
+  <div class="text-center mb-12">
+    <h1 class="text-4xl font-bold text-[#344736] mb-4">{{ collection.title }}</h1>
+    {% if collection.description != blank %}
+      <div class="text-lg text-[#4b3c35] max-w-3xl mx-auto">
+        {{ collection.description }}
+      </div>
+    {% endif %}
+  </div>
+
+  <!-- Products Grid -->
+  {% if collection.products.size > 0 %}
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+      {% for product in collection.products %}
+        <div class="group bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+          <a href="{{ product.url }}" class="block">
+            <!-- Product Image -->
+            <div class="aspect-square overflow-hidden rounded-t-lg">
+              {% if product.featured_image %}
+                <img 
+                  src="{{ product.featured_image | img_url: '400x400' }}" 
+                  alt="{{ product.featured_image.alt | escape }}"
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  loading="lazy"
+                >
+              {% else %}
+                <div class="w-full h-full bg-gray-200 flex items-center justify-center">
+                  <span class="text-gray-400">No image</span>
+                </div>
+              {% endif %}
+            </div>
+            
+            <!-- Product Info -->
+            <div class="p-4">
+              <h3 class="text-lg font-semibold text-[#344736] mb-2 group-hover:text-[#415c43] transition-colors">
+                {{ product.title }}
+              </h3>
+              
+              <div class="flex items-center justify-between">
+                <div class="text-[#ff774a] font-bold">
+                  {% if product.compare_at_price > product.price %}
+                    <span class="line-through text-gray-400 text-sm mr-2">
+                      {{ product.compare_at_price | money }}
+                    </span>
+                  {% endif %}
+                  {{ product.price | money }}
+                </div>
+                
+                {% if product.available %}
+                  <span class="text-[#415c43] text-sm">Available</span>
+                {% else %}
+                  <span class="text-red-500 text-sm">Sold Out</span>
+                {% endif %}
+              </div>
+            </div>
+          </a>
+        </div>
+      {% endfor %}
+    </div>
+
+    <!-- Pagination -->
+    {% if paginate.pages > 1 %}
+      <div class="mt-12 flex justify-center">
+        {{ paginate | default_pagination: next: 'Next', previous: 'Previous' }}
+      </div>
+    {% endif %}
+  {% else %}
+    <div class="text-center py-12">
+      <p class="text-lg text-[#4b3c35]">No products in this collection.</p>
+    </div>
+  {% endif %}
+</div>
+
+{% endpaginate %} 
