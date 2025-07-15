@@ -1,0 +1,71 @@
+<div class="container mx-auto px-6 py-12">
+  <div class="max-w-4xl mx-auto">
+    <!-- Article Header -->
+    <header class="text-center mb-12">
+      <h1 class="text-4xl font-bold text-[#344736] mb-4">{{ article.title }}</h1>
+      
+      <div class="text-[#4b3c35] mb-6">
+        <time datetime="{{ article.published_at | date: '%Y-%m-%d' }}">
+          {{ article.published_at | date: '%B %d, %Y' }}
+        </time>
+        {% if article.author %}
+          <span class="mx-2">•</span>
+          <span>by {{ article.author }}</span>
+        {% endif %}
+      </div>
+      
+      {% if article.tags.size > 0 %}
+        <div class="flex flex-wrap gap-2 justify-center">
+          {% for tag in article.tags %}
+            <span class="bg-[#b8dc99]/20 text-[#415c43] px-3 py-1 rounded-full text-sm">
+              {{ tag }}
+            </span>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </header>
+
+    <!-- Featured Image -->
+    {% if article.image %}
+      <div class="mb-12">
+        <img 
+          src="{{ article.image | img_url: '1200x600' }}" 
+          alt="{{ article.image.alt | escape }}"
+          class="w-full rounded-lg shadow-lg"
+        >
+      </div>
+    {% endif %}
+
+    <!-- Article Content -->
+    <div class="prose prose-lg max-w-none text-[#4b3c35]">
+      {{ article.content }}
+    </div>
+
+    <!-- Article Footer -->
+    <footer class="mt-12 pt-8 border-t border-gray-200">
+      <div class="flex items-center justify-between">
+        <div>
+          {% if blog.previous_article %}
+            <a href="{{ blog.previous_article.url }}" class="text-[#415c43] hover:text-[#344736] transition-colors">
+              ← {{ blog.previous_article.title | truncate: 30 }}
+            </a>
+          {% endif %}
+        </div>
+        
+        <div>
+          <a href="{{ blog.url }}" class="bg-[#415c43] text-white px-6 py-2 rounded-lg hover:bg-[#344736] transition-colors">
+            Back to {{ blog.title }}
+          </a>
+        </div>
+        
+        <div>
+          {% if blog.next_article %}
+            <a href="{{ blog.next_article.url }}" class="text-[#415c43] hover:text-[#344736] transition-colors">
+              {{ blog.next_article.title | truncate: 30 }} →
+            </a>
+          {% endif %}
+        </div>
+      </div>
+    </footer>
+  </div>
+</div> 

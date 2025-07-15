@@ -1,0 +1,61 @@
+<div class="container mx-auto px-6 py-12">
+  <h1 class="text-3xl font-bold text-[#344736] mb-8">Shopping Cart</h1>
+  
+  <form action="/cart" method="post" novalidate class="cart">
+    {% if cart.item_count > 0 %}
+      <div class="space-y-6">
+        {% for item in cart.items %}
+          <div class="flex items-center space-x-4 p-4 border border-gray-200 rounded-lg">
+            {% if item.image %}
+              <img src="{{ item.image | img_url: '100x100' }}" alt="{{ item.product.title }}" class="w-16 h-16 object-cover rounded">
+            {% endif %}
+            
+            <div class="flex-1">
+              <h3 class="font-semibold text-[#344736]">{{ item.product.title }}</h3>
+              {% unless item.product.has_only_default_variant %}
+                <p class="text-sm text-gray-600">{{ item.variant.title }}</p>
+              {% endunless %}
+              <p class="text-[#ff774a] font-bold">{{ item.price | money }}</p>
+            </div>
+            
+            <div class="flex items-center space-x-2">
+              <label class="sr-only">Quantity</label>
+              <input 
+                type="number" 
+                name="updates[]" 
+                id="updates_{{ item.key }}" 
+                value="{{ item.quantity }}" 
+                min="0" 
+                class="w-16 border border-gray-300 rounded px-2 py-1 text-center"
+              >
+            </div>
+            
+            <div class="text-right">
+              <p class="font-bold text-[#344736]">{{ item.line_price | money }}</p>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+      
+      <div class="mt-8 flex justify-between items-center">
+        <button type="submit" name="update" class="bg-[#b8dc99] text-[#344736] px-6 py-2 rounded-lg hover:bg-[#a5d085] transition-colors">
+          Update Cart
+        </button>
+        
+        <div class="text-right">
+          <p class="text-xl font-bold text-[#344736]">Total: {{ cart.total_price | money }}</p>
+          <button type="submit" name="add" formaction="/cart/add" class="mt-2 bg-[#415c43] text-white px-8 py-3 rounded-lg hover:bg-[#344736] transition-colors">
+            Checkout
+          </button>
+        </div>
+      </div>
+    {% else %}
+      <div class="text-center py-12">
+        <p class="text-lg text-[#4b3c35] mb-4">Your cart is currently empty.</p>
+        <a href="/collections/all" class="bg-[#415c43] text-white px-6 py-3 rounded-lg hover:bg-[#344736] transition-colors">
+          Continue Shopping
+        </a>
+      </div>
+    {% endif %}
+  </form>
+</div> 
