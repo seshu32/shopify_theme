@@ -1,0 +1,42 @@
+<section class="relative h-screen overflow-hidden bg-bewild-dark-earth">
+  <!-- Dynamic Background -->
+  <div class="absolute inset-0 z-0">
+    {% for scene in scenes %}
+      <div class="absolute inset-0">
+        <img src="{{ scene.image | asset_url }}" alt="{{ scene.title }}" class="object-cover">
+      </div>
+    {% endfor %}
+    <div class="absolute inset-0 bg-gradient-to-r from-bewild-dark-earth/95 via-bewild-dark-earth/70 to-bewild-dark-earth/60"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-bewild-dark-earth/80 via-bewild-dark-earth/40 to-bewild-dark-earth/30"></div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="relative z-10 h-full flex items-center">
+    <div class="container mx-auto px-8 lg:px-16">
+      <div class="grid lg:grid-cols-2 gap-20 items-center h-full">
+        <!-- Left: Ultra Minimal Content -->
+        <div class="space-y-8">
+          <div class="inline-flex items-center space-x-2 bg-white/5 backdrop-blur-xl border border-white/10 rounded-full px-4 py-2">
+            <div class="w-1.5 h-1.5 bg-bewild-soft-green rounded-full"></div>
+            <span class="font-arizona-sans text-white/70 text-xs tracking-[0.2em] uppercase">
+              Wild Stories in Every Sip
+            </span>
+          </div>
+          <div class="space-y-6">
+            <h1 class="font-arizona-flare font-light text-5xl lg:text-6xl xl:text-7xl leading-[0.9] text-bewild-soft-green">
+              {{ scenes[0].title }}
+            </h1>
+            <div class="h-0.5 bg-bewild-soft-green/60 rounded-full max-w-md"></div>
+            <p class="font-arizona-sans text-lg lg:text-xl text-white/75 font-light leading-relaxed max-w-2xl">
+              {{ scenes[0].subtext }}
+            </p>
+          </div>
+          <button class="group relative bg-gradient-to-r from-bewild-warm-yellow via-bewild-coral-orange to-bewild-warm-yellow text-bewild-dark-earth px-10 py-5 rounded-full font-arizona-sans font-bold text-lg tracking-wide shadow-2xl hover:shadow-bewild-warm-yellow/40 transition-all duration-500 overflow-hidden border border-bewild-warm-yellow/20">
+            <span class="relative">Shop the Forest's Harvest</span>
+            <span class="inline-block ml-2 transition-transform duration-300">→</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> 

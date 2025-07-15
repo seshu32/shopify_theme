@@ -1,0 +1,91 @@
+{% comment %} Farm to Home Section {% endcomment %}
+<section class="py-12 bg-white relative overflow-hidden">
+  <div class="container mx-auto px-6">
+    <div class="flex flex-col lg:flex-row items-start gap-20">
+      <!-- Left Side - Statistics -->
+      <div class="w-full lg:w-1/2">
+        <div>
+          <div class="relative mb-10">
+            <h2 class="text-[55px] leading-[1.2] font-bold text-[#344736]">
+              Farm-to-Home<br />
+              Freshness
+            </h2>
+            <div class="text-lg text-[#415c43] mt-4 font-medium">
+              Pure. Organic. Sustainably Sourced.
+            </div>
+            <div class="absolute -bottom-3 left-0 h-[1px] bg-[#ff774a]/40 w-full"></div>
+          </div>
+
+          <!-- Stats Container -->
+          <div class="grid grid-cols-2 gap-8">
+            <!-- First Stat -->
+            <div class="relative bg-[#ffcf83]/10 rounded-3xl p-8 border border-[#ffcf83]/20">
+              <div class="text-[55px] leading-none font-bold text-[#344736]">
+                25K
+              </div>
+              <div class="text-sm uppercase tracking-[0.15em] text-[#415c43] mt-4 font-medium">
+                CLIENTS TRUST US
+              </div>
+              <div class="text-base text-[#4b3c35] mt-2">
+                Thousands of Trusting Customers Choose Our Services
+              </div>
+            </div>
+
+            <!-- Second Stat -->
+            <div class="relative bg-[#b8dc99]/10 rounded-3xl p-8 border border-[#b8dc99]/20">
+              <div class="text-[55px] leading-none font-bold text-[#344736]">
+                10M
+              </div>
+              <div class="text-sm uppercase tracking-[0.15em] text-[#415c43] mt-4 font-medium">
+                ORGANIC PRODUCTS SOLD
+              </div>
+              <div class="text-base text-[#4b3c35] mt-2">
+                Organic products delivered with sustainable commitment
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Side - Benefits Card -->
+      <div class="w-full lg:w-1/2">
+        <div class="bg-[#415c43] rounded-3xl p-12 relative overflow-hidden">
+          <!-- Content -->
+          <div class="relative z-10">
+            <h3 class="text-[55px] leading-[1.2] font-bold text-white mb-14">
+              Why Choose Us?
+            </h3>
+
+            <div class="space-y-8">
+              {% for benefit in benefits %}
+              <div class="flex gap-4">
+                <div class="flex-shrink-0 w-5 h-5 bg-white/20 rounded-full flex items-center justify-center mt-1.5">
+                  <span class="w-3 h-3 text-white">✔</span>
+                </div>
+                <div>
+                  <h4 class="text-lg font-medium text-white mb-2">
+                    {{ benefit.title }}
+                  </h4>
+                  <p class="text-white/90 text-base leading-relaxed">
+                    {{ benefit.description }}
+                  </p>
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+
+          <!-- Decorative Vine -->
+          <div class="absolute bottom-0 right-0 w-full">
+            <svg class="absolute bottom-0 right-0" width="200" height="160" viewBox="0 0 200 160" fill="none">
+              <path d="M20 160 C60 120, 20 80, 60 40 C100 0, 140 40, 180 0" stroke="white" strokeWidth="1" class="opacity-20" />
+              {% for i in (0..5) %}
+              <path d="M{{ 40 + i * 30 }} {{ 20 + i * 25 }} Q{{ 50 + i * 30 }} {{ 15 + i * 25 }}, {{ 55 + i * 30 }} {{ 20 + i * 25 }} L{{ 50 + i * 30 }} {{ 30 + i * 25 }} Q{{ 45 + i * 30 }} {{ 35 + i * 25 }}, {{ 40 + i * 30 }} {{ 30 + i * 25 }} Z" fill="white" class="opacity-20" />
+              {% endfor %}
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> 

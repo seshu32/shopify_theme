@@ -1,0 +1,42 @@
+<section class="py-32 bg-[#ffcf83]/5 relative overflow-hidden">
+  <!-- Decorative Elements -->
+  <div class="absolute left-0 top-1/4 w-48 h-48 opacity-20 text-[#415c43] text-8xl flex items-center justify-center">
+    🌿
+  </div>
+  <div class="absolute right-0 bottom-1/4 w-48 h-48 opacity-20 text-[#415c43] text-8xl flex items-center justify-center">
+    🌿
+  </div>
+
+  <div class="container mx-auto px-6">
+    <!-- Section Title -->
+    <div class="max-w-3xl mx-auto text-center mb-20">
+      <h2 class="text-[55px] leading-[1.2] font-bold text-[#344736] mb-6">
+        Client feedbacks on our organic business
+      </h2>
+    </div>
+
+    <!-- Testimonials Row -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+      {% for testimonial in testimonials %}
+        <div class="flex flex-col p-8 rounded-2xl bg-white shadow-sm hover:shadow-xl transition-all duration-300 group border border-[#b8dc99]/20">
+          <!-- Content -->
+          <div class="flex-1 bg-[#b8dc99]/10 p-6 rounded-xl mb-6">
+            <p class="text-[#4b3c35] leading-relaxed italic">
+              "{{ testimonial.feedback }}"
+            </p>
+          </div>
+
+          <!-- Profile Info -->
+          <div class="text-center">
+            <h3 class="text-xl font-semibold text-[#344736] group-hover:text-[#415c43] transition-colors duration-300 mb-1">
+              {{ testimonial.name }}
+            </h3>
+            <span class="text-[#ff774a] text-sm font-medium">
+              {{ testimonial.role }}
+            </span>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section> 

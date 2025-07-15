@@ -1,0 +1,111 @@
+{% comment %} Farming Techniques Section {% endcomment %}
+<section class="py-32 bg-white relative overflow-hidden">
+  <!-- Unique Background Pattern -->
+  <div class="absolute inset-0 overflow-hidden">
+    <!-- Floating geometric shapes -->
+    <div class="absolute bottom-1/4 left-1/4 w-12 h-12 bg-[#ffcf83]/10 rounded-full"></div>
+  </div>
+
+  <div class="container mx-auto px-6 relative">
+    <!-- Header Section with Different Style -->
+    <div class="text-center mb-16">
+      <div class="flex items-center justify-center mb-6">
+        <div class="h-px bg-gradient-to-r from-transparent via-[#415c43] to-transparent w-24"></div>
+        <div class="mx-4 bg-[#415c43] text-white px-4 py-2 rounded-full text-sm font-semibold">
+          OUR APPROACH
+        </div>
+        <div class="h-px bg-gradient-to-r from-transparent via-[#415c43] to-transparent w-24"></div>
+      </div>
+
+      <h2 class="text-4xl md:text-5xl font-bold text-[#344736] mb-4">
+        Our Farming Techniques
+      </h2>
+      <div class="w-24 h-1 bg-gradient-to-r from-[#ff774a] to-[#ffcf83] mx-auto mb-6"></div>
+      <p class="text-lg text-[#4b3c35] max-w-2xl mx-auto leading-relaxed">
+        Nature's Best, Grown with Care - Every technique designed to give back to nature
+      </p>
+    </div>
+
+    <!-- Horizontal Timeline Layout -->
+    <div class="max-w-7xl mx-auto">
+      <!-- Timeline Container -->
+      <div class="relative">
+        <!-- Main Timeline Line -->
+        <div class="hidden lg:block absolute top-32 left-0 right-0 h-1 bg-gradient-to-r from-[#b8dc99] via-[#415c43] to-[#ff774a] rounded-full"></div>
+
+        <!-- Timeline Steps -->
+        <div class="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-4">
+          {% for technique in techniques %}
+          <div class="group relative">
+            <!-- Large Icon Circle on Timeline -->
+            <div class="flex flex-col items-center lg:mb-8">
+              <div class="relative mb-6 lg:mb-0">
+                <!-- Large circular icon container -->
+                <div class="w-24 h-24 lg:w-20 lg:h-20 bg-gradient-to-br {{ technique.color }} rounded-full flex items-center justify-center shadow-xl relative overflow-hidden group-hover:shadow-2xl transition-all duration-500">
+                  <span class="w-10 h-10 lg:w-8 lg:h-8 text-white relative z-10">{{ technique.emoji }}</span>
+
+                  <!-- Rotating background -->
+                  <div class="absolute inset-2 border-2 border-white/30 rounded-full"></div>
+                  <div class="absolute inset-0 bg-white/10 rounded-full transform scale-0 group-hover:scale-100 transition-transform duration-700"></div>
+                </div>
+
+                <!-- Step number -->
+                <div class="absolute -top-2 -right-2 w-8 h-8 bg-[#ff774a] text-white rounded-full flex items-center justify-center text-sm font-bold shadow-lg">
+                  {{ technique.number }}
+                </div>
+
+                <!-- Emoji indicator -->
+                <div class="absolute -bottom-2 -left-2 w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-md">
+                  <span class="text-lg">{{ technique.emoji }}</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Content Card -->
+            <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-1 border border-gray-100 relative overflow-hidden">
+              <!-- Card gradient background -->
+              <div class="absolute inset-0 bg-gradient-to-br {{ technique.color }} opacity-0 group-hover:opacity-5 transition-opacity duration-500"></div>
+
+              <!-- Decorative corner -->
+              <div class="absolute top-0 right-0 w-12 h-12 bg-gradient-to-br from-[#ffcf83]/20 to-transparent rounded-bl-2xl"></div>
+
+              <div class="relative z-10">
+                <h3 class="text-lg font-bold text-[#344736] mb-3 group-hover:text-[#415c43] transition-colors">
+                  {{ technique.title }}
+                </h3>
+                <p class="text-[#4b3c35] text-sm leading-relaxed">
+                  {{ technique.description }}
+                </p>
+              </div>
+
+              <!-- Bottom accent line -->
+              <div class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r {{ technique.color }} transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom CTA with Different Design -->
+    <div class="text-center mt-20">
+      <div class="bg-gradient-to-r from-[#b8dc99]/10 to-[#ffcf83]/10 rounded-3xl p-8 max-w-4xl mx-auto">
+        <h3 class="text-2xl font-bold text-[#344736] mb-4">
+          Sustainable Agriculture at Its Finest
+        </h3>
+        <p class="text-[#4b3c35] mb-6 leading-relaxed">
+          These interconnected farming techniques work together to create a harmonious ecosystem 
+          that produces the highest quality organic products while protecting our planet.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <button class="bg-[#415c43] text-white px-6 py-3 rounded-full font-semibold hover:bg-[#344736] transition-colors duration-300 shadow-lg">
+            Learn More About Our Process
+          </button>
+          <button class="border-2 border-[#415c43] text-[#415c43] px-6 py-3 rounded-full font-semibold hover:bg-[#415c43] hover:text-white transition-all duration-300">
+            Visit Our Farm
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> 

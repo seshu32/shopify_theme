@@ -1,0 +1,65 @@
+<section class="py-32 bg-bewild-warm-yellow/5 relative overflow-hidden">
+  <!-- Background Decorative Elements -->
+  <div class="absolute inset-0 pointer-events-none">
+    <div class="absolute -top-1/4 -right-1/4 w-1/2 h-1/2 bg-bewild-soft-green rounded-full blur-3xl"></div>
+    <div class="absolute -bottom-1/4 -left-1/4 w-1/2 h-1/2 bg-bewild-warm-yellow rounded-full blur-3xl"></div>
+  </div>
+
+  <div class="container mx-auto px-6">
+    <!-- Section Header -->
+    <div class="text-center max-w-4xl mx-auto mb-20">
+      <span class="text-bewild-soft-green font-bold mb-6 block tracking-wide text-2xl font-arizona-flare">
+        Our Team
+      </span>
+      <h2 class="text-4xl md:text-5xl font-bold text-bewild-forest-green mb-6 font-arizona-flare">
+        The Brilliant Minds Behind BeWild's Mission
+      </h2>
+      <p class="text-xl font-arizona-sans text-bewild-dark-brown">
+        Transforming agriculture with expertise, care, and a commitment to nature.
+      </p>
+    </div>
+
+    <!-- Team Members Grid -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {% for member in teamMembers %}
+        <div class="group">
+          <div class="bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-500 h-full relative overflow-hidden">
+            <!-- Top Decorative Element -->
+            <div class="absolute top-0 right-0 w-32 h-32 bg-bewild-soft-green/15 rounded-bl-[100px] transition-all duration-500 group-hover:bg-bewild-soft-green/25"></div>
+            
+            <!-- Profile Image -->
+            <div class="relative w-full aspect-[3/4] mb-8 rounded-2xl overflow-hidden bg-bewild-warm-yellow/10">
+              <img
+                src="{{ member.imageSrc | asset_url }}"
+                alt="{{ member.name }} - {{ member.role }}"
+                class="object-cover object-center transition-transform duration-500 group-hover:scale-105"
+              />
+              <div class="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors duration-500"></div>
+            </div>
+
+            <!-- Icon -->
+            <div class="mb-6">
+              <div class="w-12 h-12 rounded-2xl bg-bewild-coral-orange/10 flex items-center justify-center transform transition-all duration-500 group-hover:scale-110">
+                <span class="icon-{{ member.icon }} w-6 h-6 text-bewild-coral-orange"></span>
+              </div>
+            </div>
+
+            <!-- Content -->
+            <h3 class="text-2xl font-bold font-arizona-flare text-bewild-forest-green mb-2 group-hover:text-bewild-olive-green transition-colors duration-300">
+              {{ member.name }}
+            </h3>
+            <div class="text-bewild-dark-brown font-medium mb-4 text-lg font-arizona-sans">
+              {{ member.role }}
+            </div>
+            <p class="text-bewild-dark-brown/80 leading-relaxed font-arizona-sans">
+              {{ member.description }}
+            </p>
+
+            <!-- Bottom Decorative Element -->
+            <div class="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-bewild-coral-orange/30 to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section> 

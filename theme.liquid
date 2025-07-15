@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{{ page_title }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- Shopify Required Meta Tags -->
+    {{ content_for_header }}
+    
+    <!-- Theme CSS -->
+    <link rel="stylesheet" href="{{ 'styles.css' | asset_url }}">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="{{ 'logo.png' | asset_url }}">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <!-- Navigation Header -->
+    <header class="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-sm border-b border-gray-200">
+        <div class="container mx-auto px-6 py-4">
+            <nav class="flex justify-between items-center">
+                <div class="logo">
+                    <a href="/">
+                        <img src="{{ 'logo.png' | asset_url }}" width="120" height="40" alt="{{ shop.name }}" class="h-10 w-auto">
+                    </a>
+                </div>
+                <div class="nav-links hidden md:flex space-x-8">
+                    <a href="/" class="text-gray-700 hover:text-green-600 transition-colors">Home</a>
+                    <a href="/collections" class="text-gray-700 hover:text-green-600 transition-colors">Products</a>
+                    <a href="/pages/about" class="text-gray-700 hover:text-green-600 transition-colors">About</a>
+                    <a href="/pages/contact" class="text-gray-700 hover:text-green-600 transition-colors">Contact</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Main Content -->
+    <main class="pt-20">
+        {{ content_for_layout }}
+    </main>
+    
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="text-center">
+                <img src="{{ 'logo.png' | asset_url }}" width="120" height="40" alt="{{ shop.name }}" class="h-10 w-auto mx-auto mb-4 brightness-0 invert">
+                <p class="text-gray-400">© {{ 'now' | date: '%Y' }} {{ shop.name }}. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html> 

@@ -1,0 +1,23 @@
+html,body{margin:0;padding:0;width:100%;height:100%}
+body{display:flex;flex-direction:column;font:300 15px/23px Arial,Helvetica,sans-serif}
+.top{width:100%;height:48px;background:#043577;display:flex;justify-content:space-between;align-items:center}
+.logo{margin-left:20px}
+.logo a{display:flex;align-items:center}
+.buynow{margin-right:20px}
+.btn{width:100px;height:32px;cursor:pointer;background:#05bc61;color:#fff;display:flex;align-items:center;justify-content:center;border:#023d1f 1px solid;border-radius:5px}
+.btn:hover{background:#00cc66;color:#fff}
+.btn::after{content: '';margin-left:3px;margin-top:2px;width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;border-top:#fff 6px solid}
+.btn3{width:260px;height:32px;cursor:pointer;background:#e4f9ee;border:2px solid #00cc66;color:#027102;font-weight:300;font-size:14px;display:flex;align-items:center;justify-content:center;border-radius:3px}
+.btn3:hover{background:#00cc66;color:#fff!important}
+#menu-toggle{display:none}
+#menu-toggle:checked + label div.btn{background:#05aa58;color:#fff}
+#menu-toggle:checked + label div.btn::after{content: '';margin-left:3px;margin-bottom:5px;width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;border-top:5px solid transparent;border-bottom:#fff 6px solid}
+#menu-toggle ~ .navbar li{height:0;margin:0;padding:0;border:0;transition:height 400ms cubic-bezier(0.23, 1, 0.32, 1)}
+#menu-toggle:checked ~ .navbar li{height:32px;padding-top:8px;transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1)}
+#menu-toggle:checked ~ .navbar li:last-child{padding-bottom:8px}
+#menu-toggle:checked ~ .navbar{border:#ccc 1px solid}
+.navbar{width:276px;position:absolute;top:0;right:21px;margin:0;padding:0;margin-top:48px;display:flex;flex-direction:column;justify-content:center;align-items:center;z-index:99}
+.navbar>li{display: flex;justify-content:center;margin:0;padding:0;width:100%;background: #fff}
+.navbar>li>form{display:block;overflow:hidden}
+iframe{flex:1;width:100%;height:100%;border:none}
+@media(max-width:281px){.logo{margin-left:2px}.buynow{margin-right:2px}} 

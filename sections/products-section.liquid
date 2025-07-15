@@ -1,0 +1,78 @@
+<section class="py-32 bg-bewild-warm-yellow/5">
+  <div class="container mx-auto px-6">
+    <div class="text-center mb-16">
+      <span class="text-bewild-soft-green font-bold mb-6 block tracking-wide text-2xl font-arizona-flare">
+        Our Collection
+      </span>
+      <h2 class="text-4xl md:text-5xl font-bold text-bewild-forest-green mb-12 font-arizona-flare">
+        Handpicked, Pure & Organic
+      </h2>
+
+      <!-- Category Tabs -->
+      <div class="flex items-center justify-center gap-8 flex-wrap">
+        {% for category in productCategories %}
+          <button
+            class="px-6 py-2 text-sm font-medium font-arizona-sans transition-all duration-300"
+            style="background-color: {{ category.active ? 'bg-bewild-soft-green' : 'bg-transparent' }}; color: {{ category.active ? 'text-bewild-forest-green' : 'text-bewild-dark-brown' }};"
+          >
+            {{ category.name }}
+          </button>
+        {% endfor %}
+      </div>
+    </div>
+
+    <!-- Products Grid -->
+    <div class="mt-16">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+        {% for product in currentProducts %}
+          <div class="group">
+            <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 relative">
+              <!-- Hot/New Badge -->
+              {% if forloop.first %}
+                <div class="absolute top-4 left-4 z-10 space-y-2">
+                  <span class="bg-bewild-coral-orange text-white px-3 py-1 rounded-full text-xs font-medium font-arizona-sans">
+                    Hot
+                  </span>
+                  <span class="bg-bewild-coral-orange text-white px-3 py-1 rounded-full text-xs font-medium font-arizona-sans block">
+                    New
+                  </span>
+                </div>
+              {% endif %}
+
+              <!-- Product Image -->
+              <a href="/product/{{ product.slug }}">
+                <div class="relative aspect-square bg-gray-50 cursor-pointer">
+                  <img
+                    src="{{ product.image | asset_url }}"
+                    alt="{{ product.name }}"
+                    class="object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+              </a>
+
+              <!-- Product Info -->
+              <div class="p-6 text-center relative">
+                <a href="/product/{{ product.slug }}">
+                  <h3 class="text-lg font-semibold text-bewild-dark-brown mb-2">
+                    {{ product.name }}
+                  </h3>
+                  <p class="text-sm text-bewild-dark-brown/70 mb-4">
+                    {{ product.subtitle }}
+                  </p>
+                </a>
+                <div class="flex items-center justify-center gap-2">
+                  <span class="text-lg font-bold text-bewild-forest-green">
+                    {{ product.price }}
+                  </span>
+                  <span class="text-sm text-bewild-dark-brown/70">
+                    / {{ product.unit }}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section> 
