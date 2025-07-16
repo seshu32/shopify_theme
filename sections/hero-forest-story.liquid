@@ -1,0 +1,605 @@
+{% comment %}
+Hero Forest Story Section - BeWild.life
+"Every Forest Has a Story. This One Ends at Your Table."
+{% endcomment %}
+
+<section class="hero-forest-story">
+  <div class="forest-background">
+    <!-- Animated background elements -->
+    <div class="forest-particles">
+      <div class="leaf leaf-1">🍃</div>
+      <div class="leaf leaf-2">🌿</div>
+      <div class="leaf leaf-3">🍂</div>
+      <div class="wildlife wildlife-1">🐦</div>
+      <div class="wildlife wildlife-2">🦋</div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="hero-content">
+      <!-- Brand tagline -->
+      {% if section.settings.tagline != blank %}
+        <div class="forest-tagline">
+          <span class="tagline-icon">🌲</span>
+          {{ section.settings.tagline }}
+          <span class="tagline-icon">🌲</span>
+        </div>
+      {% endif %}
+
+      <!-- Main hero title -->
+      <h1 class="hero-title">
+        <span class="title-line-1">{{ section.settings.title_line1 | default: 'Every Forest Has a Story.' }}</span>
+        <span class="title-line-2">{{ section.settings.title_line2 | default: 'This One Ends at Your Table.' }}</span>
+      </h1>
+
+      <!-- Storytelling subtitle -->
+      <div class="hero-story">
+        <p class="story-text">
+          {{ section.settings.story_text | default: 'It begins with the land — sculpted by seasons, shaped by hands. We prepare, seed, and wait with the forest. When the time is right, we harvest stories — not just produce.' }}
+        </p>
+      </div>
+
+      <!-- Story journey visual -->
+      <div class="story-journey">
+        {% for block in section.blocks %}
+          <div class="journey-step" data-step="{{ forloop.index }}">
+            <div class="step-icon">{{ block.settings.icon }}</div>
+            <div class="step-label">{{ block.settings.label }}</div>
+            {% unless forloop.last %}
+              <div class="journey-arrow">→</div>
+            {% endunless %}
+          </div>
+        {% endfor %}
+      </div>
+
+      <!-- CTA Button -->
+      <div class="hero-cta">
+        {% if section.settings.cta_text != blank %}
+          <a href="{{ section.settings.cta_link | default: '/collections' }}" class="btn-bewild">
+            {{ section.settings.cta_text }}
+            <span class="btn-icon">🌿</span>
+          </a>
+        {% endif %}
+        
+        {% if section.settings.secondary_cta_text != blank %}
+          <a href="{{ section.settings.secondary_cta_link | default: '/pages/about' }}" class="btn-secondary-wild">
+            {{ section.settings.secondary_cta_text }}
+          </a>
+        {% endif %}
+      </div>
+
+      <!-- Scroll indicator -->
+      {% if section.settings.show_scroll_indicator %}
+        <div class="scroll-indicator">
+          <div class="scroll-mouse">
+            <div class="scroll-wheel"></div>
+          </div>
+          <span class="scroll-text">{{ section.settings.scroll_text | default: 'Discover the wild story below' }}</span>
+        </div>
+      {% endif %}
+    </div>
+
+    <!-- Hero image/video area -->
+    {% if section.settings.show_hero_media %}
+      <div class="hero-media">
+        {% if section.settings.hero_image %}
+          <div class="hero-image-container">
+            <img src="{{ section.settings.hero_image | img_url: '1200x800' }}" alt="{{ section.settings.image_alt | default: 'Forest to table journey' }}" class="hero-image">
+            <div class="image-overlay"></div>
+          </div>
+        {% else %}
+          <div class="hero-placeholder">
+            <div class="forest-scene">
+              <div class="forest-layer layer-1">🌲🌲🌲</div>
+              <div class="forest-layer layer-2">🌳🌳</div>
+              <div class="forest-layer layer-3">🌿🌿🌿🌿</div>
+              <div class="wildlife-scene">
+                <span class="animal">🦌</span>
+                <span class="animal">🐿️</span>
+                <span class="animal">🦋</span>
+              </div>
+            </div>
+          </div>
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+<style>
+  .hero-forest-story {
+    min-height: 100vh;
+    position: relative;
+    background: linear-gradient(135deg, #344736 0%, #415c43 50%, #344736 100%);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    color: white;
+  }
+
+  .forest-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+  }
+
+  .forest-particles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+
+  .leaf, .wildlife {
+    position: absolute;
+    font-size: 2rem;
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .leaf-1 { top: 20%; left: 10%; animation-delay: 0s; }
+  .leaf-2 { top: 60%; right: 15%; animation-delay: 2s; }
+  .leaf-3 { top: 80%; left: 70%; animation-delay: 4s; }
+  .wildlife-1 { top: 30%; right: 20%; animation-delay: 1s; }
+  .wildlife-2 { top: 70%; left: 20%; animation-delay: 3s; }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(10deg); }
+  }
+
+  .container {
+    position: relative;
+    z-index: 2;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .hero-content {
+    text-align: left;
+  }
+
+  .forest-tagline {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255, 207, 131, 0.2);
+    border: 1px solid #ffcf83;
+    border-radius: 25px;
+    padding: 8px 20px;
+    margin-bottom: 2rem;
+    font-size: 0.9rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #ffcf83;
+  }
+
+  .tagline-icon {
+    font-size: 1.2rem;
+  }
+
+  .hero-title {
+    font-family: 'ABCArizonaFlare', serif;
+    font-size: 3.5rem;
+    font-weight: 300;
+    line-height: 1.1;
+    margin-bottom: 2rem;
+  }
+
+  .title-line-1 {
+    display: block;
+    color: white;
+  }
+
+  .title-line-2 {
+    display: block;
+    color: #ffcf83;
+    font-weight: normal;
+  }
+
+  .hero-story {
+    margin-bottom: 3rem;
+  }
+
+  .story-text {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 500px;
+  }
+
+  .story-journey {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 3rem;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+  }
+
+  .journey-step {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex: 1;
+    min-width: 120px;
+  }
+
+  .step-icon {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .step-label {
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #b8dc99;
+  }
+
+  .journey-arrow {
+    font-size: 1.5rem;
+    color: #ffcf83;
+    margin: 0 0.5rem;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 4rem;
+  }
+
+  .btn-bewild {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: linear-gradient(135deg, #ff774a, #9e3430);
+    color: white;
+    padding: 15px 30px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 25px rgba(255, 119, 74, 0.3);
+  }
+
+  .btn-bewild:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(255, 119, 74, 0.4);
+  }
+
+  .btn-secondary-wild {
+    display: inline-flex;
+    align-items: center;
+    color: #b8dc99;
+    border: 2px solid #b8dc99;
+    padding: 13px 28px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+  }
+
+  .btn-secondary-wild:hover {
+    background: #b8dc99;
+    color: #344736;
+  }
+
+  .scroll-indicator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    color: rgba(255, 255, 255, 0.7);
+    animation: bounce 2s infinite;
+  }
+
+  .scroll-mouse {
+    width: 24px;
+    height: 36px;
+    border: 2px solid rgba(255, 255, 255, 0.7);
+    border-radius: 12px;
+    position: relative;
+  }
+
+  .scroll-wheel {
+    width: 4px;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 2px;
+    position: absolute;
+    top: 6px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: scroll 2s infinite;
+  }
+
+  .scroll-text {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .hero-media {
+    position: relative;
+  }
+
+  .hero-image-container {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+  }
+
+  .hero-image {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(52, 71, 54, 0.2), rgba(65, 92, 67, 0.2));
+  }
+
+  .hero-placeholder {
+    background: linear-gradient(135deg, #b8dc99, #ffcf83);
+    border-radius: 20px;
+    padding: 3rem;
+    text-align: center;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+  }
+
+  .forest-scene {
+    position: relative;
+    height: 300px;
+  }
+
+  .forest-layer {
+    position: absolute;
+    width: 100%;
+    font-size: 3rem;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .layer-1 { bottom: 0; }
+  .layer-2 { bottom: 80px; }
+  .layer-3 { bottom: 160px; font-size: 2rem; }
+
+  .wildlife-scene {
+    position: absolute;
+    top: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .animal {
+    font-size: 2.5rem;
+    animation: wildlife-move 4s ease-in-out infinite;
+  }
+
+  .animal:nth-child(2) { animation-delay: 1s; }
+  .animal:nth-child(3) { animation-delay: 2s; }
+
+  @keyframes wildlife-move {
+    0%, 100% { transform: translateX(0) scale(1); }
+    50% { transform: translateX(10px) scale(1.1); }
+  }
+
+  @keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-10px); }
+    60% { transform: translateY(-5px); }
+  }
+
+  @keyframes scroll {
+    0% { top: 6px; opacity: 1; }
+    50% { top: 12px; opacity: 0.5; }
+    100% { top: 18px; opacity: 0; }
+  }
+
+  @media (max-width: 768px) {
+    .container {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      text-align: center;
+    }
+
+    .hero-title {
+      font-size: 2.5rem;
+    }
+
+    .story-journey {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .journey-arrow {
+      display: none;
+    }
+
+    .hero-cta {
+      justify-content: center;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .hero-title {
+      font-size: 2rem;
+    }
+
+    .story-text {
+      font-size: 1rem;
+    }
+
+    .forest-tagline {
+      font-size: 0.8rem;
+      padding: 6px 16px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Hero Forest Story",
+  "settings": [
+    {
+      "type": "text",
+      "id": "tagline",
+      "label": "Forest Tagline",
+      "default": "BEWILD.LIFE - THE ECO-VERSE OF BEFOREST"
+    },
+    {
+      "type": "text",
+      "id": "title_line1",
+      "label": "Title Line 1",
+      "default": "Every Forest Has a Story."
+    },
+    {
+      "type": "text",
+      "id": "title_line2",
+      "label": "Title Line 2 (Highlighted)",
+      "default": "This One Ends at Your Table."
+    },
+    {
+      "type": "textarea",
+      "id": "story_text",
+      "label": "Story Text",
+      "default": "It begins with the land — sculpted by seasons, shaped by hands. We prepare, seed, and wait with the forest. When the time is right, we harvest stories — not just produce."
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "Primary CTA Text",
+      "default": "Experience BeWild →"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "Primary CTA Link",
+      "default": "/collections"
+    },
+    {
+      "type": "text",
+      "id": "secondary_cta_text",
+      "label": "Secondary CTA Text",
+      "default": "Our Story"
+    },
+    {
+      "type": "url",
+      "id": "secondary_cta_link",
+      "label": "Secondary CTA Link",
+      "default": "/pages/about"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_hero_media",
+      "label": "Show hero image/media",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Hero Image"
+    },
+    {
+      "type": "text",
+      "id": "image_alt",
+      "label": "Image Alt Text",
+      "default": "Forest to table journey - BeWild.life"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_scroll_indicator",
+      "label": "Show scroll indicator",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "scroll_text",
+      "label": "Scroll Indicator Text",
+      "default": "Discover the wild story below"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "journey_step",
+      "name": "Journey Step",
+      "settings": [
+        {
+          "type": "text",
+          "id": "icon",
+          "label": "Step Icon (Emoji)",
+          "default": "🌱"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Step Label",
+          "default": "Land"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero Forest Story",
+      "blocks": [
+        {
+          "type": "journey_step",
+          "settings": {
+            "icon": "🌍",
+            "label": "Land"
+          }
+        },
+        {
+          "type": "journey_step",
+          "settings": {
+            "icon": "🛠️",
+            "label": "Craft"
+          }
+        },
+        {
+          "type": "journey_step",
+          "settings": {
+            "icon": "🍽️",
+            "label": "Table"
+          }
+        },
+        {
+          "type": "journey_step",
+          "settings": {
+            "icon": "✨",
+            "label": "Experience"
+          }
+        },
+        {
+          "type": "journey_step",
+          "settings": {
+            "icon": "🥬",
+            "label": "Produce"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %} 

@@ -1,0 +1,822 @@
+{% comment %}
+Wild Collections Section - BeWild.life
+Grid-based wild ecosystem cards with animal themes
+Coffee & Tea (Hornbill), Fruits (Elephant), Spices (Lizard), etc.
+{% endcomment %}
+
+<section class="wild-collections">
+  <div class="ecosystem-background">
+    <!-- Floating ecosystem elements -->
+    <div class="floating-elements">
+      <div class="ecosystem-particle particle-1">🌿</div>
+      <div class="ecosystem-particle particle-2">🦋</div>
+      <div class="ecosystem-particle particle-3">🍃</div>
+      <div class="ecosystem-particle particle-4">🌺</div>
+    </div>
+  </div>
+
+  <div class="container">
+    <!-- Section Header -->
+    <div class="collections-header">
+      {% if section.settings.tagline != blank %}
+        <div class="ecosystem-tagline">
+          <span class="tagline-icon">🌲</span>
+          {{ section.settings.tagline }}
+          <span class="tagline-icon">🌲</span>
+        </div>
+      {% endif %}
+
+      <h2 class="section-title">
+        {{ section.settings.title | default: 'Our Wild Collections' }}
+      </h2>
+
+      {% if section.settings.description != blank %}
+        <p class="section-description">{{ section.settings.description }}</p>
+      {% endif %}
+    </div>
+
+    <!-- Wild Collections Grid -->
+    <div class="collections-grid">
+      {% if collections.size > 0 %}
+        <!-- Real collections with animal themes -->
+        {% assign collection_animals = 'Hornbill|Elephant|Lizard|Bee|Earthworm|Crate' | split: '|' %}
+        {% assign collection_emojis = '🦜|🐘|🦎|🐝|🪱|📦' | split: '|' %}
+        
+        {% for collection in collections limit: 6 %}
+          {% assign animal_index = forloop.index0 %}
+          {% assign animal_name = collection_animals[animal_index] | default: 'Forest' %}
+          {% assign animal_emoji = collection_emojis[animal_index] | default: '🌿' %}
+          
+          <div class="collection-card ecosystem-card" data-animal="{{ animal_name | downcase }}">
+            <div class="card-background"></div>
+            
+            <div class="collection-image-container">
+              {% if collection.featured_image %}
+                <img src="{{ collection.featured_image | img_url: '400x300' }}" alt="{{ collection.title }}" class="collection-image">
+              {% else %}
+                <div class="collection-placeholder">
+                  <span class="collection-emoji">{{ animal_emoji }}</span>
+                </div>
+              {% endif %}
+              
+              <!-- Ecosystem overlay -->
+              <div class="ecosystem-overlay">
+                <div class="animal-spirit">{{ animal_emoji }}</div>
+                <div class="ecosystem-name">{{ animal_name }} Ecosystem</div>
+              </div>
+            </div>
+
+            <div class="collection-content">
+              <div class="collection-meta">
+                <span class="collection-count">{{ collection.products_count }} treasures</span>
+                <span class="ecosystem-badge">{{ animal_name }}</span>
+              </div>
+
+              <h3 class="collection-title">{{ collection.title }}</h3>
+              
+              {% if collection.description != blank %}
+                <p class="collection-description">{{ collection.description | truncate: 80 }}</p>
+              {% else %}
+                <p class="collection-description">Discover the wild flavors curated by our {{ animal_name | downcase }} friends.</p>
+              {% endif %}
+
+              <div class="collection-footer">
+                <a href="{{ collection.url }}" class="btn-explore">
+                  Explore Ecosystem
+                  <span class="btn-arrow">→</span>
+                </a>
+                
+                <div class="ecosystem-indicator">
+                  <div class="indicator-dot"></div>
+                  <span>Wild & Fresh</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Hover animations -->
+            <div class="card-animations">
+              {% case animal_name %}
+                {% when 'Hornbill' %}
+                  <div class="flying-element">☕</div>
+                  <div class="flying-element">🍵</div>
+                {% when 'Elephant' %}
+                  <div class="floating-fruit">🍎</div>
+                  <div class="floating-fruit">🍊</div>
+                {% when 'Lizard' %}
+                  <div class="spice-particle">🌶️</div>
+                  <div class="spice-particle">⭐</div>
+                {% when 'Bee' %}
+                  <div class="honey-drop">🍯</div>
+                  <div class="pollen-dust">✨</div>
+                {% when 'Earthworm' %}
+                  <div class="grain-seed">🌾</div>
+                  <div class="grain-seed">🌰</div>
+                {% else %}
+                  <div class="veggie-item">🥬</div>
+                  <div class="veggie-item">🥕</div>
+              {% endcase %}
+            </div>
+          </div>
+        {% endfor %}
+      {% else %}
+        <!-- Fallback ecosystem cards -->
+        {% for block in section.blocks %}
+          <div class="collection-card ecosystem-card" data-animal="{{ block.settings.animal_name | downcase }}">
+            <div class="card-background"></div>
+            
+            <div class="collection-image-container">
+              {% if block.settings.image %}
+                <img src="{{ block.settings.image | img_url: '400x300' }}" alt="{{ block.settings.title }}" class="collection-image">
+              {% else %}
+                <div class="collection-placeholder">
+                  <span class="collection-emoji">{{ block.settings.animal_emoji }}</span>
+                </div>
+              {% endif %}
+              
+              <div class="ecosystem-overlay">
+                <div class="animal-spirit">{{ block.settings.animal_emoji }}</div>
+                <div class="ecosystem-name">{{ block.settings.animal_name }} Ecosystem</div>
+              </div>
+            </div>
+
+            <div class="collection-content">
+              <div class="collection-meta">
+                <span class="collection-count">{{ block.settings.item_count | default: '12' }} treasures</span>
+                <span class="ecosystem-badge">{{ block.settings.animal_name }}</span>
+              </div>
+
+              <h3 class="collection-title">{{ block.settings.title }}</h3>
+              <p class="collection-description">{{ block.settings.description }}</p>
+
+              <div class="collection-footer">
+                <a href="{{ block.settings.link | default: '/collections' }}" class="btn-explore">
+                  Explore Ecosystem
+                  <span class="btn-arrow">→</span>
+                </a>
+                
+                <div class="ecosystem-indicator">
+                  <div class="indicator-dot"></div>
+                  <span>Wild & Fresh</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="card-animations">
+              <div class="ecosystem-effect">{{ block.settings.effect_emoji_1 | default: '✨' }}</div>
+              <div class="ecosystem-effect">{{ block.settings.effect_emoji_2 | default: '🌿' }}</div>
+            </div>
+          </div>
+        {% endfor %}
+      {% endif %}
+    </div>
+
+    <!-- Collections CTA -->
+    {% if section.settings.show_all_collections_cta %}
+      <div class="collections-cta">
+        <div class="cta-content">
+          <h3 class="cta-title">{{ section.settings.cta_title | default: 'Ready to Explore All Ecosystems?' }}</h3>
+          <p class="cta-description">{{ section.settings.cta_description | default: 'Each collection tells a unique story of the wild creatures who inspire our curation.' }}</p>
+          <a href="{{ section.settings.cta_link | default: '/collections' }}" class="btn-view-all">
+            {{ section.settings.cta_text | default: 'View All Collections' }}
+            <span class="btn-icon">🌿</span>
+          </a>
+        </div>
+        
+        <div class="cta-visual">
+          <div class="ecosystem-preview">
+            <span class="preview-animal">🦜</span>
+            <span class="preview-animal">🐘</span>
+            <span class="preview-animal">🦎</span>
+            <span class="preview-animal">🐝</span>
+          </div>
+        </div>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+<style>
+  .wild-collections {
+    padding: 5rem 0;
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 50%, #f0f8f0 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .ecosystem-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+  }
+
+  .floating-elements {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+
+  .ecosystem-particle {
+    position: absolute;
+    font-size: 1.5rem;
+    opacity: 0.3;
+    animation: ecosystem-float 8s ease-in-out infinite;
+  }
+
+  .particle-1 { top: 10%; left: 5%; animation-delay: 0s; }
+  .particle-2 { top: 30%; right: 10%; animation-delay: 2s; }
+  .particle-3 { top: 70%; left: 15%; animation-delay: 4s; }
+  .particle-4 { top: 85%; right: 20%; animation-delay: 6s; }
+
+  .container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .collections-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .ecosystem-tagline {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: linear-gradient(135deg, #b8dc99, #ffcf83);
+    border-radius: 25px;
+    padding: 8px 20px;
+    margin-bottom: 2rem;
+    font-size: 0.9rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #344736;
+  }
+
+  .section-title {
+    font-family: 'ABCArizonaFlare', serif;
+    font-size: 3.5rem;
+    font-weight: 300;
+    color: #344736;
+    margin-bottom: 1.5rem;
+  }
+
+  .section-description {
+    font-size: 1.3rem;
+    color: #415c43;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  .collections-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2.5rem;
+    margin-bottom: 4rem;
+  }
+
+  .ecosystem-card {
+    position: relative;
+    background: white;
+    border-radius: 25px;
+    overflow: hidden;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s ease;
+    border: 1px solid rgba(52, 71, 54, 0.1);
+  }
+
+  .ecosystem-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
+  }
+
+  .card-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, transparent 0%, rgba(184, 220, 153, 0.1) 100%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+
+  .ecosystem-card:hover .card-background {
+    opacity: 1;
+  }
+
+  .collection-image-container {
+    position: relative;
+    height: 250px;
+    overflow: hidden;
+  }
+
+  .collection-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+
+  .ecosystem-card:hover .collection-image {
+    transform: scale(1.1);
+  }
+
+  .collection-placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #b8dc99, #ffcf83);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .collection-emoji {
+    font-size: 5rem;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+    animation: emoji-pulse 2s ease-in-out infinite;
+  }
+
+  .ecosystem-overlay {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 10px 15px;
+    transform: translateY(-50px);
+    opacity: 0;
+    transition: all 0.4s ease;
+  }
+
+  .ecosystem-card:hover .ecosystem-overlay {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  .animal-spirit {
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+  }
+
+  .ecosystem-name {
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: #344736;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .collection-content {
+    padding: 2rem;
+  }
+
+  .collection-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+
+  .collection-count {
+    font-size: 0.9rem;
+    color: #415c43;
+    font-weight: 500;
+  }
+
+  .ecosystem-badge {
+    background: linear-gradient(135deg, #ff774a, #9e3430);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: bold;
+  }
+
+  .collection-title {
+    font-family: 'ABCArizonaFlare', serif;
+    font-size: 1.8rem;
+    font-weight: normal;
+    color: #344736;
+    margin-bottom: 1rem;
+    line-height: 1.3;
+  }
+
+  .collection-description {
+    font-size: 1rem;
+    color: #415c43;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+  }
+
+  .collection-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .btn-explore {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: linear-gradient(135deg, #344736, #415c43);
+    color: white;
+    padding: 12px 20px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+
+  .btn-explore:hover {
+    transform: translateX(5px);
+    box-shadow: 0 8px 20px rgba(52, 71, 54, 0.3);
+  }
+
+  .btn-arrow {
+    transition: transform 0.3s ease;
+  }
+
+  .btn-explore:hover .btn-arrow {
+    transform: translateX(3px);
+  }
+
+  .ecosystem-indicator {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    color: #415c43;
+  }
+
+  .indicator-dot {
+    width: 8px;
+    height: 8px;
+    background: linear-gradient(135deg, #b8dc99, #ffcf83);
+    border-radius: 50%;
+    animation: indicator-pulse 2s ease-in-out infinite;
+  }
+
+  .card-animations {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+
+  .ecosystem-card:hover .card-animations {
+    opacity: 1;
+  }
+
+  .flying-element, .floating-fruit, .spice-particle, .honey-drop, .pollen-dust, .grain-seed, .veggie-item, .ecosystem-effect {
+    position: absolute;
+    font-size: 1.5rem;
+    animation: element-dance 3s ease-in-out infinite;
+  }
+
+  .flying-element:nth-child(1) { top: 30%; right: 20%; animation-delay: 0s; }
+  .flying-element:nth-child(2) { top: 60%; left: 20%; animation-delay: 1.5s; }
+  .floating-fruit:nth-child(1) { top: 25%; left: 15%; animation-delay: 0.5s; }
+  .floating-fruit:nth-child(2) { top: 55%; right: 15%; animation-delay: 2s; }
+
+  .collections-cta {
+    background: linear-gradient(135deg, #344736, #415c43);
+    border-radius: 30px;
+    padding: 3rem;
+    color: white;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  .cta-title {
+    font-family: 'ABCArizonaFlare', serif;
+    font-size: 2.5rem;
+    font-weight: 300;
+    margin-bottom: 1rem;
+    color: #ffcf83;
+  }
+
+  .cta-description {
+    font-size: 1.2rem;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .btn-view-all {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: linear-gradient(135deg, #ff774a, #9e3430);
+    color: white;
+    padding: 15px 30px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+  }
+
+  .btn-view-all:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 25px rgba(255, 119, 74, 0.3);
+  }
+
+  .ecosystem-preview {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .preview-animal {
+    font-size: 3rem;
+    animation: preview-float 4s ease-in-out infinite;
+  }
+
+  .preview-animal:nth-child(1) { animation-delay: 0s; }
+  .preview-animal:nth-child(2) { animation-delay: 1s; }
+  .preview-animal:nth-child(3) { animation-delay: 2s; }
+  .preview-animal:nth-child(4) { animation-delay: 3s; }
+
+  /* Animations */
+  @keyframes ecosystem-float {
+    0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.3; }
+    50% { transform: translateY(-20px) rotate(180deg); opacity: 0.6; }
+  }
+
+  @keyframes emoji-pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+  }
+
+  @keyframes indicator-pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.7; transform: scale(1.2); }
+  }
+
+  @keyframes element-dance {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    25% { transform: translateY(-10px) rotate(90deg); }
+    75% { transform: translateY(-5px) rotate(270deg); }
+  }
+
+  @keyframes preview-float {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-15px) scale(1.1); }
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .collections-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .collections-cta {
+      grid-template-columns: 1fr;
+      text-align: center;
+      gap: 2rem;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+    }
+
+    .cta-title {
+      font-size: 2rem;
+    }
+
+    .collection-content {
+      padding: 1.5rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .section-title {
+      font-size: 2rem;
+    }
+
+    .collections-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .ecosystem-card {
+      margin: 0 10px;
+    }
+
+    .collections-cta {
+      padding: 2rem;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Wild Collections",
+  "settings": [
+    {
+      "type": "text",
+      "id": "tagline",
+      "label": "Ecosystem Tagline",
+      "default": "DISCOVER WILD ECOSYSTEMS"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Our Wild Collections"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Section Description",
+      "default": "Each collection represents a unique ecosystem, curated by the wild creatures who call our forests home."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_all_collections_cta",
+      "label": "Show all collections CTA",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "cta_title",
+      "label": "CTA Title",
+      "default": "Ready to Explore All Ecosystems?"
+    },
+    {
+      "type": "textarea",
+      "id": "cta_description",
+      "label": "CTA Description",
+      "default": "Each collection tells a unique story of the wild creatures who inspire our curation."
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA Button Text",
+      "default": "View All Collections"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "CTA Button Link",
+      "default": "/collections"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "wild_collection",
+      "name": "Wild Collection",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Collection Title",
+          "default": "Coffee & Tea"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Collection Description",
+          "default": "Discover wild brews curated by our hornbill friends who know the best forest treasures."
+        },
+        {
+          "type": "text",
+          "id": "animal_name",
+          "label": "Animal Name",
+          "default": "Hornbill"
+        },
+        {
+          "type": "text",
+          "id": "animal_emoji",
+          "label": "Animal Emoji",
+          "default": "🦜"
+        },
+        {
+          "type": "text",
+          "id": "item_count",
+          "label": "Item Count",
+          "default": "24"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Collection Image"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Collection Link",
+          "default": "/collections"
+        },
+        {
+          "type": "text",
+          "id": "effect_emoji_1",
+          "label": "Effect Emoji 1",
+          "default": "☕"
+        },
+        {
+          "type": "text",
+          "id": "effect_emoji_2",
+          "label": "Effect Emoji 2",
+          "default": "🍵"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Wild Collections",
+      "blocks": [
+        {
+          "type": "wild_collection",
+          "settings": {
+            "title": "Coffee & Tea",
+            "description": "Discover wild brews curated by our hornbill friends who know the best forest treasures.",
+            "animal_name": "Hornbill",
+            "animal_emoji": "🦜",
+            "item_count": "24",
+            "effect_emoji_1": "☕",
+            "effect_emoji_2": "🍵"
+          }
+        },
+        {
+          "type": "wild_collection",
+          "settings": {
+            "title": "Wild Fruits",
+            "description": "Sweet treasures handpicked from elephant paths where the juiciest fruits grow.",
+            "animal_name": "Elephant",
+            "animal_emoji": "🐘",
+            "item_count": "18",
+            "effect_emoji_1": "🍎",
+            "effect_emoji_2": "🍊"
+          }
+        },
+        {
+          "type": "wild_collection",
+          "settings": {
+            "title": "Forest Spices",
+            "description": "Aromatic spices discovered by our lizard scouts in hidden forest corners.",
+            "animal_name": "Lizard",
+            "animal_emoji": "🦎",
+            "item_count": "32",
+            "effect_emoji_1": "🌶️",
+            "effect_emoji_2": "⭐"
+          }
+        },
+        {
+          "type": "wild_collection",
+          "settings": {
+            "title": "Wild Honey",
+            "description": "Pure golden nectar blessed by our bee partners who dance through flower meadows.",
+            "animal_name": "Bee",
+            "animal_emoji": "🐝",
+            "item_count": "12",
+            "effect_emoji_1": "🍯",
+            "effect_emoji_2": "✨"
+          }
+        },
+        {
+          "type": "wild_collection",
+          "settings": {
+            "title": "Grains & Staples",
+            "description": "Earth's finest grains nurtured by earthworm wisdom in the richest forest soil.",
+            "animal_name": "Earthworm",
+            "animal_emoji": "🪱",
+            "item_count": "15",
+            "effect_emoji_1": "🌾",
+            "effect_emoji_2": "🌰"
+          }
+        },
+        {
+          "type": "wild_collection",
+          "settings": {
+            "title": "Veggie Treasure Box",
+            "description": "Fresh vegetables packed with love and the wisdom of the forest ecosystem.",
+            "animal_name": "Forest",
+            "animal_emoji": "📦",
+            "item_count": "20",
+            "effect_emoji_1": "🥬",
+            "effect_emoji_2": "🥕"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %} 
