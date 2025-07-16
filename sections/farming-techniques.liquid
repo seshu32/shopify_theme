@@ -1,258 +1,734 @@
-{% comment %} Farming Techniques Section {% endcomment %}
-<section class="py-32 bg-white relative overflow-hidden">
-  <!-- Unique Background Pattern -->
-  <div class="absolute inset-0 overflow-hidden">
-    <div class="absolute bottom-1/4 left-1/4 w-12 h-12 bg-yellow-100 rounded-full"></div>
-  </div>
-
-  <div class="container mx-auto px-6 relative">
-    <!-- Header Section -->
-    <div class="text-center mb-16">
-      <div class="flex items-center justify-center mb-6">
-        <div class="h-px bg-gradient-to-r from-transparent via-gray-600 to-transparent w-24"></div>
-        <div class="mx-4 bg-gray-600 text-white px-4 py-2 rounded-full text-sm font-semibold">
-          {{ section.settings.badge_text | default: "OUR APPROACH" }}
-        </div>
-        <div class="h-px bg-gradient-to-r from-transparent via-gray-600 to-transparent w-24"></div>
+<!-- Farming Techniques Section -->
+<section class="farming-techniques-section">
+  <div class="techniques-container">
+    <!-- Section Header -->
+    <div class="techniques-header">
+      <h2 class="techniques-title">Nature's Wisdom</h2>
+      <p class="techniques-subtitle">Ancient techniques, modern science, wild results</p>
+      <div class="technique-philosophy">
+        <span class="philosophy-icon">🌱</span>
+        <p>"We don't farm the land, we partner with it"</p>
       </div>
-
-      <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
-        {{ section.settings.main_title | default: "Our Farming Techniques" }}
-      </h2>
-      <div class="w-24 h-1 bg-gradient-to-r from-orange-400 to-yellow-400 mx-auto mb-6"></div>
-      <p class="text-lg text-gray-700 max-w-2xl mx-auto leading-relaxed">
-        {{ section.settings.main_description | default: "Nature's Best, Grown with Care - Every technique designed to give back to nature" }}
-      </p>
     </div>
 
-    <!-- Horizontal Timeline Layout -->
-    <div class="max-w-7xl mx-auto">
-      <!-- Timeline Container -->
-      <div class="relative">
-        <!-- Main Timeline Line -->
-        <div class="hidden lg:block absolute top-32 left-0 right-0 h-1 bg-gradient-to-r from-green-400 via-gray-600 to-orange-400 rounded-full"></div>
-
-        <!-- Timeline Steps -->
-        <div class="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-4">
-          {% for block in section.blocks %}
-            <div class="group relative">
-              <!-- Large Icon Circle on Timeline -->
-              <div class="flex flex-col items-center lg:mb-8">
-                <div class="relative mb-6 lg:mb-0">
-                  <!-- Large circular icon container -->
-                  <div class="w-24 h-24 lg:w-20 lg:h-20 bg-gradient-to-br from-green-400 to-green-500 rounded-full flex items-center justify-center shadow-xl relative overflow-hidden group-hover:shadow-2xl transition-all duration-500">
-                    <span class="text-4xl lg:text-3xl text-white relative z-10">{{ block.settings.technique_emoji | default: "🌱" }}</span>
-
-                    <!-- Rotating background -->
-                    <div class="absolute inset-2 border-2 border-white/30 rounded-full"></div>
-                    <div class="absolute inset-0 bg-white/10 rounded-full transform scale-0 group-hover:scale-100 transition-transform duration-700"></div>
-                  </div>
-
-                  <!-- Step number -->
-                  <div class="absolute -top-2 -right-2 w-8 h-8 bg-orange-500 text-white rounded-full flex items-center justify-center text-sm font-bold shadow-lg">
-                    {{ forloop.index }}
-                  </div>
-
-                  <!-- Emoji indicator -->
-                  <div class="absolute -bottom-2 -left-2 w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-md">
-                    <span class="text-lg">{{ block.settings.technique_emoji | default: "🌱" }}</span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Content Card -->
-              <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-1 border border-gray-100 relative overflow-hidden">
-                <!-- Card gradient background -->
-                <div class="absolute inset-0 bg-gradient-to-br from-green-100 to-yellow-100 opacity-0 group-hover:opacity-5 transition-opacity duration-500"></div>
-
-                <!-- Decorative corner -->
-                <div class="absolute top-0 right-0 w-12 h-12 bg-gradient-to-br from-yellow-100 to-transparent rounded-bl-2xl"></div>
-
-                <div class="relative z-10">
-                  <h3 class="text-lg font-bold text-gray-800 mb-3 group-hover:text-gray-600 transition-colors">
-                    {{ block.settings.technique_title | default: "Farming Technique" }}
-                  </h3>
-                  <p class="text-gray-600 text-sm leading-relaxed">
-                    {{ block.settings.technique_description | default: "Sustainable and effective farming method for better yield." }}
-                  </p>
-                </div>
-
-                <!-- Bottom accent line -->
-                <div class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-green-400 to-green-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
-              </div>
+    <!-- Techniques Process Flow -->
+    <div class="techniques-flow">
+      <!-- Step 1: Soil Regeneration -->
+      <div class="technique-step" data-step="1">
+        <div class="step-visual">
+          <div class="step-circle">
+            <span class="step-icon">🏔️</span>
+            <div class="step-animation soil-animation">
+              <div class="soil-layer layer-1"></div>
+              <div class="soil-layer layer-2"></div>
+              <div class="soil-layer layer-3"></div>
+              <div class="microorganism">🦠</div>
+              <div class="microorganism">🦠</div>
+              <div class="microorganism">🦠</div>
             </div>
-          {% endfor %}
-          
-          {% if section.blocks.size == 0 %}
-            <!-- Default techniques when no blocks are added -->
-            {% assign default_techniques = 'Crop Rotation,Composting,Water Conservation,Natural Pest Control,Soil Health' | split: ',' %}
-            {% assign default_descriptions = 'Rotating crops to maintain soil fertility,Creating natural fertilizer from organic waste,Efficient irrigation and water management,Using beneficial insects and natural methods,Testing and improving soil quality naturally' | split: ',' %}
-            {% assign default_emojis = '🔄,🍂,💧,🐛,🌱' | split: ',' %}
-            
-            {% for technique in default_techniques %}
-              <div class="group relative">
-                <div class="flex flex-col items-center lg:mb-8">
-                  <div class="relative mb-6 lg:mb-0">
-                    <div class="w-24 h-24 lg:w-20 lg:h-20 bg-gradient-to-br from-green-400 to-green-500 rounded-full flex items-center justify-center shadow-xl relative overflow-hidden group-hover:shadow-2xl transition-all duration-500">
-                      <span class="text-4xl lg:text-3xl text-white relative z-10">{{ default_emojis[forloop.index0] }}</span>
-                      <div class="absolute inset-2 border-2 border-white/30 rounded-full"></div>
-                      <div class="absolute inset-0 bg-white/10 rounded-full transform scale-0 group-hover:scale-100 transition-transform duration-700"></div>
-                    </div>
+          </div>
+          <div class="step-connector"></div>
+        </div>
+        <div class="step-content">
+          <h3>Soil Regeneration</h3>
+          <p>We build living soil through composting, cover crops, and minimal tillage. Every handful teems with billions of beneficial microorganisms.</p>
+          <div class="step-features">
+            <span class="feature-tag">🪱 Earthworm Cultivation</span>
+            <span class="feature-tag">🍄 Mycorrhizal Networks</span>
+            <span class="feature-tag">♻️ Zero Waste Composting</span>
+          </div>
+        </div>
+      </div>
 
-                    <div class="absolute -top-2 -right-2 w-8 h-8 bg-orange-500 text-white rounded-full flex items-center justify-center text-sm font-bold shadow-lg">
-                      {{ forloop.index }}
-                    </div>
+      <!-- Step 2: Biodiversity Integration -->
+      <div class="technique-step" data-step="2">
+        <div class="step-visual">
+          <div class="step-circle">
+            <span class="step-icon">🦋</span>
+            <div class="step-animation biodiversity-animation">
+              <div class="plant-layer">🌿</div>
+              <div class="plant-layer">🌱</div>
+              <div class="plant-layer">🌾</div>
+              <div class="wildlife flying-wildlife">🐝</div>
+              <div class="wildlife ground-wildlife">🐛</div>
+              <div class="wildlife tree-wildlife">🐦</div>
+            </div>
+          </div>
+          <div class="step-connector"></div>
+        </div>
+        <div class="step-content">
+          <h3>Biodiversity Integration</h3>
+          <p>We create polycultures where every species has a role. Coffee under native trees, spices between fruit plants, herbs as living mulch.</p>
+          <div class="step-features">
+            <span class="feature-tag">🌳 Agroforestry</span>
+            <span class="feature-tag">🐝 Pollinator Corridors</span>
+            <span class="feature-tag">🦋 Native Plant Sanctuaries</span>
+          </div>
+        </div>
+      </div>
 
-                    <div class="absolute -bottom-2 -left-2 w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-md">
-                      <span class="text-lg">{{ default_emojis[forloop.index0] }}</span>
-                    </div>
-                  </div>
-                </div>
+      <!-- Step 3: Water Wisdom -->
+      <div class="technique-step" data-step="3">
+        <div class="step-visual">
+          <div class="step-circle">
+            <span class="step-icon">💧</span>
+            <div class="step-animation water-animation">
+              <div class="water-drop drop-1">💧</div>
+              <div class="water-drop drop-2">💧</div>
+              <div class="water-drop drop-3">💧</div>
+              <div class="water-flow"></div>
+              <div class="water-storage"></div>
+              <div class="plant-roots">🌱</div>
+            </div>
+          </div>
+          <div class="step-connector"></div>
+        </div>
+        <div class="step-content">
+          <h3>Water Wisdom</h3>
+          <p>Rainwater harvesting, contour farming, and drought-resistant natives. We capture every drop and let the land drink slowly.</p>
+          <div class="step-features">
+            <span class="feature-tag">☔ Rainwater Harvesting</span>
+            <span class="feature-tag">🏞️ Contour Farming</span>
+            <span class="feature-tag">💧 Drip Irrigation</span>
+          </div>
+        </div>
+      </div>
 
-                <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-1 border border-gray-100 relative overflow-hidden">
-                  <div class="absolute inset-0 bg-gradient-to-br from-green-100 to-yellow-100 opacity-0 group-hover:opacity-5 transition-opacity duration-500"></div>
-                  <div class="absolute top-0 right-0 w-12 h-12 bg-gradient-to-br from-yellow-100 to-transparent rounded-bl-2xl"></div>
+      <!-- Step 4: Natural Pest Management -->
+      <div class="technique-step" data-step="4">
+        <div class="step-visual">
+          <div class="step-circle">
+            <span class="step-icon">🦎</span>
+            <div class="step-animation pest-animation">
+              <div class="beneficial-insect">🐞</div>
+              <div class="beneficial-insect">🕷️</div>
+              <div class="companion-plant">🌸</div>
+              <div class="companion-plant">🌿</div>
+              <div class="neem-spray">✨</div>
+              <div class="trap-crop">🌻</div>
+            </div>
+          </div>
+          <div class="step-connector"></div>
+        </div>
+        <div class="step-content">
+          <h3>Natural Pest Management</h3>
+          <p>Beneficial insects, companion planting, and organic sprays. We work with nature's own security system.</p>
+          <div class="step-features">
+            <span class="feature-tag">🐞 Beneficial Insects</span>
+            <span class="feature-tag">🌿 Companion Planting</span>
+            <span class="feature-tag">🍃 Neem & Organic Sprays</span>
+          </div>
+        </div>
+      </div>
 
-                  <div class="relative z-10">
-                    <h3 class="text-lg font-bold text-gray-800 mb-3 group-hover:text-gray-600 transition-colors">
-                      {{ technique }}
-                    </h3>
-                    <p class="text-gray-600 text-sm leading-relaxed">
-                      {{ default_descriptions[forloop.index0] }}
-                    </p>
-                  </div>
-
-                  <div class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-green-400 to-green-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
-                </div>
-              </div>
-            {% endfor %}
-          {% endif %}
+      <!-- Step 5: Harvest Harmony -->
+      <div class="technique-step" data-step="5">
+        <div class="step-visual">
+          <div class="step-circle">
+            <span class="step-icon">🍯</span>
+            <div class="step-animation harvest-animation">
+              <div class="harvest-hand">✋</div>
+              <div class="harvest-fruit">🍓</div>
+              <div class="harvest-fruit">🫐</div>
+              <div class="harvest-basket">🧺</div>
+              <div class="processing-sun">☀️</div>
+              <div class="fermentation">🫙</div>
+            </div>
+          </div>
+        </div>
+        <div class="step-content">
+          <h3>Harvest Harmony</h3>
+          <p>Hand-picked at peak ripeness, sun-dried with patience, processed with care. Every step honors the plant's journey.</p>
+          <div class="step-features">
+            <span class="feature-tag">👋 Hand Harvesting</span>
+            <span class="feature-tag">☀️ Sun Processing</span>
+            <span class="feature-tag">🫙 Traditional Fermentation</span>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- Bottom CTA -->
-    <div class="text-center mt-20">
-      <div class="bg-gradient-to-r from-green-50 to-yellow-50 rounded-3xl p-8 max-w-4xl mx-auto">
-        <h3 class="text-2xl font-bold text-gray-800 mb-4">
-          {{ section.settings.cta_title | default: "Sustainable Agriculture at Its Finest" }}
-        </h3>
-        <p class="text-gray-600 mb-6 leading-relaxed">
-          {{ section.settings.cta_description | default: "These interconnected farming techniques work together to create a harmonious ecosystem that produces the highest quality organic products while protecting our planet." }}
-        </p>
-        {% if section.settings.primary_button_text %}
-          <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="{{ section.settings.primary_button_link | default: '/pages/about' }}" class="bg-gray-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-gray-700 transition-colors duration-300 shadow-lg">
-              {{ section.settings.primary_button_text }}
-            </a>
-            {% if section.settings.secondary_button_text %}
-              <a href="{{ section.settings.secondary_button_link | default: '/pages/contact' }}" class="border-2 border-gray-600 text-gray-600 px-6 py-3 rounded-full font-semibold hover:bg-gray-600 hover:text-white transition-all duration-300">
-                {{ section.settings.secondary_button_text }}
-              </a>
-            {% endif %}
-          </div>
-        {% endif %}
+    <!-- Technique Stats -->
+    <div class="technique-stats">
+      <div class="stat-card">
+        <div class="stat-icon">🌱</div>
+        <div class="stat-value">95%</div>
+        <div class="stat-label">Organic Certified</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">💧</div>
+        <div class="stat-value">60%</div>
+        <div class="stat-label">Water Saved</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">🦋</div>
+        <div class="stat-value">200+</div>
+        <div class="stat-label">Species Protected</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">🌍</div>
+        <div class="stat-value">Zero</div>
+        <div class="stat-label">Chemical Inputs</div>
+      </div>
+    </div>
+
+    <!-- Learn More Section -->
+    <div class="learn-more-section">
+      <h3>Walk the Wild Farm Trail</h3>
+      <p>Experience these techniques firsthand on our farm visits</p>
+      <div class="learn-actions">
+        <button class="action-btn primary">Book Farm Visit 🚶‍♀️</button>
+        <button class="action-btn secondary">Download Guide 📖</button>
+        <button class="action-btn secondary">Watch Videos 🎥</button>
       </div>
     </div>
   </div>
 </section>
 
-{% schema %}
-{
-  "name": "Farming Techniques Section",
-  "settings": [
-    {
-      "type": "text",
-      "id": "badge_text",
-      "label": "Badge Text",
-      "default": "OUR APPROACH"
-    },
-    {
-      "type": "text",
-      "id": "main_title",
-      "label": "Main Title",
-      "default": "Our Farming Techniques"
-    },
-    {
-      "type": "textarea",
-      "id": "main_description",
-      "label": "Main Description",
-      "default": "Nature's Best, Grown with Care - Every technique designed to give back to nature"
-    },
-    {
-      "type": "text",
-      "id": "cta_title",
-      "label": "CTA Section Title",
-      "default": "Sustainable Agriculture at Its Finest"
-    },
-    {
-      "type": "textarea",
-      "id": "cta_description",
-      "label": "CTA Description",
-      "default": "These interconnected farming techniques work together to create a harmonious ecosystem that produces the highest quality organic products while protecting our planet."
-    },
-    {
-      "type": "text",
-      "id": "primary_button_text",
-      "label": "Primary Button Text",
-      "default": "Learn More About Our Process"
-    },
-    {
-      "type": "url",
-      "id": "primary_button_link",
-      "label": "Primary Button Link",
-      "default": "/pages/about"
-    },
-    {
-      "type": "text",
-      "id": "secondary_button_text",
-      "label": "Secondary Button Text",
-      "default": "Visit Our Farm"
-    },
-    {
-      "type": "url",
-      "id": "secondary_button_link",
-      "label": "Secondary Button Link",
-      "default": "/pages/contact"
-    }
-  ],
-  "blocks": [
-    {
-      "type": "farming_technique",
-      "name": "Farming Technique",
-      "settings": [
-        {
-          "type": "text",
-          "id": "technique_title",
-          "label": "Technique Title",
-          "default": "Farming Technique"
-        },
-        {
-          "type": "textarea",
-          "id": "technique_description",
-          "label": "Technique Description",
-          "default": "Sustainable and effective farming method for better yield."
-        },
-        {
-          "type": "text",
-          "id": "technique_emoji",
-          "label": "Technique Emoji",
-          "default": "🌱"
-        }
-      ]
-    }
-  ],
-  "presets": [
-    {
-      "name": "Farming Techniques Section",
-      "blocks": [
-        { "type": "farming_technique" },
-        { "type": "farming_technique" },
-        { "type": "farming_technique" },
-        { "type": "farming_technique" },
-        { "type": "farming_technique" }
-      ]
-    }
-  ]
+<style>
+.farming-techniques-section {
+  padding: 80px 20px;
+  background: linear-gradient(180deg, #e8f5e8 0%, #f8f9f7 50%, #e8f5e8 100%);
+  position: relative;
+  overflow: hidden;
 }
-{% endschema %} 
+
+.techniques-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Header Styles */
+.techniques-header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.techniques-title {
+  font-family: 'ABCArizonaFlare', serif;
+  font-size: 48px;
+  color: #342e29;
+  margin-bottom: 15px;
+  font-weight: 300;
+}
+
+.techniques-subtitle {
+  font-family: 'ABCArizonaSans', sans-serif;
+  font-size: 18px;
+  color: #4b3c35;
+  margin-bottom: 30px;
+}
+
+.technique-philosophy {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  padding: 20px 40px;
+  border-radius: 25px;
+  max-width: 600px;
+  margin: 0 auto;
+  border: 2px solid rgba(52, 71, 54, 0.1);
+}
+
+.philosophy-icon {
+  font-size: 24px;
+}
+
+.technique-philosophy p {
+  font-family: 'ABCArizonaFlare', serif;
+  font-size: 18px;
+  color: #344736;
+  font-style: italic;
+  margin: 0;
+}
+
+/* Process Flow */
+.techniques-flow {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  margin-bottom: 80px;
+}
+
+.technique-step {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 40px;
+  align-items: center;
+  position: relative;
+}
+
+.technique-step:nth-child(even) {
+  grid-template-columns: 1fr 300px;
+}
+
+.technique-step:nth-child(even) .step-visual {
+  order: 2;
+}
+
+.technique-step:nth-child(even) .step-content {
+  order: 1;
+  text-align: right;
+}
+
+.step-visual {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.step-circle {
+  width: 120px;
+  height: 120px;
+  background: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 30px rgba(52, 46, 41, 0.15);
+  position: relative;
+  border: 3px solid #b8dc99;
+  overflow: hidden;
+}
+
+.step-icon {
+  font-size: 40px;
+  z-index: 2;
+  position: relative;
+}
+
+.step-animation {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.technique-step:hover .step-animation {
+  opacity: 1;
+}
+
+.step-connector {
+  width: 2px;
+  height: 40px;
+  background: linear-gradient(to bottom, #b8dc99, transparent);
+  margin-top: 20px;
+}
+
+.technique-step:last-child .step-connector {
+  display: none;
+}
+
+/* Step Content */
+.step-content h3 {
+  font-family: 'ABCArizonaFlare', serif;
+  font-size: 28px;
+  color: #342e29;
+  margin-bottom: 15px;
+}
+
+.step-content p {
+  font-family: 'ABCArizonaSans', sans-serif;
+  color: #4b3c35;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+
+.step-features {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.technique-step:nth-child(even) .step-features {
+  justify-content: flex-end;
+}
+
+.feature-tag {
+  background: rgba(184, 220, 153, 0.3);
+  color: #344736;
+  padding: 8px 15px;
+  border-radius: 15px;
+  font-size: 12px;
+  font-weight: 600;
+  border: 1px solid rgba(52, 71, 54, 0.2);
+}
+
+/* Animation Styles */
+.soil-animation .soil-layer {
+  position: absolute;
+  width: 100%;
+  height: 20px;
+  border-radius: 10px;
+}
+
+.layer-1 {
+  bottom: 10px;
+  background: #8B4513;
+}
+
+.layer-2 {
+  bottom: 30px;
+  background: #A0522D;
+}
+
+.layer-3 {
+  bottom: 50px;
+  background: #CD853F;
+}
+
+.microorganism {
+  position: absolute;
+  font-size: 8px;
+  animation: wiggle 2s infinite;
+}
+
+.microorganism:nth-child(4) { bottom: 15px; left: 20%; animation-delay: 0s; }
+.microorganism:nth-child(5) { bottom: 35px; left: 60%; animation-delay: 0.7s; }
+.microorganism:nth-child(6) { bottom: 55px; left: 40%; animation-delay: 1.4s; }
+
+.biodiversity-animation .plant-layer {
+  position: absolute;
+  font-size: 16px;
+  animation: grow 3s infinite;
+}
+
+.plant-layer:nth-child(1) { bottom: 20px; left: 20%; animation-delay: 0s; }
+.plant-layer:nth-child(2) { bottom: 25px; left: 50%; animation-delay: 1s; }
+.plant-layer:nth-child(3) { bottom: 15px; left: 75%; animation-delay: 2s; }
+
+.wildlife {
+  position: absolute;
+  font-size: 12px;
+  animation: float 4s infinite;
+}
+
+.flying-wildlife { top: 20%; right: 20%; animation-delay: 0s; }
+.ground-wildlife { bottom: 30%; left: 30%; animation-delay: 1.5s; }
+.tree-wildlife { top: 30%; left: 20%; animation-delay: 3s; }
+
+.water-animation .water-drop {
+  position: absolute;
+  font-size: 12px;
+  animation: waterDrop 3s infinite;
+}
+
+.drop-1 { top: 10%; left: 30%; animation-delay: 0s; }
+.drop-2 { top: 5%; left: 50%; animation-delay: 1s; }
+.drop-3 { top: 15%; left: 70%; animation-delay: 2s; }
+
+.water-flow {
+  position: absolute;
+  bottom: 30%;
+  left: 20%;
+  width: 60%;
+  height: 2px;
+  background: linear-gradient(to right, transparent, #4FC3F7, transparent);
+  animation: flow 2s infinite;
+}
+
+.pest-animation > div {
+  position: absolute;
+  font-size: 12px;
+  animation: patrol 4s infinite;
+}
+
+.beneficial-insect:nth-child(1) { top: 20%; left: 20%; animation-delay: 0s; }
+.beneficial-insect:nth-child(2) { top: 60%; right: 20%; animation-delay: 2s; }
+.companion-plant:nth-child(3) { bottom: 20%; left: 30%; animation-delay: 1s; }
+.companion-plant:nth-child(4) { bottom: 20%; right: 30%; animation-delay: 3s; }
+
+.harvest-animation > div {
+  position: absolute;
+  font-size: 14px;
+  animation: harvest 3s infinite;
+}
+
+.harvest-hand { top: 20%; left: 20%; animation-delay: 0s; }
+.harvest-fruit:nth-child(2) { top: 40%; left: 40%; animation-delay: 0.5s; }
+.harvest-fruit:nth-child(3) { top: 60%; left: 60%; animation-delay: 1s; }
+.harvest-basket { bottom: 20%; right: 20%; animation-delay: 1.5s; }
+
+/* Stats Section */
+.technique-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 30px;
+  margin-bottom: 60px;
+}
+
+.stat-card {
+  background: white;
+  padding: 30px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(52, 46, 41, 0.1);
+  border: 2px solid rgba(184, 220, 153, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+}
+
+.stat-icon {
+  font-size: 32px;
+  margin-bottom: 15px;
+  display: block;
+}
+
+.stat-value {
+  font-family: 'ABCArizonaFlare', serif;
+  font-size: 36px;
+  color: #344736;
+  font-weight: 600;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.stat-label {
+  font-family: 'ABCArizonaSans', sans-serif;
+  color: #4b3c35;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* Learn More Section */
+.learn-more-section {
+  background: white;
+  padding: 50px;
+  border-radius: 25px;
+  text-align: center;
+  box-shadow: 0 15px 40px rgba(52, 46, 41, 0.1);
+}
+
+.learn-more-section h3 {
+  font-family: 'ABCArizonaFlare', serif;
+  font-size: 32px;
+  color: #342e29;
+  margin-bottom: 15px;
+}
+
+.learn-more-section p {
+  font-family: 'ABCArizonaSans', sans-serif;
+  color: #4b3c35;
+  font-size: 16px;
+  margin-bottom: 30px;
+}
+
+.learn-actions {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.action-btn {
+  padding: 15px 30px;
+  border-radius: 25px;
+  border: none;
+  cursor: pointer;
+  font-family: 'ABCArizonaSans', sans-serif;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  font-size: 16px;
+}
+
+.action-btn.primary {
+  background: #344736;
+  color: white;
+}
+
+.action-btn.primary:hover {
+  background: #415c43;
+  transform: translateY(-2px);
+}
+
+.action-btn.secondary {
+  background: transparent;
+  color: #344736;
+  border: 2px solid #b8dc99;
+}
+
+.action-btn.secondary:hover {
+  background: #b8dc99;
+  transform: translateY(-2px);
+}
+
+/* Animations */
+@keyframes wiggle {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-2px); }
+  75% { transform: translateX(2px); }
+}
+
+@keyframes grow {
+  0% { transform: scale(0.8); opacity: 0.5; }
+  50% { transform: scale(1.1); opacity: 1; }
+  100% { transform: scale(0.8); opacity: 0.5; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes waterDrop {
+  0% { transform: translateY(-20px); opacity: 0; }
+  50% { transform: translateY(20px); opacity: 1; }
+  100% { transform: translateY(40px); opacity: 0; }
+}
+
+@keyframes flow {
+  0% { opacity: 0.3; }
+  50% { opacity: 1; }
+  100% { opacity: 0.3; }
+}
+
+@keyframes patrol {
+  0%, 100% { transform: translateX(0) scale(1); }
+  25% { transform: translateX(10px) scale(1.1); }
+  50% { transform: translateX(0) scale(1); }
+  75% { transform: translateX(-10px) scale(1.1); }
+}
+
+@keyframes harvest {
+  0%, 100% { transform: scale(1) rotate(0deg); }
+  50% { transform: scale(1.2) rotate(10deg); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .techniques-title {
+    font-size: 36px;
+  }
+  
+  .technique-philosophy {
+    padding: 15px 25px;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .technique-step {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 30px;
+  }
+  
+  .technique-step:nth-child(even) {
+    grid-template-columns: 1fr;
+  }
+  
+  .technique-step:nth-child(even) .step-visual {
+    order: 1;
+  }
+  
+  .technique-step:nth-child(even) .step-content {
+    order: 2;
+    text-align: center;
+  }
+  
+  .technique-step:nth-child(even) .step-features {
+    justify-content: center;
+  }
+  
+  .step-circle {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .step-icon {
+    font-size: 32px;
+  }
+  
+  .technique-stats {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  
+  .learn-more-section {
+    padding: 30px 20px;
+  }
+  
+  .learn-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .action-btn {
+    width: 100%;
+    max-width: 250px;
+  }
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Intersection Observer for step animations
+  const steps = document.querySelectorAll('.technique-step');
+  
+  const stepObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+        
+        // Trigger step animation
+        const stepAnimation = entry.target.querySelector('.step-animation');
+        if (stepAnimation) {
+          stepAnimation.style.opacity = '1';
+          setTimeout(() => {
+            stepAnimation.style.opacity = '0';
+          }, 3000);
+        }
+      }
+    });
+  }, { threshold: 0.3 });
+  
+  steps.forEach(step => {
+    step.style.opacity = '0';
+    step.style.transform = 'translateY(50px)';
+    step.style.transition = 'all 0.6s ease';
+    stepObserver.observe(step);
+  });
+  
+  // Action button handlers
+  const actionBtns = document.querySelectorAll('.action-btn');
+  actionBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const text = btn.textContent;
+      if (text.includes('Farm Visit')) {
+        alert('Booking your wild farm adventure! 🚶‍♀️🌿');
+      } else if (text.includes('Guide')) {
+        alert('Downloading the Farming Techniques Guide! 📖');
+      } else if (text.includes('Videos')) {
+        alert('Opening video library! 🎥');
+      }
+    });
+  });
+  
+  // Auto-cycle through step animations
+  let currentStep = 0;
+  setInterval(() => {
+    const allSteps = document.querySelectorAll('.technique-step');
+    if (allSteps.length > 0) {
+      const stepAnimation = allSteps[currentStep].querySelector('.step-animation');
+      if (stepAnimation) {
+        stepAnimation.style.opacity = '1';
+        setTimeout(() => {
+          stepAnimation.style.opacity = '0';
+        }, 2000);
+      }
+      currentStep = (currentStep + 1) % allSteps.length;
+    }
+  }, 4000);
+});
+</script> 

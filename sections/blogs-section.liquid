@@ -1,0 +1,947 @@
+<!-- Blogs Section -->
+<section class="blogs-section">
+  <div class="blogs-container">
+    <!-- Section Header -->
+    <div class="blogs-header">
+      <h2 class="blogs-title">Wild Chronicles</h2>
+      <p class="blogs-subtitle">Stories from the forest floor to your coffee cup</p>
+      <div class="blogs-tagline">
+        <span class="tagline-icon">📚</span>
+        <p>"Every bean has a story, every story has a lesson"</p>
+      </div>
+    </div>
+
+    <!-- Blog Categories -->
+    <div class="blog-categories">
+      <button class="blog-cat-btn active" data-category="all">All Stories</button>
+      <button class="blog-cat-btn" data-category="coffee-culture">Coffee Culture ☕</button>
+      <button class="blog-cat-btn" data-category="seasonal">Seasonal Stories 🌿</button>
+      <button class="blog-cat-btn" data-category="farming">Farming Logs 🚜</button>
+      <button class="blog-cat-btn" data-category="wildlife">Wildlife Tales 🦋</button>
+      <button class="blog-cat-btn" data-category="recipes">Wild Recipes 🍽️</button>
+    </div>
+
+    <!-- Featured Blog Post -->
+    <div class="featured-blog">
+      <article class="featured-post">
+        <div class="featured-image">
+          <img src="{{ 'PBR_2065.jpg' | asset_url }}" alt="Featured Blog Post" loading="lazy">
+          <div class="featured-overlay">
+            <span class="featured-badge">Featured Story</span>
+            <div class="reading-time">
+              <span class="time-icon">⏱️</span>
+              <span>8 min read</span>
+            </div>
+          </div>
+        </div>
+        <div class="featured-content">
+          <div class="post-meta">
+            <span class="category-badge coffee-culture">Coffee Culture</span>
+            <span class="post-date">December 15, 2024</span>
+          </div>
+          <h3 class="featured-title">The Ancient Coffee Ritual: How Our Ancestors Brewed Magic</h3>
+          <p class="featured-excerpt">Deep in the Western Ghats, where mist kisses ancient trees and hornbills call at dawn, lies the secret to coffee that transcends the ordinary. This is the story of how traditional brewing methods create not just a beverage, but a bridge between earth and soul...</p>
+          <div class="author-info">
+            <div class="author-avatar">
+              <span class="avatar-icon">👨‍🌾</span>
+            </div>
+            <div class="author-details">
+              <h4 class="author-name">Ravi Kumar</h4>
+              <p class="author-title">Master Coffee Cultivator</p>
+            </div>
+          </div>
+          <button class="read-more-btn">Continue Reading →</button>
+        </div>
+      </article>
+    </div>
+
+    <!-- Blog Grid -->
+    <div class="blogs-grid">
+      <!-- Coffee Culture Post -->
+      <article class="blog-card" data-category="coffee-culture">
+        <div class="card-image">
+          <img src="{{ 'Naturals_1_622x.webp' | asset_url }}" alt="Coffee Processing" loading="lazy">
+          <div class="image-overlay">
+            <span class="overlay-icon">☕</span>
+          </div>
+        </div>
+        <div class="card-content">
+          <div class="post-meta">
+            <span class="category-badge coffee-culture">Coffee Culture</span>
+            <span class="post-date">Dec 10, 2024</span>
+            <span class="reading-time">5 min</span>
+          </div>
+          <h3 class="card-title">From Cherry to Cup: The Sacred Journey</h3>
+          <p class="card-excerpt">Understanding the traditional processing methods that give our coffee its distinctive character...</p>
+          <div class="card-footer">
+            <div class="author-mini">
+              <span class="mini-avatar">👩‍🔬</span>
+              <span class="mini-name">Dr. Priya Nair</span>
+            </div>
+            <span class="read-time">⏱️ 5 min</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Seasonal Story -->
+      <article class="blog-card" data-category="seasonal">
+        <div class="card-image">
+          <img src="{{ 'bbFiCfiE.jpeg' | asset_url }}" alt="Monsoon Magic" loading="lazy">
+          <div class="image-overlay">
+            <span class="overlay-icon">🌧️</span>
+          </div>
+        </div>
+        <div class="card-content">
+          <div class="post-meta">
+            <span class="category-badge seasonal">Seasonal Stories</span>
+            <span class="post-date">Dec 8, 2024</span>
+            <span class="reading-time">7 min</span>
+          </div>
+          <h3 class="card-title">Monsoon Magic: When Spices Dance in Rain</h3>
+          <p class="card-excerpt">How the first monsoon showers awaken our spice gardens and transform the landscape...</p>
+          <div class="card-footer">
+            <div class="author-mini">
+              <span class="mini-avatar">🌿</span>
+              <span class="mini-name">Meera Krishnan</span>
+            </div>
+            <span class="read-time">⏱️ 7 min</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Farming Log -->
+      <article class="blog-card" data-category="farming">
+        <div class="card-image">
+          <img src="{{ 'logo.png' | asset_url }}" alt="Farming Techniques" loading="lazy">
+          <div class="image-overlay">
+            <span class="overlay-icon">🚜</span>
+          </div>
+        </div>
+        <div class="card-content">
+          <div class="post-meta">
+            <span class="category-badge farming">Farming Logs</span>
+            <span class="post-date">Dec 5, 2024</span>
+            <span class="reading-time">6 min</span>
+          </div>
+          <h3 class="card-title">Building Living Soil: A 30-Year Journey</h3>
+          <p class="card-excerpt">The science and art behind creating soil that's alive with beneficial microorganisms...</p>
+          <div class="card-footer">
+            <div class="author-mini">
+              <span class="mini-avatar">👨‍🌾</span>
+              <span class="mini-name">Anand Pillai</span>
+            </div>
+            <span class="read-time">⏱️ 6 min</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Wildlife Tale -->
+      <article class="blog-card" data-category="wildlife">
+        <div class="card-image">
+          <img src="{{ 'PBR_2065.jpg' | asset_url }}" alt="Wildlife Sanctuary" loading="lazy">
+          <div class="image-overlay">
+            <span class="overlay-icon">🦋</span>
+          </div>
+        </div>
+        <div class="card-content">
+          <div class="post-meta">
+            <span class="category-badge wildlife">Wildlife Tales</span>
+            <span class="post-date">Dec 3, 2024</span>
+            <span class="reading-time">4 min</span>
+          </div>
+          <h3 class="card-title">The Hornbill's Return: A Conservation Success</h3>
+          <p class="card-excerpt">How regenerative farming brought back the majestic Great Hornbill to our coffee estates...</p>
+          <div class="card-footer">
+            <div class="author-mini">
+              <span class="mini-avatar">🦜</span>
+              <span class="mini-name">Dr. Vikram Singh</span>
+            </div>
+            <span class="read-time">⏱️ 4 min</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Recipe Post -->
+      <article class="blog-card" data-category="recipes">
+        <div class="card-image">
+          <img src="{{ 'Naturals_1_622x.webp' | asset_url }}" alt="Wild Recipes" loading="lazy">
+          <div class="image-overlay">
+            <span class="overlay-icon">🍽️</span>
+          </div>
+        </div>
+        <div class="card-content">
+          <div class="post-meta">
+            <span class="category-badge recipes">Wild Recipes</span>
+            <span class="post-date">Dec 1, 2024</span>
+            <span class="reading-time">3 min</span>
+          </div>
+          <h3 class="card-title">Wild Honey Cardamom Latte Recipe</h3>
+          <p class="card-excerpt">Transform your morning ritual with this ancient recipe using our wild forest honey...</p>
+          <div class="card-footer">
+            <div class="author-mini">
+              <span class="mini-avatar">👩‍🍳</span>
+              <span class="mini-name">Chef Aruna</span>
+            </div>
+            <span class="read-time">⏱️ 3 min</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Additional Farming Log -->
+      <article class="blog-card" data-category="farming">
+        <div class="card-image">
+          <img src="{{ 'bbFiCfiE.jpeg' | asset_url }}" alt="Companion Planting" loading="lazy">
+          <div class="image-overlay">
+            <span class="overlay-icon">🌱</span>
+          </div>
+        </div>
+        <div class="card-content">
+          <div class="post-meta">
+            <span class="category-badge farming">Farming Logs</span>
+            <span class="post-date">Nov 28, 2024</span>
+            <span class="reading-time">8 min</span>
+          </div>
+          <h3 class="card-title">Companion Planting: Nature's Perfect Design</h3>
+          <p class="card-excerpt">Discovering how different plants support each other in our polyculture systems...</p>
+          <div class="card-footer">
+            <div class="author-mini">
+              <span class="mini-avatar">🌿</span>
+              <span class="mini-name">Sunita Verma</span>
+            </div>
+            <span class="read-time">⏱️ 8 min</span>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <!-- Newsletter Signup -->
+    <div class="blog-newsletter">
+      <div class="newsletter-content">
+        <h3>Never Miss a Wild Story</h3>
+        <p>Get our latest blogs, seasonal updates, and farming wisdom delivered to your inbox</p>
+        <form class="newsletter-form">
+          <input type="email" placeholder="Enter your email" required>
+          <button type="submit">Subscribe to Wild Chronicles 📚</button>
+        </form>
+        <div class="newsletter-benefits">
+          <div class="benefit-item">
+            <span class="benefit-icon">📖</span>
+            <span>Weekly farm stories</span>
+          </div>
+          <div class="benefit-item">
+            <span class="benefit-icon">🌿</span>
+            <span>Seasonal recipes</span>
+          </div>
+          <div class="benefit-item">
+            <span class="benefit-icon">💡</span>
+            <span>Farming tips</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Blog CTA -->
+    <div class="blog-cta">
+      <h3>Share Your Wild Story</h3>
+      <p>Have a story about sustainable living or wild food? We'd love to feature it!</p>
+      <div class="cta-actions">
+        <button class="cta-btn primary">Submit Your Story ✍️</button>
+        <button class="cta-btn secondary">View All Posts 📚</button>
+        <button class="cta-btn secondary">Follow Our Blog 🔔</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+.blogs-section {
+  padding: 80px 20px;
+  background: linear-gradient(135deg, #f8f9f7 0%, #e8f5e8 50%, #f8f9f7 100%);
+  position: relative;
+}
+
+.blogs-container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Header Styles */
+.blogs-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.blogs-title {
+  font-family: 'ABCArizonaFlare', serif;
+  font-size: 48px;
+  color: #342e29;
+  margin-bottom: 15px;
+  font-weight: 300;
+}
+
+.blogs-subtitle {
+  font-family: 'ABCArizonaSans', sans-serif;
+  font-size: 18px;
+  color: #4b3c35;
+  margin-bottom: 30px;
+}
+
+.blogs-tagline {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  padding: 20px 40px;
+  border-radius: 25px;
+  max-width: 600px;
+  margin: 0 auto;
+  border: 2px solid rgba(52, 71, 54, 0.1);
+}
+
+.tagline-icon {
+  font-size: 24px;
+}
+
+.blogs-tagline p {
+  font-family: 'ABCArizonaFlare', serif;
+  font-size: 18px;
+  color: #344736;
+  font-style: italic;
+  margin: 0;
+}
+
+/* Blog Categories */
+.blog-categories {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 60px;
+  flex-wrap: wrap;
+}
+
+.blog-cat-btn {
+  background: white;
+  border: 2px solid #b8dc99;
+  padding: 12px 25px;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'ABCArizonaSans', sans-serif;
+  font-weight: 600;
+  color: #344736;
+  font-size: 14px;
+}
+
+.blog-cat-btn:hover,
+.blog-cat-btn.active {
+  background: #b8dc99;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(184, 220, 153, 0.3);
+}
+
+/* Featured Blog */
+.featured-blog {
+  margin-bottom: 80px;
+}
+
+.featured-post {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 15px 40px rgba(52, 46, 41, 0.1);
+  border: 2px solid rgba(184, 220, 153, 0.2);
+}
+
+.featured-image {
+  position: relative;
+  height: 400px;
+  overflow: hidden;
+}
+
+.featured-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.featured-overlay {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  right: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.featured-badge {
+  background: #344736;
+  color: white;
+  padding: 8px 15px;
+  border-radius: 15px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.reading-time {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  padding: 8px 15px;
+  border-radius: 15px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #344736;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.featured-content {
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+}
+
+.post-meta {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.category-badge {
+  padding: 6px 12px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  border: 1px solid rgba(52, 71, 54, 0.2);
+}
+
+.category-badge.coffee-culture { background: rgba(139, 69, 19, 0.1); color: #8B4513; }
+.category-badge.seasonal { background: rgba(184, 220, 153, 0.2); color: #344736; }
+.category-badge.farming { background: rgba(255, 207, 131, 0.2); color: #86312b; }
+.category-badge.wildlife { background: rgba(176, 221, 241, 0.2); color: #002140; }
+.category-badge.recipes { background: rgba(255, 119, 74, 0.2); color: #9e3430; }
+
+.post-date {
+  font-family: 'ABCArizonaSans', sans-serif;
+  color: #4b3c35;
+  font-size: 12px;
+}
+
+.featured-title {
+  font-family: 'ABCArizonaFlare', serif;
+  font-size: 28px;
+  color: #342e29;
+  margin-bottom: 20px;
+  line-height: 1.3;
+}
+
+.featured-excerpt {
+  font-family: 'ABCArizonaSans', sans-serif;
+  color: #4b3c35;
+  line-height: 1.6;
+  margin-bottom: 30px;
+  font-size: 16px;
+}
+
+.author-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.author-avatar {
+  width: 50px;
+  height: 50px;
+  background: #e8f5e8;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #b8dc99;
+}
+
+.avatar-icon {
+  font-size: 24px;
+}
+
+.author-name {
+  font-family: 'ABCArizonaFlare', serif;
+  font-size: 16px;
+  color: #342e29;
+  margin-bottom: 3px;
+  font-weight: 600;
+}
+
+.author-title {
+  font-family: 'ABCArizonaSans', sans-serif;
+  font-size: 12px;
+  color: #4b3c35;
+  margin: 0;
+}
+
+.read-more-btn {
+  background: #344736;
+  color: white;
+  border: none;
+  padding: 15px 25px;
+  border-radius: 15px;
+  cursor: pointer;
+  font-family: 'ABCArizonaSans', sans-serif;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  align-self: flex-start;
+}
+
+.read-more-btn:hover {
+  background: #415c43;
+  transform: translateY(-2px);
+}
+
+/* Blog Grid */
+.blogs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 30px;
+  margin-bottom: 80px;
+}
+
+.blog-card {
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(52, 46, 41, 0.1);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.blog-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(52, 46, 41, 0.15);
+}
+
+.card-image {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+}
+
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.blog-card:hover .card-image img {
+  transform: scale(1.05);
+}
+
+.image-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.blog-card:hover .image-overlay {
+  opacity: 1;
+}
+
+.overlay-icon {
+  font-size: 24px;
+  color: #344736;
+}
+
+.card-content {
+  padding: 25px;
+}
+
+.card-title {
+  font-family: 'ABCArizonaFlare', serif;
+  font-size: 18px;
+  color: #342e29;
+  margin-bottom: 15px;
+  line-height: 1.4;
+}
+
+.card-excerpt {
+  font-family: 'ABCArizonaSans', sans-serif;
+  color: #4b3c35;
+  line-height: 1.5;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.author-mini {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.mini-avatar {
+  font-size: 16px;
+}
+
+.mini-name {
+  font-family: 'ABCArizonaSans', sans-serif;
+  font-size: 12px;
+  color: #4b3c35;
+  font-weight: 600;
+}
+
+.read-time {
+  font-family: 'ABCArizonaSans', sans-serif;
+  font-size: 11px;
+  color: #86312b;
+}
+
+/* Newsletter */
+.blog-newsletter {
+  background: white;
+  padding: 50px;
+  border-radius: 25px;
+  text-align: center;
+  box-shadow: 0 15px 40px rgba(52, 46, 41, 0.1);
+  border: 2px solid rgba(184, 220, 153, 0.3);
+  margin-bottom: 60px;
+}
+
+.blog-newsletter h3 {
+  font-family: 'ABCArizonaFlare', serif;
+  font-size: 28px;
+  color: #342e29;
+  margin-bottom: 15px;
+}
+
+.blog-newsletter p {
+  font-family: 'ABCArizonaSans', sans-serif;
+  color: #4b3c35;
+  margin-bottom: 30px;
+}
+
+.newsletter-form {
+  display: flex;
+  gap: 15px;
+  max-width: 500px;
+  margin: 0 auto 25px;
+  flex-wrap: wrap;
+}
+
+.newsletter-form input {
+  flex: 1;
+  padding: 15px 20px;
+  border: 2px solid #b8dc99;
+  border-radius: 25px;
+  font-family: 'ABCArizonaSans', sans-serif;
+  min-width: 250px;
+}
+
+.newsletter-form button {
+  background: #344736;
+  color: white;
+  border: none;
+  padding: 15px 25px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-family: 'ABCArizonaSans', sans-serif;
+  font-weight: 600;
+  transition: background 0.3s ease;
+}
+
+.newsletter-form button:hover {
+  background: #415c43;
+}
+
+.newsletter-benefits {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.benefit-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'ABCArizonaSans', sans-serif;
+  color: #4b3c35;
+  font-size: 14px;
+}
+
+.benefit-icon {
+  font-size: 16px;
+}
+
+/* Blog CTA */
+.blog-cta {
+  background: white;
+  padding: 50px;
+  border-radius: 25px;
+  text-align: center;
+  box-shadow: 0 15px 40px rgba(52, 46, 41, 0.1);
+  border: 2px solid rgba(184, 220, 153, 0.3);
+}
+
+.blog-cta h3 {
+  font-family: 'ABCArizonaFlare', serif;
+  font-size: 28px;
+  color: #342e29;
+  margin-bottom: 15px;
+}
+
+.blog-cta p {
+  font-family: 'ABCArizonaSans', sans-serif;
+  color: #4b3c35;
+  margin-bottom: 30px;
+}
+
+.cta-actions {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.cta-btn {
+  padding: 15px 30px;
+  border-radius: 25px;
+  border: none;
+  cursor: pointer;
+  font-family: 'ABCArizonaSans', sans-serif;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  font-size: 16px;
+}
+
+.cta-btn.primary {
+  background: #344736;
+  color: white;
+}
+
+.cta-btn.primary:hover {
+  background: #415c43;
+  transform: translateY(-2px);
+}
+
+.cta-btn.secondary {
+  background: transparent;
+  color: #344736;
+  border: 2px solid #b8dc99;
+}
+
+.cta-btn.secondary:hover {
+  background: #b8dc99;
+  transform: translateY(-2px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .blogs-title {
+    font-size: 36px;
+  }
+  
+  .blogs-tagline {
+    padding: 15px 25px;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .blog-categories {
+    gap: 10px;
+  }
+  
+  .blog-cat-btn {
+    padding: 10px 20px;
+    font-size: 12px;
+  }
+  
+  .featured-post {
+    grid-template-columns: 1fr;
+  }
+  
+  .featured-image {
+    height: 250px;
+  }
+  
+  .featured-content {
+    padding: 30px 20px;
+  }
+  
+  .blogs-grid {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+  
+  .blog-newsletter {
+    padding: 30px 20px;
+  }
+  
+  .newsletter-form {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .newsletter-form input,
+  .newsletter-form button {
+    width: 100%;
+    max-width: 300px;
+  }
+  
+  .newsletter-benefits {
+    gap: 20px;
+  }
+  
+  .blog-cta {
+    padding: 30px 20px;
+  }
+  
+  .cta-actions {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+  
+  .cta-btn {
+    width: 100%;
+    max-width: 250px;
+  }
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Blog category filtering
+  const categoryBtns = document.querySelectorAll('.blog-cat-btn');
+  const blogCards = document.querySelectorAll('.blog-card');
+  
+  categoryBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const category = btn.dataset.category;
+      
+      // Update active button
+      categoryBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      
+      // Filter blog cards
+      blogCards.forEach(card => {
+        if (category === 'all' || card.dataset.category === category) {
+          card.style.display = 'block';
+          setTimeout(() => {
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
+          }, 100);
+        } else {
+          card.style.opacity = '0';
+          card.style.transform = 'translateY(20px)';
+          setTimeout(() => {
+            card.style.display = 'none';
+          }, 300);
+        }
+      });
+    });
+  });
+  
+  // Blog card interactions
+  blogCards.forEach(card => {
+    card.addEventListener('click', () => {
+      const title = card.querySelector('.card-title').textContent;
+      alert(`Opening blog post: "${title}"`);
+    });
+  });
+  
+  // Featured post interaction
+  const featuredPost = document.querySelector('.featured-post');
+  if (featuredPost) {
+    featuredPost.addEventListener('click', () => {
+      const title = featuredPost.querySelector('.featured-title').textContent;
+      alert(`Opening featured post: "${title}"`);
+    });
+  }
+  
+  // Read more button
+  const readMoreBtn = document.querySelector('.read-more-btn');
+  if (readMoreBtn) {
+    readMoreBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      alert('Opening full article! 📖');
+    });
+  }
+  
+  // Newsletter subscription
+  const newsletterForm = document.querySelector('.newsletter-form');
+  if (newsletterForm) {
+    newsletterForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const email = newsletterForm.querySelector('input[type="email"]').value;
+      alert('Thank you for subscribing to Wild Chronicles! 📚');
+      newsletterForm.reset();
+    });
+  }
+  
+  // CTA button handlers
+  const ctaBtns = document.querySelectorAll('.cta-btn');
+  ctaBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const text = btn.textContent;
+      if (text.includes('Submit')) {
+        alert('Opening story submission form! ✍️');
+      } else if (text.includes('View All')) {
+        alert('Browsing all blog posts! 📚');
+      } else if (text.includes('Follow')) {
+        alert('Following our blog for updates! 🔔');
+      }
+    });
+  });
+  
+  // Intersection Observer for animations
+  const cardObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0) scale(1)';
+      }
+    });
+  }, { threshold: 0.2 });
+  
+  // Animate blog cards
+  blogCards.forEach((card, index) => {
+    card.style.opacity = '0';
+    card.style.transform = 'translateY(30px) scale(0.95)';
+    card.style.transition = `all 0.6s ease ${index * 0.1}s`;
+    cardObserver.observe(card);
+  });
+  
+  // Animate featured post
+  if (featuredPost) {
+    featuredPost.style.opacity = '0';
+    featuredPost.style.transform = 'translateY(20px)';
+    featuredPost.style.transition = 'all 0.8s ease';
+    cardObserver.observe(featuredPost);
+  }
+});
+</script> 
