@@ -1,0 +1,258 @@
+{% comment %} Farming Techniques Section {% endcomment %}
+<section class="py-32 bg-white relative overflow-hidden">
+  <!-- Unique Background Pattern -->
+  <div class="absolute inset-0 overflow-hidden">
+    <div class="absolute bottom-1/4 left-1/4 w-12 h-12 bg-yellow-100 rounded-full"></div>
+  </div>
+
+  <div class="container mx-auto px-6 relative">
+    <!-- Header Section -->
+    <div class="text-center mb-16">
+      <div class="flex items-center justify-center mb-6">
+        <div class="h-px bg-gradient-to-r from-transparent via-gray-600 to-transparent w-24"></div>
+        <div class="mx-4 bg-gray-600 text-white px-4 py-2 rounded-full text-sm font-semibold">
+          {{ section.settings.badge_text | default: "OUR APPROACH" }}
+        </div>
+        <div class="h-px bg-gradient-to-r from-transparent via-gray-600 to-transparent w-24"></div>
+      </div>
+
+      <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
+        {{ section.settings.main_title | default: "Our Farming Techniques" }}
+      </h2>
+      <div class="w-24 h-1 bg-gradient-to-r from-orange-400 to-yellow-400 mx-auto mb-6"></div>
+      <p class="text-lg text-gray-700 max-w-2xl mx-auto leading-relaxed">
+        {{ section.settings.main_description | default: "Nature's Best, Grown with Care - Every technique designed to give back to nature" }}
+      </p>
+    </div>
+
+    <!-- Horizontal Timeline Layout -->
+    <div class="max-w-7xl mx-auto">
+      <!-- Timeline Container -->
+      <div class="relative">
+        <!-- Main Timeline Line -->
+        <div class="hidden lg:block absolute top-32 left-0 right-0 h-1 bg-gradient-to-r from-green-400 via-gray-600 to-orange-400 rounded-full"></div>
+
+        <!-- Timeline Steps -->
+        <div class="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-4">
+          {% for block in section.blocks %}
+            <div class="group relative">
+              <!-- Large Icon Circle on Timeline -->
+              <div class="flex flex-col items-center lg:mb-8">
+                <div class="relative mb-6 lg:mb-0">
+                  <!-- Large circular icon container -->
+                  <div class="w-24 h-24 lg:w-20 lg:h-20 bg-gradient-to-br from-green-400 to-green-500 rounded-full flex items-center justify-center shadow-xl relative overflow-hidden group-hover:shadow-2xl transition-all duration-500">
+                    <span class="text-4xl lg:text-3xl text-white relative z-10">{{ block.settings.technique_emoji | default: "🌱" }}</span>
+
+                    <!-- Rotating background -->
+                    <div class="absolute inset-2 border-2 border-white/30 rounded-full"></div>
+                    <div class="absolute inset-0 bg-white/10 rounded-full transform scale-0 group-hover:scale-100 transition-transform duration-700"></div>
+                  </div>
+
+                  <!-- Step number -->
+                  <div class="absolute -top-2 -right-2 w-8 h-8 bg-orange-500 text-white rounded-full flex items-center justify-center text-sm font-bold shadow-lg">
+                    {{ forloop.index }}
+                  </div>
+
+                  <!-- Emoji indicator -->
+                  <div class="absolute -bottom-2 -left-2 w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-md">
+                    <span class="text-lg">{{ block.settings.technique_emoji | default: "🌱" }}</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Content Card -->
+              <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-1 border border-gray-100 relative overflow-hidden">
+                <!-- Card gradient background -->
+                <div class="absolute inset-0 bg-gradient-to-br from-green-100 to-yellow-100 opacity-0 group-hover:opacity-5 transition-opacity duration-500"></div>
+
+                <!-- Decorative corner -->
+                <div class="absolute top-0 right-0 w-12 h-12 bg-gradient-to-br from-yellow-100 to-transparent rounded-bl-2xl"></div>
+
+                <div class="relative z-10">
+                  <h3 class="text-lg font-bold text-gray-800 mb-3 group-hover:text-gray-600 transition-colors">
+                    {{ block.settings.technique_title | default: "Farming Technique" }}
+                  </h3>
+                  <p class="text-gray-600 text-sm leading-relaxed">
+                    {{ block.settings.technique_description | default: "Sustainable and effective farming method for better yield." }}
+                  </p>
+                </div>
+
+                <!-- Bottom accent line -->
+                <div class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-green-400 to-green-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+              </div>
+            </div>
+          {% endfor %}
+          
+          {% if section.blocks.size == 0 %}
+            <!-- Default techniques when no blocks are added -->
+            {% assign default_techniques = 'Crop Rotation,Composting,Water Conservation,Natural Pest Control,Soil Health' | split: ',' %}
+            {% assign default_descriptions = 'Rotating crops to maintain soil fertility,Creating natural fertilizer from organic waste,Efficient irrigation and water management,Using beneficial insects and natural methods,Testing and improving soil quality naturally' | split: ',' %}
+            {% assign default_emojis = '🔄,🍂,💧,🐛,🌱' | split: ',' %}
+            
+            {% for technique in default_techniques %}
+              <div class="group relative">
+                <div class="flex flex-col items-center lg:mb-8">
+                  <div class="relative mb-6 lg:mb-0">
+                    <div class="w-24 h-24 lg:w-20 lg:h-20 bg-gradient-to-br from-green-400 to-green-500 rounded-full flex items-center justify-center shadow-xl relative overflow-hidden group-hover:shadow-2xl transition-all duration-500">
+                      <span class="text-4xl lg:text-3xl text-white relative z-10">{{ default_emojis[forloop.index0] }}</span>
+                      <div class="absolute inset-2 border-2 border-white/30 rounded-full"></div>
+                      <div class="absolute inset-0 bg-white/10 rounded-full transform scale-0 group-hover:scale-100 transition-transform duration-700"></div>
+                    </div>
+
+                    <div class="absolute -top-2 -right-2 w-8 h-8 bg-orange-500 text-white rounded-full flex items-center justify-center text-sm font-bold shadow-lg">
+                      {{ forloop.index }}
+                    </div>
+
+                    <div class="absolute -bottom-2 -left-2 w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-md">
+                      <span class="text-lg">{{ default_emojis[forloop.index0] }}</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-1 border border-gray-100 relative overflow-hidden">
+                  <div class="absolute inset-0 bg-gradient-to-br from-green-100 to-yellow-100 opacity-0 group-hover:opacity-5 transition-opacity duration-500"></div>
+                  <div class="absolute top-0 right-0 w-12 h-12 bg-gradient-to-br from-yellow-100 to-transparent rounded-bl-2xl"></div>
+
+                  <div class="relative z-10">
+                    <h3 class="text-lg font-bold text-gray-800 mb-3 group-hover:text-gray-600 transition-colors">
+                      {{ technique }}
+                    </h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                      {{ default_descriptions[forloop.index0] }}
+                    </p>
+                  </div>
+
+                  <div class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-green-400 to-green-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+                </div>
+              </div>
+            {% endfor %}
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom CTA -->
+    <div class="text-center mt-20">
+      <div class="bg-gradient-to-r from-green-50 to-yellow-50 rounded-3xl p-8 max-w-4xl mx-auto">
+        <h3 class="text-2xl font-bold text-gray-800 mb-4">
+          {{ section.settings.cta_title | default: "Sustainable Agriculture at Its Finest" }}
+        </h3>
+        <p class="text-gray-600 mb-6 leading-relaxed">
+          {{ section.settings.cta_description | default: "These interconnected farming techniques work together to create a harmonious ecosystem that produces the highest quality organic products while protecting our planet." }}
+        </p>
+        {% if section.settings.primary_button_text %}
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="{{ section.settings.primary_button_link | default: '/pages/about' }}" class="bg-gray-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-gray-700 transition-colors duration-300 shadow-lg">
+              {{ section.settings.primary_button_text }}
+            </a>
+            {% if section.settings.secondary_button_text %}
+              <a href="{{ section.settings.secondary_button_link | default: '/pages/contact' }}" class="border-2 border-gray-600 text-gray-600 px-6 py-3 rounded-full font-semibold hover:bg-gray-600 hover:text-white transition-all duration-300">
+                {{ section.settings.secondary_button_text }}
+              </a>
+            {% endif %}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Farming Techniques Section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge Text",
+      "default": "OUR APPROACH"
+    },
+    {
+      "type": "text",
+      "id": "main_title",
+      "label": "Main Title",
+      "default": "Our Farming Techniques"
+    },
+    {
+      "type": "textarea",
+      "id": "main_description",
+      "label": "Main Description",
+      "default": "Nature's Best, Grown with Care - Every technique designed to give back to nature"
+    },
+    {
+      "type": "text",
+      "id": "cta_title",
+      "label": "CTA Section Title",
+      "default": "Sustainable Agriculture at Its Finest"
+    },
+    {
+      "type": "textarea",
+      "id": "cta_description",
+      "label": "CTA Description",
+      "default": "These interconnected farming techniques work together to create a harmonious ecosystem that produces the highest quality organic products while protecting our planet."
+    },
+    {
+      "type": "text",
+      "id": "primary_button_text",
+      "label": "Primary Button Text",
+      "default": "Learn More About Our Process"
+    },
+    {
+      "type": "url",
+      "id": "primary_button_link",
+      "label": "Primary Button Link",
+      "default": "/pages/about"
+    },
+    {
+      "type": "text",
+      "id": "secondary_button_text",
+      "label": "Secondary Button Text",
+      "default": "Visit Our Farm"
+    },
+    {
+      "type": "url",
+      "id": "secondary_button_link",
+      "label": "Secondary Button Link",
+      "default": "/pages/contact"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "farming_technique",
+      "name": "Farming Technique",
+      "settings": [
+        {
+          "type": "text",
+          "id": "technique_title",
+          "label": "Technique Title",
+          "default": "Farming Technique"
+        },
+        {
+          "type": "textarea",
+          "id": "technique_description",
+          "label": "Technique Description",
+          "default": "Sustainable and effective farming method for better yield."
+        },
+        {
+          "type": "text",
+          "id": "technique_emoji",
+          "label": "Technique Emoji",
+          "default": "🌱"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Farming Techniques Section",
+      "blocks": [
+        { "type": "farming_technique" },
+        { "type": "farming_technique" },
+        { "type": "farming_technique" },
+        { "type": "farming_technique" },
+        { "type": "farming_technique" }
+      ]
+    }
+  ]
+}
+{% endschema %} 

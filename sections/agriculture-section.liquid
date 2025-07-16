@@ -1,0 +1,180 @@
+<section class="py-24 bg-white">
+  <div class="container mx-auto px-6">
+    <div class="grid lg:grid-cols-2 gap-12 items-center">
+      <!-- Left side - Images -->
+      <div class="relative">
+        <div class="relative aspect-square rounded-full overflow-hidden bg-green-100 border-8 border-green-50">
+          {% if section.settings.main_image %}
+            <img src="{{ section.settings.main_image | image_url: width: 600 }}" alt="Agriculture" class="object-cover w-full h-full" />
+          {% else %}
+            <div class="w-full h-full bg-gradient-to-br from-green-200 to-green-400 flex items-center justify-center">
+              <span class="text-green-800 text-6xl">🌱</span>
+            </div>
+          {% endif %}
+          <div class="absolute bottom-12 left-1/2 -translate-x-1/2 text-center text-white z-20">
+            <h3 class="text-2xl font-semibold mb-2">{{ section.settings.overlay_title | default: "Grown with Care" }}</h3>
+            <p class="text-lg">{{ section.settings.overlay_subtitle | default: "Rooted in Sustainability" }}</p>
+          </div>
+        </div>
+
+        <!-- Top small circle -->
+        <div class="absolute -top-12 -left-12 w-40 h-40 rounded-full overflow-hidden border-4 border-white shadow-lg z-30">
+          {% if section.settings.small_image_1 %}
+            <img src="{{ section.settings.small_image_1 | image_url: width: 200 }}" alt="Sustainable practice" class="object-cover w-full h-full" />
+          {% else %}
+            <div class="w-full h-full bg-gradient-to-br from-yellow-200 to-yellow-400 flex items-center justify-center">
+              <span class="text-yellow-800 text-4xl">🌿</span>
+            </div>
+          {% endif %}
+        </div>
+
+        <!-- Bottom small circle -->
+        <div class="absolute -bottom-8 -left-20 w-48 h-48 rounded-full overflow-hidden border-4 border-white shadow-lg z-30">
+          {% if section.settings.small_image_2 %}
+            <img src="{{ section.settings.small_image_2 | image_url: width: 240 }}" alt="Organic farming" class="object-cover w-full h-full" />
+          {% else %}
+            <div class="w-full h-full bg-gradient-to-br from-orange-200 to-orange-400 flex items-center justify-center">
+              <span class="text-orange-800 text-5xl">🚜</span>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+
+      <!-- Right side - Content -->
+      <div>
+        <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
+          {{ section.settings.section_title | default: "Sustainability & Organic Farming" }}
+        </h2>
+        <p class="text-xl text-gray-700 font-medium mb-6">
+          {{ section.settings.section_subtitle | default: "Grown with Care, Rooted in Sustainability" }}
+        </p>
+        <p class="text-gray-600 text-lg mb-12">
+          {{ section.settings.section_description | default: "At our farm, we are deeply committed to preserving the environment while ensuring you get the most nutritious, flavorful, and ethically sourced products." }}
+        </p>
+
+        <!-- Features -->
+        <div class="space-y-6 mb-12">
+          <div class="flex items-start gap-4 p-6 bg-green-50 rounded-xl border border-green-100">
+            <div class="w-12 h-12 rounded-full bg-green-200 flex items-center justify-center shrink-0">
+              <span class="text-2xl">🌱</span>
+            </div>
+            <div>
+              <h4 class="font-semibold text-gray-800 text-lg">{{ section.settings.feature_1_title | default: "100% Organic & Chemical-Free" }}</h4>
+              <p class="text-gray-600">{{ section.settings.feature_1_description | default: "Pure and natural farming methods for the best quality produce" }}</p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-4 p-6 bg-yellow-50 rounded-xl border border-yellow-100">
+            <div class="w-12 h-12 rounded-full bg-yellow-200 flex items-center justify-center shrink-0">
+              <span class="text-2xl">👥</span>
+            </div>
+            <div>
+              <h4 class="font-semibold text-gray-800 text-lg">{{ section.settings.feature_2_title | default: "Supporting Local Farmers & Communities" }}</h4>
+              <p class="text-gray-600">{{ section.settings.feature_2_description | default: "Building sustainable partnerships with local farming communities" }}</p>
+            </div>
+          </div>
+        </div>
+
+        {% if section.settings.button_text %}
+          <a href="{{ section.settings.button_link | default: '/pages/contact' }}" class="bg-orange-500 text-white px-8 py-4 rounded-full text-lg font-medium hover:bg-orange-600 transition-all duration-300 shadow-lg hover:shadow-xl inline-block">
+            {{ section.settings.button_text }}
+          </a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Agriculture Section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_title",
+      "label": "Section Title",
+      "default": "Sustainability & Organic Farming"
+    },
+    {
+      "type": "text",
+      "id": "section_subtitle",
+      "label": "Section Subtitle",
+      "default": "Grown with Care, Rooted in Sustainability"
+    },
+    {
+      "type": "textarea",
+      "id": "section_description",
+      "label": "Section Description",
+      "default": "At our farm, we are deeply committed to preserving the environment while ensuring you get the most nutritious, flavorful, and ethically sourced products."
+    },
+    {
+      "type": "image_picker",
+      "id": "main_image",
+      "label": "Main Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "small_image_1",
+      "label": "Small Image 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "small_image_2",
+      "label": "Small Image 2"
+    },
+    {
+      "type": "text",
+      "id": "overlay_title",
+      "label": "Image Overlay Title",
+      "default": "Grown with Care"
+    },
+    {
+      "type": "text",
+      "id": "overlay_subtitle",
+      "label": "Image Overlay Subtitle",
+      "default": "Rooted in Sustainability"
+    },
+    {
+      "type": "text",
+      "id": "feature_1_title",
+      "label": "Feature 1 Title",
+      "default": "100% Organic & Chemical-Free"
+    },
+    {
+      "type": "text",
+      "id": "feature_1_description",
+      "label": "Feature 1 Description",
+      "default": "Pure and natural farming methods for the best quality produce"
+    },
+    {
+      "type": "text",
+      "id": "feature_2_title",
+      "label": "Feature 2 Title",
+      "default": "Supporting Local Farmers & Communities"
+    },
+    {
+      "type": "text",
+      "id": "feature_2_description",
+      "label": "Feature 2 Description",
+      "default": "Building sustainable partnerships with local farming communities"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Contact Us"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link",
+      "default": "/pages/contact"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Agriculture Section"
+    }
+  ]
+}
+{% endschema %} 

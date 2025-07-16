@@ -1,0 +1,204 @@
+{% comment %} Conference Section {% endcomment %}
+<section class="py-32 relative overflow-hidden bg-white">
+  <!-- Background Decorative Elements -->
+  <div class="absolute inset-0 overflow-hidden">
+    <div class="absolute w-[800px] h-[800px] -top-[400px] -right-[400px] bg-green-100 rounded-full blur-[100px]"></div>
+    <div class="absolute w-[600px] h-[600px] -bottom-[300px] -left-[300px] bg-yellow-100 rounded-full blur-[80px]"></div>
+  </div>
+
+  <div class="container mx-auto px-6 relative">
+    <!-- Main Content Container -->
+    <div class="max-w-7xl mx-auto">
+      <!-- Title with Icon -->
+      <div class="flex flex-col items-center mb-20">
+        <div class="w-20 h-20 bg-orange-100 rounded-full flex items-center justify-center mb-6">
+          <span class="text-5xl text-orange-500">{{ section.settings.icon_emoji | default: "☕" }}</span>
+        </div>
+        <div class="text-center">
+          <h2 class="text-4xl md:text-6xl font-bold text-gray-800 mb-4">
+            {{ section.settings.main_title | default: "Our time at the" }}
+          </h2>
+          <div class="relative inline-block">
+            <h3 class="text-3xl md:text-4xl font-bold text-gray-600 relative z-10">
+              {{ section.settings.event_title | default: "World Coffee Conference 2023" }}
+            </h3>
+          </div>
+          <div class="w-24 h-1 bg-gradient-to-r from-orange-400 to-yellow-400 mx-auto mt-6"></div>
+        </div>
+      </div>
+
+      <!-- Content Grid -->
+      <div class="grid lg:grid-cols-12 gap-8">
+        <!-- Large Image Column -->
+        <div class="lg:col-span-7 relative group">
+          <div class="relative aspect-[16/10] rounded-3xl overflow-hidden shadow-2xl">
+            {% if section.settings.featured_image %}
+              <img src="{{ section.settings.featured_image | image_url: width: 800 }}" alt="{{ section.settings.image_caption }}" class="w-full h-full object-cover" />
+            {% else %}
+              <div class="w-full h-full bg-gradient-to-br from-green-100 to-yellow-100 flex items-center justify-center">
+                <span class="text-9xl text-gray-400">🎪</span>
+              </div>
+            {% endif %}
+            <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+
+            <!-- Image Caption -->
+            <div class="absolute bottom-6 left-6 right-6 text-white">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="text-orange-400">★</span>
+                <span class="text-sm font-medium text-orange-400">HIGHLIGHTS</span>
+              </div>
+              <p class="text-lg font-medium">
+                {{ section.settings.image_caption | default: "Showcasing our commitment to sustainable farming at industry events" }}
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonials Column -->
+        <div class="lg:col-span-5 space-y-6">
+          {% for block in section.blocks %}
+            <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+              <div class="flex items-start gap-4">
+                <div class="w-12 h-12 rounded-full bg-orange-100 flex items-center justify-center flex-shrink-0">
+                  <span class="text-orange-500">★</span>
+                </div>
+                <div>
+                  <p class="text-lg text-gray-800 font-medium mb-4">
+                    {{ block.settings.quote | default: "Great experience at the conference!" }}
+                  </p>
+                  <div class="mb-4">
+                    <h4 class="text-gray-800 font-semibold">
+                      {{ block.settings.author | default: "Conference Attendee" }}
+                    </h4>
+                    <p class="text-gray-600 text-sm">
+                      {{ block.settings.role | default: "Industry Expert" }}
+                    </p>
+                  </div>
+                  {% if block.settings.link_text %}
+                    <a href="{{ block.settings.link_url | default: '#' }}" class="inline-flex items-center gap-2 text-gray-600 hover:text-orange-500 transition-colors group">
+                      <span class="text-sm">{{ block.settings.link_text }}</span>
+                      <span class="transform group-hover:translate-x-1 transition-transform">→</span>
+                    </a>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+          
+          {% if section.blocks.size == 0 %}
+            <!-- Default testimonials when no blocks are added -->
+            {% assign default_quotes = 'Great insights into sustainable farming practices and innovation in agriculture.,Inspiring to see so many companies committed to environmental responsibility.,The networking opportunities were excellent and the content was very valuable.' | split: ',' %}
+            {% assign default_authors = 'Sarah Mitchell,Dr. James Chen,Maria Rodriguez' | split: ',' %}
+            {% assign default_roles = 'Agricultural Specialist,Research Director,Sustainability Coordinator' | split: ',' %}
+            
+            {% for quote in default_quotes %}
+              <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+                <div class="flex items-start gap-4">
+                  <div class="w-12 h-12 rounded-full bg-orange-100 flex items-center justify-center flex-shrink-0">
+                    <span class="text-orange-500">★</span>
+                  </div>
+                  <div>
+                    <p class="text-lg text-gray-800 font-medium mb-4">
+                      {{ quote }}
+                    </p>
+                    <div class="mb-4">
+                      <h4 class="text-gray-800 font-semibold">
+                        {{ default_authors[forloop.index0] }}
+                      </h4>
+                      <p class="text-gray-600 text-sm">
+                        {{ default_roles[forloop.index0] }}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Conference Section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "icon_emoji",
+      "label": "Icon Emoji",
+      "default": "☕"
+    },
+    {
+      "type": "text",
+      "id": "main_title",
+      "label": "Main Title",
+      "default": "Our time at the"
+    },
+    {
+      "type": "text",
+      "id": "event_title",
+      "label": "Event Title",
+      "default": "World Coffee Conference 2023"
+    },
+    {
+      "type": "image_picker",
+      "id": "featured_image",
+      "label": "Featured Image"
+    },
+    {
+      "type": "text",
+      "id": "image_caption",
+      "label": "Image Caption",
+      "default": "Showcasing our commitment to sustainable farming at industry events"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "Quote",
+          "default": "Great experience at the conference!"
+        },
+        {
+          "type": "text",
+          "id": "author",
+          "label": "Author Name",
+          "default": "Conference Attendee"
+        },
+        {
+          "type": "text",
+          "id": "role",
+          "label": "Author Role",
+          "default": "Industry Expert"
+        },
+        {
+          "type": "text",
+          "id": "link_text",
+          "label": "Link Text"
+        },
+        {
+          "type": "url",
+          "id": "link_url",
+          "label": "Link URL"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Conference Section",
+      "blocks": [
+        { "type": "testimonial" },
+        { "type": "testimonial" },
+        { "type": "testimonial" }
+      ]
+    }
+  ]
+}
+{% endschema %} 

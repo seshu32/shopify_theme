@@ -1,0 +1,133 @@
+<section class="py-32 bg-yellow-50 relative overflow-hidden">
+  <!-- Decorative Elements -->
+  <div class="absolute left-0 top-1/4 w-48 h-48 opacity-20 text-green-600 text-8xl flex items-center justify-center">
+    🌿
+  </div>
+  <div class="absolute right-0 bottom-1/4 w-48 h-48 opacity-20 text-green-600 text-8xl flex items-center justify-center">
+    🌿
+  </div>
+
+  <div class="container mx-auto px-6">
+    <!-- Section Title -->
+    <div class="max-w-3xl mx-auto text-center mb-20">
+      <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
+        {{ section.settings.section_title | default: "Client feedbacks on our organic business" }}
+      </h2>
+      {% if section.settings.section_subtitle %}
+        <p class="text-xl text-gray-600">
+          {{ section.settings.section_subtitle }}
+        </p>
+      {% endif %}
+    </div>
+
+    <!-- Testimonials Row -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+      {% for block in section.blocks %}
+        <div class="flex flex-col p-8 rounded-2xl bg-white shadow-sm hover:shadow-xl transition-all duration-300 group border border-green-100">
+          <!-- Content -->
+          <div class="flex-1 bg-green-50 p-6 rounded-xl mb-6">
+            <p class="text-gray-700 leading-relaxed italic">
+              "{{ block.settings.testimonial_text }}"
+            </p>
+          </div>
+
+          <!-- Profile Info -->
+          <div class="text-center">
+            <h3 class="text-xl font-semibold text-gray-800 group-hover:text-green-600 transition-colors duration-300 mb-1">
+              {{ block.settings.customer_name }}
+            </h3>
+            <span class="text-orange-500 text-sm font-medium">
+              {{ block.settings.customer_role }}
+            </span>
+          </div>
+        </div>
+      {% endfor %}
+      
+      {% if section.blocks.size == 0 %}
+        <!-- Default testimonials when no blocks are added -->
+        {% assign default_testimonials = 'John Smith,Sarah Johnson,Mike Davis' | split: ',' %}
+        {% assign default_roles = 'Organic Farm Owner,Health Enthusiast,Restaurant Chef' | split: ',' %}
+        {% assign default_texts = 'The quality of these organic products is outstanding. My family loves the fresh taste and I love knowing we are eating healthy.,I have been buying organic produce for years and this is by far the best quality I have found. Everything is so fresh and flavorful.,As a chef I demand the highest quality ingredients and these organic products exceed my expectations every time.' | split: ',' %}
+        
+        {% for name in default_testimonials %}
+          <div class="flex flex-col p-8 rounded-2xl bg-white shadow-sm hover:shadow-xl transition-all duration-300 group border border-green-100">
+            <div class="flex-1 bg-green-50 p-6 rounded-xl mb-6">
+              <p class="text-gray-700 leading-relaxed italic">
+                "{{ default_texts[forloop.index0] }}"
+              </p>
+            </div>
+            <div class="text-center">
+              <h3 class="text-xl font-semibold text-gray-800 group-hover:text-green-600 transition-colors duration-300 mb-1">
+                {{ name }}
+              </h3>
+              <span class="text-orange-500 text-sm font-medium">
+                {{ default_roles[forloop.index0] }}
+              </span>
+            </div>
+          </div>
+        {% endfor %}
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Testimonials Section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_title",
+      "label": "Section Title",
+      "default": "Client feedbacks on our organic business"
+    },
+    {
+      "type": "textarea",
+      "id": "section_subtitle",
+      "label": "Section Subtitle"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "testimonial_text",
+          "label": "Testimonial Text",
+          "default": "The quality of these organic products is outstanding. My family loves the fresh taste and healthy ingredients."
+        },
+        {
+          "type": "text",
+          "id": "customer_name",
+          "label": "Customer Name",
+          "default": "John Smith"
+        },
+        {
+          "type": "text",
+          "id": "customer_role",
+          "label": "Customer Role",
+          "default": "Organic Farm Owner"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Testimonials Section",
+      "blocks": [
+        {
+          "type": "testimonial"
+        },
+        {
+          "type": "testimonial"
+        },
+        {
+          "type": "testimonial"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %} 

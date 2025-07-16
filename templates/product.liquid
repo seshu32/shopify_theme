@@ -1,0 +1,133 @@
+<div class="container mx-auto px-6 py-12">
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+    <!-- Product Images -->
+    <div class="space-y-4">
+      {% if product.images.size > 0 %}
+        <div class="aspect-square overflow-hidden rounded-lg">
+          <img 
+            src="{{ product.featured_image | img_url: '800x800' }}" 
+            alt="{{ product.featured_image.alt | escape }}"
+            class="w-full h-full object-cover"
+            id="product-featured-image"
+          >
+        </div>
+        
+        {% if product.images.size > 1 %}
+          <div class="grid grid-cols-4 gap-2">
+            {% for image in product.images limit: 4 %}
+              <button 
+                class="aspect-square overflow-hidden rounded border-2 border-transparent hover:border-[#415c43] transition-colors"
+                onclick="changeImage('{{ image | img_url: '800x800' }}')"
+              >
+                <img 
+                  src="{{ image | img_url: '200x200' }}" 
+                  alt="{{ image.alt | escape }}"
+                  class="w-full h-full object-cover"
+                >
+              </button>
+            {% endfor %}
+          </div>
+        {% endif %}
+      {% endif %}
+    </div>
+
+    <!-- Product Info -->
+    <div class="space-y-6">
+      <div>
+        <h1 class="text-3xl font-bold text-[#344736] mb-2">{{ product.title }}</h1>
+        {% if product.vendor %}
+          <p class="text-[#4b3c35] text-lg">by {{ product.vendor }}</p>
+        {% endif %}
+      </div>
+
+      <!-- Price -->
+      <div class="text-2xl font-bold text-[#ff774a]">
+        {% if product.compare_at_price > product.price %}
+          <span class="line-through text-gray-400 text-xl mr-2">
+            {{ product.compare_at_price | money }}
+          </span>
+        {% endif %}
+        {{ product.price | money }}
+      </div>
+
+      <!-- Description -->
+      {% if product.description != blank %}
+        <div class="prose prose-lg text-[#4b3c35]">
+          {{ product.description }}
+        </div>
+      {% endif %}
+
+      <!-- Product Form -->
+      <form action="/cart/add" method="post" enctype="multipart/form-data" class="space-y-4">
+        {% unless product.has_only_default_variant %}
+          {% for option in product.options_with_values %}
+            <div>
+              <label class="block text-sm font-medium text-[#344736] mb-2">
+                {{ option.name }}
+              </label>
+              <select 
+                name="id" 
+                class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#415c43] focus:border-transparent"
+              >
+                {% for variant in product.variants %}
+                  {% if variant.available %}
+                    <option value="{{ variant.id }}">
+                      {{ variant.title }} - {{ variant.price | money }}
+                    </option>
+                  {% endif %}
+                {% endfor %}
+              </select>
+            </div>
+          {% endfor %}
+        {% else %}
+          <input type="hidden" name="id" value="{{ product.variants.first.id }}">
+        {% endunless %}
+
+        <!-- Quantity -->
+        <div>
+          <label class="block text-sm font-medium text-[#344736] mb-2">Quantity</label>
+          <input 
+            type="number" 
+            name="quantity" 
+            value="1" 
+            min="1" 
+            class="w-20 border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#415c43] focus:border-transparent"
+          >
+        </div>
+
+        <!-- Add to Cart Button -->
+        <button 
+          type="submit" 
+          {% unless product.available %}disabled{% endunless %}
+          class="w-full bg-[#415c43] text-white py-3 px-6 rounded-lg font-semibold hover:bg-[#344736] transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed"
+        >
+          {% if product.available %}
+            Add to Cart
+          {% else %}
+            Sold Out
+          {% endif %}
+        </button>
+      </form>
+
+      <!-- Product Tags -->
+      {% if product.tags.size > 0 %}
+        <div>
+          <h3 class="text-sm font-medium text-[#344736] mb-2">Tags:</h3>
+          <div class="flex flex-wrap gap-2">
+            {% for tag in product.tags %}
+              <span class="bg-[#b8dc99]/20 text-[#415c43] px-2 py-1 rounded-full text-xs">
+                {{ tag }}
+              </span>
+            {% endfor %}
+          </div>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<script>
+  function changeImage(imageUrl) {
+    document.getElementById('product-featured-image').src = imageUrl;
+  }
+</script> 

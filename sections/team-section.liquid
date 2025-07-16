@@ -1,0 +1,207 @@
+<section class="py-32 bg-yellow-50 relative overflow-hidden">
+  <!-- Background Decorative Elements -->
+  <div class="absolute inset-0 pointer-events-none">
+    <div class="absolute -top-1/4 -right-1/4 w-1/2 h-1/2 bg-green-200/30 rounded-full blur-3xl"></div>
+    <div class="absolute -bottom-1/4 -left-1/4 w-1/2 h-1/2 bg-yellow-200/30 rounded-full blur-3xl"></div>
+  </div>
+
+  <div class="container mx-auto px-6">
+    <!-- Section Header -->
+    <div class="text-center max-w-4xl mx-auto mb-20">
+      <span class="text-green-600 font-bold mb-6 block tracking-wide text-2xl">
+        {{ section.settings.section_badge | default: "Our Team" }}
+      </span>
+      <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
+        {{ section.settings.section_title | default: "The Brilliant Minds Behind Our Mission" }}
+      </h2>
+      <p class="text-xl text-gray-600">
+        {{ section.settings.section_description | default: "Transforming agriculture with expertise, care, and a commitment to nature." }}
+      </p>
+    </div>
+
+    <!-- Team Members Grid -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {% for block in section.blocks %}
+        <div class="group">
+          <div class="bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-500 h-full relative overflow-hidden">
+            <!-- Top Decorative Element -->
+            <div class="absolute top-0 right-0 w-32 h-32 bg-green-100 rounded-bl-[100px] transition-all duration-500 group-hover:bg-green-200"></div>
+            
+            <!-- Profile Image -->
+            <div class="relative w-full aspect-[3/4] mb-8 rounded-2xl overflow-hidden bg-gray-100">
+              {% if block.settings.member_image %}
+                <img src="{{ block.settings.member_image | image_url: width: 400 }}" alt="{{ block.settings.member_name }} - {{ block.settings.member_role }}" class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105" />
+              {% else %}
+                <div class="w-full h-full bg-gradient-to-br from-green-100 to-green-200 flex items-center justify-center">
+                  <span class="text-8xl text-green-600">👤</span>
+                </div>
+              {% endif %}
+              <div class="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors duration-500"></div>
+            </div>
+
+            <!-- Icon -->
+            <div class="mb-6">
+              <div class="w-12 h-12 rounded-2xl bg-orange-100 flex items-center justify-center transform transition-all duration-500 group-hover:scale-110">
+                <span class="text-2xl text-orange-500">
+                  {% case block.settings.member_icon %}
+                    {% when 'farm' %}🚜
+                    {% when 'science' %}🔬
+                    {% when 'business' %}💼
+                    {% when 'heart' %}❤️
+                    {% when 'growth' %}📈
+                    {% else %}🌱
+                  {% endcase %}
+                </span>
+              </div>
+            </div>
+
+            <!-- Content -->
+            <h3 class="text-2xl font-bold text-gray-800 mb-2 group-hover:text-green-600 transition-colors duration-300">
+              {{ block.settings.member_name | default: "Team Member" }}
+            </h3>
+            <div class="text-gray-600 font-medium mb-4 text-lg">
+              {{ block.settings.member_role | default: "Team Role" }}
+            </div>
+            <p class="text-gray-600 leading-relaxed">
+              {{ block.settings.member_description | default: "Dedicated to bringing you the finest organic products with passion and expertise." }}
+            </p>
+
+            <!-- Bottom Decorative Element -->
+            <div class="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-orange-300 to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+          </div>
+        </div>
+      {% endfor %}
+      
+      {% if section.blocks.size == 0 %}
+        <!-- Default team members when no blocks are added -->
+        {% assign default_names = 'Sarah Johnson,Michael Chen,Emily Rodriguez' | split: ',' %}
+        {% assign default_roles = 'Farm Manager,Agricultural Scientist,Business Operations' | split: ',' %}
+        {% assign default_descriptions = 'Leading our organic farming initiatives with 15 years of sustainable agriculture experience.,Developing innovative growing techniques that maximize yield while preserving soil health.,Ensuring smooth operations and building relationships with our farming community partners.' | split: ',' %}
+        {% assign default_icons = 'farm,science,business' | split: ',' %}
+        
+        {% for name in default_names %}
+          <div class="group">
+            <div class="bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-500 h-full relative overflow-hidden">
+              <div class="absolute top-0 right-0 w-32 h-32 bg-green-100 rounded-bl-[100px] transition-all duration-500 group-hover:bg-green-200"></div>
+              
+              <div class="relative w-full aspect-[3/4] mb-8 rounded-2xl overflow-hidden bg-gray-100 flex items-center justify-center">
+                <span class="text-8xl text-green-600">👤</span>
+                <div class="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors duration-500"></div>
+              </div>
+
+              <div class="mb-6">
+                <div class="w-12 h-12 rounded-2xl bg-orange-100 flex items-center justify-center transform transition-all duration-500 group-hover:scale-110">
+                  <span class="text-2xl text-orange-500">
+                    {% case default_icons[forloop.index0] %}
+                      {% when 'farm' %}🚜
+                      {% when 'science' %}🔬
+                      {% when 'business' %}💼
+                    {% endcase %}
+                  </span>
+                </div>
+              </div>
+
+              <h3 class="text-2xl font-bold text-gray-800 mb-2 group-hover:text-green-600 transition-colors duration-300">
+                {{ name }}
+              </h3>
+              <div class="text-gray-600 font-medium mb-4 text-lg">
+                {{ default_roles[forloop.index0] }}
+              </div>
+              <p class="text-gray-600 leading-relaxed">
+                {{ default_descriptions[forloop.index0] }}
+              </p>
+
+              <div class="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-orange-300 to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+            </div>
+          </div>
+        {% endfor %}
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Team Section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_badge",
+      "label": "Section Badge",
+      "default": "Our Team"
+    },
+    {
+      "type": "text",
+      "id": "section_title",
+      "label": "Section Title",
+      "default": "The Brilliant Minds Behind Our Mission"
+    },
+    {
+      "type": "textarea",
+      "id": "section_description",
+      "label": "Section Description",
+      "default": "Transforming agriculture with expertise, care, and a commitment to nature."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "team_member",
+      "name": "Team Member",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "member_image",
+          "label": "Member Photo"
+        },
+        {
+          "type": "text",
+          "id": "member_name",
+          "label": "Member Name",
+          "default": "Team Member"
+        },
+        {
+          "type": "text",
+          "id": "member_role",
+          "label": "Member Role",
+          "default": "Team Role"
+        },
+        {
+          "type": "textarea",
+          "id": "member_description",
+          "label": "Member Description",
+          "default": "Dedicated to bringing you the finest organic products with passion and expertise."
+        },
+        {
+          "type": "select",
+          "id": "member_icon",
+          "label": "Member Icon",
+          "options": [
+            { "value": "farm", "label": "Farm" },
+            { "value": "science", "label": "Science" },
+            { "value": "business", "label": "Business" },
+            { "value": "heart", "label": "Heart" },
+            { "value": "growth", "label": "Growth" }
+          ],
+          "default": "farm"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Team Section",
+      "blocks": [
+        {
+          "type": "team_member"
+        },
+        {
+          "type": "team_member"
+        },
+        {
+          "type": "team_member"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %} 

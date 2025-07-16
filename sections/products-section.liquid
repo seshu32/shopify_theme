@@ -1,0 +1,180 @@
+<section class="py-32 bg-yellow-50">
+  <div class="container mx-auto px-6">
+    <div class="text-center mb-16">
+      <span class="text-green-600 font-bold mb-6 block tracking-wide text-2xl">
+        {{ section.settings.collection_badge | default: "Our Collection" }}
+      </span>
+      <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-12">
+        {{ section.settings.section_title | default: "Handpicked, Pure & Organic" }}
+      </h2>
+      <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+        {{ section.settings.section_description | default: "Discover our carefully selected premium organic products, grown with love and harvested with care." }}
+      </p>
+    </div>
+
+    <!-- Products Grid -->
+    <div class="mt-16">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+        {% assign featured_collection = collections[section.settings.featured_collection] %}
+        {% if featured_collection and featured_collection.products.size > 0 %}
+          {% for product in featured_collection.products limit: 8 %}
+            <div class="group">
+              <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 relative">
+                {% if forloop.first %}
+                  <div class="absolute top-4 left-4 z-10 space-y-2">
+                    <span class="bg-orange-500 text-white px-3 py-1 rounded-full text-xs font-medium">
+                      Featured
+                    </span>
+                  </div>
+                {% endif %}
+
+                <!-- Product Image -->
+                <a href="{{ product.url }}">
+                  <div class="relative aspect-square bg-gray-50 cursor-pointer overflow-hidden">
+                    {% if product.featured_image %}
+                      <img src="{{ product.featured_image | image_url: width: 400 }}" alt="{{ product.title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+                    {% else %}
+                      <div class="w-full h-full bg-gradient-to-br from-green-100 to-green-200 flex items-center justify-center">
+                        <span class="text-6xl text-green-600">🌿</span>
+                      </div>
+                    {% endif %}
+                  </div>
+                </a>
+
+                <!-- Product Info -->
+                <div class="p-6 text-center relative">
+                  <a href="{{ product.url }}">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2 hover:text-green-600 transition-colors">
+                      {{ product.title }}
+                    </h3>
+                    {% if product.description %}
+                      <p class="text-sm text-gray-600 mb-4 line-clamp-2">
+                        {{ product.description | strip_html | truncate: 80 }}
+                      </p>
+                    {% endif %}
+                  </a>
+                  <div class="flex items-center justify-center gap-2">
+                    <span class="text-lg font-bold text-green-600">
+                      {{ product.price | money }}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        {% else %}
+          <!-- Placeholder products when no collection is selected -->
+          {% for i in (1..8) %}
+            <div class="group">
+              <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 relative">
+                {% if forloop.first %}
+                  <div class="absolute top-4 left-4 z-10 space-y-2">
+                    <span class="bg-orange-500 text-white px-3 py-1 rounded-full text-xs font-medium">
+                      Featured
+                    </span>
+                  </div>
+                {% endif %}
+
+                <!-- Product Image Placeholder -->
+                <div class="relative aspect-square bg-gray-100 cursor-pointer overflow-hidden flex items-center justify-center">
+                  <span class="text-6xl text-gray-400">
+                    {% case forloop.index %}
+                      {% when 1 %}🥬
+                      {% when 2 %}🌾
+                      {% when 3 %}🍅
+                      {% when 4 %}🥕
+                      {% when 5 %}🌿
+                      {% when 6 %}🍊
+                      {% when 7 %}🫐
+                      {% when 8 %}🥒
+                    {% endcase %}
+                  </span>
+                </div>
+
+                <!-- Product Info -->
+                <div class="p-6 text-center relative">
+                  <h3 class="text-lg font-semibold text-gray-800 mb-2">
+                    {% case forloop.index %}
+                      {% when 1 %}Fresh Lettuce
+                      {% when 2 %}Organic Quinoa
+                      {% when 3 %}Garden Tomatoes
+                      {% when 4 %}Baby Carrots
+                      {% when 5 %}Fresh Herbs
+                      {% when 6 %}Organic Oranges
+                      {% when 7 %}Wild Blueberries
+                      {% when 8 %}Crisp Cucumbers
+                    {% endcase %}
+                  </h3>
+                  <p class="text-sm text-gray-600 mb-4">
+                    Fresh and organic, perfect for your healthy lifestyle
+                  </p>
+                  <div class="flex items-center justify-center gap-2">
+                    <span class="text-lg font-bold text-green-600">
+                      ${{ forloop.index }}.99
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        {% endif %}
+      </div>
+      
+      {% if section.settings.view_all_text %}
+        <div class="text-center mt-12">
+          <a href="{{ section.settings.view_all_link | default: '/collections/all' }}" class="inline-block bg-green-600 text-white px-8 py-4 rounded-full text-lg font-medium hover:bg-green-700 transition-all duration-300 shadow-lg hover:shadow-xl">
+            {{ section.settings.view_all_text }}
+          </a>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Products Section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "collection_badge",
+      "label": "Collection Badge",
+      "default": "Our Collection"
+    },
+    {
+      "type": "text",
+      "id": "section_title",
+      "label": "Section Title",
+      "default": "Handpicked, Pure & Organic"
+    },
+    {
+      "type": "textarea",
+      "id": "section_description",
+      "label": "Section Description",
+      "default": "Discover our carefully selected premium organic products, grown with love and harvested with care."
+    },
+    {
+      "type": "collection",
+      "id": "featured_collection",
+      "label": "Featured Collection"
+    },
+    {
+      "type": "text",
+      "id": "view_all_text",
+      "label": "View All Button Text",
+      "default": "View All Products"
+    },
+    {
+      "type": "url",
+      "id": "view_all_link",
+      "label": "View All Button Link",
+      "default": "/collections/all"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Products Section"
+    }
+  ]
+}
+{% endschema %} 

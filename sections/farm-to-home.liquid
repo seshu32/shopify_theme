@@ -1,0 +1,200 @@
+{% comment %} Farm to Home Section {% endcomment %}
+<section class="py-12 bg-white relative overflow-hidden">
+  <div class="container mx-auto px-6">
+    <div class="flex flex-col lg:flex-row items-start gap-20">
+      <!-- Left Side - Statistics -->
+      <div class="w-full lg:w-1/2">
+        <div>
+          <div class="relative mb-10">
+            <h2 class="text-4xl md:text-5xl font-bold text-gray-800">
+              {{ section.settings.main_title | default: "Farm-to-Home<br />Freshness" }}
+            </h2>
+            <div class="text-lg text-gray-600 mt-4 font-medium">
+              {{ section.settings.main_subtitle | default: "Pure. Organic. Sustainably Sourced." }}
+            </div>
+            <div class="absolute -bottom-3 left-0 h-[1px] bg-orange-400 w-full"></div>
+          </div>
+
+          <!-- Stats Container -->
+          <div class="grid grid-cols-2 gap-8">
+            <!-- First Stat -->
+            <div class="relative bg-yellow-50 rounded-3xl p-8 border border-yellow-100">
+              <div class="text-4xl md:text-5xl font-bold text-gray-800">
+                {{ section.settings.stat_1_number | default: "25K" }}
+              </div>
+              <div class="text-sm uppercase tracking-wide text-gray-600 mt-4 font-medium">
+                {{ section.settings.stat_1_label | default: "CLIENTS TRUST US" }}
+              </div>
+              <div class="text-base text-gray-700 mt-2">
+                {{ section.settings.stat_1_description | default: "Thousands of Trusting Customers Choose Our Services" }}
+              </div>
+            </div>
+
+            <!-- Second Stat -->
+            <div class="relative bg-green-50 rounded-3xl p-8 border border-green-100">
+              <div class="text-4xl md:text-5xl font-bold text-gray-800">
+                {{ section.settings.stat_2_number | default: "10M" }}
+              </div>
+              <div class="text-sm uppercase tracking-wide text-gray-600 mt-4 font-medium">
+                {{ section.settings.stat_2_label | default: "ORGANIC PRODUCTS SOLD" }}
+              </div>
+              <div class="text-base text-gray-700 mt-2">
+                {{ section.settings.stat_2_description | default: "Organic products delivered with sustainable commitment" }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Side - Benefits Card -->
+      <div class="w-full lg:w-1/2">
+        <div class="bg-gray-700 rounded-3xl p-12 relative overflow-hidden">
+          <!-- Content -->
+          <div class="relative z-10">
+            <h3 class="text-4xl md:text-5xl font-bold text-white mb-14">
+              {{ section.settings.benefits_title | default: "Why Choose Us?" }}
+            </h3>
+
+            <div class="space-y-8">
+              {% for block in section.blocks %}
+                <div class="flex gap-4">
+                  <div class="flex-shrink-0 w-5 h-5 bg-white/20 rounded-full flex items-center justify-center mt-1.5">
+                    <span class="w-3 h-3 text-white">✓</span>
+                  </div>
+                  <div>
+                    <h4 class="text-lg font-medium text-white mb-2">
+                      {{ block.settings.benefit_title }}
+                    </h4>
+                    <p class="text-white/90 text-base leading-relaxed">
+                      {{ block.settings.benefit_description }}
+                    </p>
+                  </div>
+                </div>
+              {% endfor %}
+              
+              {% if section.blocks.size == 0 %}
+                <!-- Default benefits when no blocks are added -->
+                {% assign default_benefits = 'Certified Organic Products,Farm-Fresh Delivery,Sustainable Practices,Community Support' | split: ',' %}
+                {% assign default_descriptions = 'All our products are certified organic and free from harmful chemicals.,Fresh produce delivered directly from farm to your doorstep.,Environmentally conscious farming methods that protect our planet.,Supporting local farmers and strengthening our community bonds.' | split: ',' %}
+                
+                {% for benefit in default_benefits %}
+                  <div class="flex gap-4">
+                    <div class="flex-shrink-0 w-5 h-5 bg-white/20 rounded-full flex items-center justify-center mt-1.5">
+                      <span class="w-3 h-3 text-white">✓</span>
+                    </div>
+                    <div>
+                      <h4 class="text-lg font-medium text-white mb-2">
+                        {{ benefit }}
+                      </h4>
+                      <p class="text-white/90 text-base leading-relaxed">
+                        {{ default_descriptions[forloop.index0] }}
+                      </p>
+                    </div>
+                  </div>
+                {% endfor %}
+              {% endif %}
+            </div>
+          </div>
+
+          <!-- Decorative Element -->
+          <div class="absolute bottom-0 right-0 w-full h-32 opacity-10">
+            <div class="absolute bottom-4 right-4 text-8xl text-white">🌿</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Farm to Home Section",
+  "settings": [
+    {
+      "type": "html",
+      "id": "main_title",
+      "label": "Main Title",
+      "default": "Farm-to-Home<br />Freshness"
+    },
+    {
+      "type": "text",
+      "id": "main_subtitle",
+      "label": "Main Subtitle",
+      "default": "Pure. Organic. Sustainably Sourced."
+    },
+    {
+      "type": "text",
+      "id": "stat_1_number",
+      "label": "Stat 1 Number",
+      "default": "25K"
+    },
+    {
+      "type": "text",
+      "id": "stat_1_label",
+      "label": "Stat 1 Label",
+      "default": "CLIENTS TRUST US"
+    },
+    {
+      "type": "text",
+      "id": "stat_1_description",
+      "label": "Stat 1 Description",
+      "default": "Thousands of Trusting Customers Choose Our Services"
+    },
+    {
+      "type": "text",
+      "id": "stat_2_number",
+      "label": "Stat 2 Number",
+      "default": "10M"
+    },
+    {
+      "type": "text",
+      "id": "stat_2_label",
+      "label": "Stat 2 Label",
+      "default": "ORGANIC PRODUCTS SOLD"
+    },
+    {
+      "type": "text",
+      "id": "stat_2_description",
+      "label": "Stat 2 Description",
+      "default": "Organic products delivered with sustainable commitment"
+    },
+    {
+      "type": "text",
+      "id": "benefits_title",
+      "label": "Benefits Section Title",
+      "default": "Why Choose Us?"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "benefit",
+      "name": "Benefit",
+      "settings": [
+        {
+          "type": "text",
+          "id": "benefit_title",
+          "label": "Benefit Title",
+          "default": "Certified Organic Products"
+        },
+        {
+          "type": "textarea",
+          "id": "benefit_description",
+          "label": "Benefit Description",
+          "default": "All our products are certified organic and free from harmful chemicals."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Farm to Home Section",
+      "blocks": [
+        { "type": "benefit" },
+        { "type": "benefit" },
+        { "type": "benefit" },
+        { "type": "benefit" }
+      ]
+    }
+  ]
+}
+{% endschema %} 
