@@ -313,40 +313,7 @@
       </div>
     </div>
 
-    <!-- Traceability Section -->
-    <div class="traceability-section">
-      <h3>📍 Full Traceability</h3>
-      <p>Scan the QR code on any product to trace its complete journey</p>
-      <div class="trace-demo">
-        <div class="qr-code">
-          <div class="qr-pattern">
-            <div class="qr-square"></div>
-            <div class="qr-square"></div>
-            <div class="qr-square"></div>
-            <div class="qr-square"></div>
-          </div>
-          <span class="qr-label">📱 Scan Me</span>
-        </div>
-        <div class="trace-info">
-          <div class="trace-item">
-            <span class="trace-icon">🌱</span>
-            <span class="trace-text">Planted: March 15, 2024</span>
-          </div>
-          <div class="trace-item">
-            <span class="trace-icon">🚜</span>
-            <span class="trace-text">Farm: Poomaale Estate</span>
-          </div>
-          <div class="trace-item">
-            <span class="trace-icon">👨‍🌾</span>
-            <span class="trace-text">Farmer: Ravi Kumar</span>
-          </div>
-          <div class="trace-item">
-            <span class="trace-icon">📦</span>
-            <span class="trace-text">Packed: Today</span>
-          </div>
-        </div>
-      </div>
-    </div>
+
   </div>
 </section>
 
@@ -599,92 +566,7 @@
   object-fit: cover;
 }
 
-/* Traceability Section */
-.traceability-section {
-  background: white;
-  padding: 50px;
-  border-radius: 25px;
-  text-align: center;
-  box-shadow: 0 15px 40px rgba(52, 46, 41, 0.1);
-  border: 2px solid rgba(184, 220, 153, 0.3);
-}
 
-.traceability-section h3 {
-  font-family: 'ABCArizonaFlare', serif;
-  font-size: 32px;
-  color: #342e29;
-  margin-bottom: 15px;
-}
-
-.traceability-section p {
-  font-family: 'ABCArizonaSans', sans-serif;
-  color: #4b3c35;
-  font-size: 16px;
-  margin-bottom: 30px;
-}
-
-.trace-demo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 40px;
-  flex-wrap: wrap;
-}
-
-.qr-code {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 15px;
-}
-
-.qr-pattern {
-  width: 80px;
-  height: 80px;
-  background: #342e29;
-  border-radius: 10px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4px;
-  padding: 8px;
-}
-
-.qr-square {
-  background: white;
-  border-radius: 2px;
-}
-
-.qr-label {
-  font-family: 'ABCArizonaSans', sans-serif;
-  color: #344736;
-  font-weight: 600;
-  font-size: 14px;
-}
-
-.trace-info {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  text-align: left;
-}
-
-.trace-item {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.trace-icon {
-  font-size: 18px;
-  width: 25px;
-  text-align: center;
-}
-
-.trace-text {
-  font-family: 'ABCArizonaSans', sans-serif;
-  color: #4b3c35;
-  font-size: 14px;
-}
 
 /* Animations */
 @keyframes fadeInUp {
@@ -930,14 +812,7 @@
     height: 250px;
   }
   
-  .trace-demo {
-    flex-direction: column;
-    gap: 30px;
-  }
-  
-  .traceability-section {
-    padding: 30px 20px;
-  }
+
 }
 </style>
 
@@ -993,13 +868,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }, 5000);
   
-  // QR code interaction
-  const qrCode = document.querySelector('.qr-code');
-  if (qrCode) {
-    qrCode.addEventListener('click', () => {
-      alert('Traceability feature coming soon! 📱✨');
-    });
-  }
+  // Removed QR code interaction
   
   // Intersection Observer for animations
   const observerOptions = {

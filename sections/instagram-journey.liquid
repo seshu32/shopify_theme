@@ -173,39 +173,7 @@
       </div>
     </div>
 
-    <!-- Instagram CTA -->
-    <div class="instagram-cta">
-      <h3>Join Our Wild Community</h3>
-      <p>Tag us in your wild food adventures and get featured!</p>
-      <div class="cta-actions">
-        <button class="cta-btn primary">
-          <span class="btn-icon">📱</span>
-          Follow @bewild.life
-        </button>
-        <button class="cta-btn secondary">
-          <span class="btn-icon">#</span>
-          Use #WildFoodJourney
-        </button>
-        <button class="cta-btn secondary">
-          <span class="btn-icon">📤</span>
-          Share Your Story
-        </button>
-      </div>
-      
-      <!-- Popular Hashtags -->
-      <div class="hashtag-cloud">
-        <span class="hashtag">#WildFoodJourney</span>
-        <span class="hashtag">#RegenerativeFarming</span>
-        <span class="hashtag">#WildCoffee</span>
-        <span class="hashtag">#FarmToTable</span>
-        <span class="hashtag">#SustainableLiving</span>
-        <span class="hashtag">#BiodiversityMatters</span>
-        <span class="hashtag">#WildHoney</span>
-        <span class="hashtag">#TraditionalWisdom</span>
-        <span class="hashtag">#NatureLovers</span>
-        <span class="hashtag">#WildSpices</span>
-      </div>
-    </div>
+
 
 
   </div>
@@ -451,102 +419,9 @@
   line-height: 1.4;
 }
 
-/* Instagram CTA */
-.instagram-cta {
-  background: white;
-  padding: 50px;
-  border-radius: 25px;
-  text-align: center;
-  box-shadow: 0 15px 40px rgba(52, 46, 41, 0.1);
-  border: 2px solid rgba(184, 220, 153, 0.3);
-  margin-bottom: 80px;
-}
+/* Instagram CTA and hashtag cloud styles removed */
 
-.instagram-cta h3 {
-  font-family: 'ABCArizonaFlare', serif;
-  font-size: 32px;
-  color: #342e29;
-  margin-bottom: 15px;
-}
-
-.instagram-cta p {
-  font-family: 'ABCArizonaSans', sans-serif;
-  color: #4b3c35;
-  font-size: 16px;
-  margin-bottom: 30px;
-}
-
-.cta-actions {
-  display: flex;
-  gap: 20px;
-  justify-content: center;
-  margin-bottom: 30px;
-  flex-wrap: wrap;
-}
-
-.cta-btn {
-  padding: 15px 30px;
-  border-radius: 25px;
-  border: none;
-  cursor: pointer;
-  font-family: 'ABCArizonaSans', sans-serif;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  font-size: 16px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.cta-btn.primary {
-  background: #E4405F;
-  color: white;
-}
-
-.cta-btn.primary:hover {
-  background: #d93a57;
-  transform: translateY(-2px);
-}
-
-.cta-btn.secondary {
-  background: transparent;
-  color: #344736;
-  border: 2px solid #b8dc99;
-}
-
-.cta-btn.secondary:hover {
-  background: #b8dc99;
-  transform: translateY(-2px);
-}
-
-.btn-icon {
-  font-size: 18px;
-}
-
-/* Hashtag Cloud */
-.hashtag-cloud {
-  display: flex;
-  gap: 10px;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.hashtag {
-  background: rgba(184, 220, 153, 0.2);
-  color: #344736;
-  padding: 6px 12px;
-  border-radius: 15px;
-  font-size: 12px;
-  font-weight: 600;
-  border: 1px solid rgba(52, 71, 54, 0.2);
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.hashtag:hover {
-  background: #b8dc99;
-  transform: scale(1.05);
-}
+/* Hashtag styles removed */
 
 
 
@@ -621,22 +496,11 @@ document.addEventListener('DOMContentLoaded', function() {
       const text = btn.textContent;
       if (text.includes('Follow')) {
         window.open('https://instagram.com/bewild.life', '_blank');
-      } else if (text.includes('Use #')) {
-        alert('Start using #WildFoodJourney in your posts! 📱');
-      } else if (text.includes('Share')) {
-        alert('Share your wild food story with us! 📤');
       }
     });
   });
   
-  // Hashtag interactions
-  const hashtags = document.querySelectorAll('.hashtag');
-  hashtags.forEach(hashtag => {
-    hashtag.addEventListener('click', () => {
-      const tag = hashtag.textContent;
-      alert(`Searching for posts with ${tag}! 🔍`);
-    });
-  });
+  // Hashtag interactions removed
   
 
   
@@ -669,18 +533,6 @@ document.addEventListener('DOMContentLoaded', function() {
   
 
   
-  // Random hashtag highlight
-  setInterval(() => {
-    const randomHashtag = hashtags[Math.floor(Math.random() * hashtags.length)];
-    if (randomHashtag) {
-      randomHashtag.style.background = '#b8dc99';
-      randomHashtag.style.transform = 'scale(1.05)';
-      
-      setTimeout(() => {
-        randomHashtag.style.background = 'rgba(184, 220, 153, 0.2)';
-        randomHashtag.style.transform = 'scale(1)';
-      }, 2000);
-    }
-  }, 10000);
+  // Random hashtag highlight removed
 });
 </script> 

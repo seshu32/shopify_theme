@@ -407,7 +407,8 @@
     font-size: 14px;
   }
   
-  .subscribe-form {
+  /* Subscribe form styles removed */
+.subscribe-form-removed {
     flex-direction: column;
     gap: 15px;
   }
@@ -479,15 +480,6 @@ document.addEventListener('DOMContentLoaded', function() {
     currentSeasonBtn.click();
   }
   
-  // Newsletter subscription
-  const subscribeForm = document.querySelector('.subscribe-form');
-  subscribeForm.addEventListener('submit', function(e) {
-    e.preventDefault();
-    const email = this.querySelector('input[type="email"]').value;
-    
-    // Here you would integrate with your newsletter service
-    alert('Thank you for joining our seasonal journey! 🌿');
-    this.reset();
-  });
+  // Newsletter subscription removed
 });
 </script> 

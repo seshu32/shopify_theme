@@ -87,32 +87,7 @@
         </ul>
       </div>
 
-      <!-- Impact -->
-      <div class="footer-impact">
-        <h4 class="links-title">Wild Impact</h4>
-        <div class="impact-stats">
-          <div class="impact-item">
-            <span class="impact-number">2,847</span>
-            <span class="impact-label">Trees Protected</span>
-            <span class="impact-icon">🌳</span>
-          </div>
-          <div class="impact-item">
-            <span class="impact-number">25</span>
-            <span class="impact-label">Farmer Families</span>
-            <span class="impact-icon">👨‍🌾</span>
-          </div>
-          <div class="impact-item">
-            <span class="impact-number">180+</span>
-            <span class="impact-label">Species Preserved</span>
-            <span class="impact-icon">🦋</span>
-          </div>
-          <div class="impact-item">
-            <span class="impact-number">₹12L+</span>
-            <span class="impact-label">Farmer Income</span>
-            <span class="impact-icon">💰</span>
-          </div>
-        </div>
-      </div>
+
     </div>
 
 
@@ -318,42 +293,7 @@
   transform: translateX(5px);
 }
 
-/* Impact Stats */
-.impact-stats {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
 
-.impact-item {
-  background: rgba(184, 220, 153, 0.1);
-  padding: 15px;
-  border-radius: 15px;
-  border: 1px solid rgba(184, 220, 153, 0.2);
-  text-align: center;
-  position: relative;
-}
-
-.impact-number {
-  display: block;
-  font-family: 'ABCArizonaFlare', serif;
-  font-size: 24px;
-  color: #ffcf83;
-  font-weight: 600;
-  margin-bottom: 5px;
-}
-
-.impact-label {
-  display: block;
-  font-family: 'ABCArizonaSans', sans-serif;
-  font-size: 12px;
-  color: rgba(255, 255, 255, 0.9);
-  margin-bottom: 5px;
-}
-
-.impact-icon {
-  font-size: 20px;
-}
 
 
 
@@ -539,15 +479,7 @@
     text-align: center;
   }
   
-  .impact-stats {
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  
-  .impact-item {
-    min-width: 150px;
-  }
+
   
 
   
@@ -615,22 +547,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
   
-  // Impact stats animation
-  const impactItems = document.querySelectorAll('.impact-item');
-  const impactObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.style.animation = 'none';
-        setTimeout(() => {
-          entry.target.style.animation = 'bounce 0.6s ease';
-        }, Math.random() * 500);
-      }
-    });
-  }, { threshold: 0.5 });
-  
-  impactItems.forEach(item => {
-    impactObserver.observe(item);
-  });
+
   
   // Certification badges hover animation
   const certBadges = document.querySelectorAll('.cert-badge');
