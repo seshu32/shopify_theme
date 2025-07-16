@@ -1,0 +1,58 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "current": {
+    "checkout_header_image": "shopify://shop_images/PBR_1688.jpg",
+    "checkout_logo_image": "shopify://shop_images/25_Bewild_-_Black_with_Tagline.jpg",
+    "sections": {
+      "hero-section": {
+        "type": "hero-section",
+        "settings": {}
+      },
+      "agriculture-section": {
+        "type": "agriculture-section",
+        "settings": {}
+      },
+      "collections-section": {
+        "type": "collections-section",
+        "settings": {}
+      },
+      "works-section": {
+        "type": "works-section",
+        "settings": {}
+      },
+      "produce-story": {
+        "type": "produce-story",
+        "settings": {}
+      },
+      "farming-techniques": {
+        "type": "farming-techniques",
+        "settings": {}
+      },
+      "testimonials-section": {
+        "type": "testimonials-section",
+        "settings": {}
+      },
+      "team-section": {
+        "type": "team-section",
+        "settings": {}
+      },
+      "blog-section": {
+        "type": "blog-section",
+        "settings": {}
+      },
+      "conference-section": {
+        "type": "conference-section",
+        "settings": {}
+      }
+    },
+    "content_for_index": []
+  }
+}
