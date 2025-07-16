@@ -19,7 +19,6 @@ BeWild Hero Section - 5-Slide Story Journey
           <div class="slide-icon">🌱</div>
           <h1 class="hero-title">
             {{ section.settings.slide1_title | default: 'Rooted in the Wild' }}
-            <span style="color: #ff0000; font-size: 0.5em; display: block;">[DEBUG: Hero Section Loading]</span>
           </h1>
           <p class="hero-subtitle">
             {{ section.settings.slide1_subtitle | default: 'From untouched forest slopes to sun-drenched soil, this is where our journey roots itself.' }}
@@ -226,9 +225,6 @@ BeWild Hero Section - 5-Slide Story Journey
   margin-top: -5rem; /* Offset fixed header */
   padding-top: 5rem; /* Add padding to account for header */
   z-index: 1; /* Ensure hero is visible */
-  display: block !important; /* Force display */
-  border: 2px solid #ff0000; /* DEBUG: Red border to see if section exists */
-  min-height: 80vh !important; /* DEBUG: Force minimum height */
 }
 
 .hero-carousel {
