@@ -1,6 +1,24 @@
 {% schema %}
-  {
-    "name": "Section name",
-    "settings": []
-  }
+{
+  "name": "Custom HTML",
+  "tag": "section",
+  "class": "custom-html-section",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "html_content",
+      "label": "HTML Code",
+      "default": "<div><h2>My Custom HTML Section</h2><p>This is editable HTML!</p></div>"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom HTML"
+    }
+  ]
+}
 {% endschema %}
+
+<div class="custom-html-content">
+  {{ section.settings.html_content }}
+</div>
