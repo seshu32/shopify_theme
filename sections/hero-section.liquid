@@ -1,313 +1,993 @@
 {% comment %}
-Hero Section - Main landing section with call-to-action
+BeWild Hero Section - 5-Slide Story Journey
 {% endcomment %}
 
-<section class="section-hero">
-  <div class="container">
-    <div class="hero-content">
-      {% if section.settings.tagline != blank %}
-        <span class="hero-tagline">{{ section.settings.tagline }}</span>
-      {% endif %}
-      
-      <h1 class="hero-title">
-        {{ section.settings.title_line1 | default: 'Where You Taste' }}
-        <br>
-        <span class="hero-highlight">{{ section.settings.title_line2 | default: 'Into the Story' }}</span>
-      </h1>
-      
-      {% if section.settings.description != blank %}
-        <p class="hero-description">{{ section.settings.description }}</p>
-      {% endif %}
-      
-      <div class="hero-buttons">
-        {% if section.settings.primary_button_text != blank %}
-          <a href="{{ section.settings.primary_button_link | default: '#' }}" class="btn btn-primary">
-            {{ section.settings.primary_button_text }}
-          </a>
-        {% endif %}
-        
-        {% if section.settings.secondary_button_text != blank %}
-          <a href="{{ section.settings.secondary_button_link | default: '#' }}" class="btn btn-outline">
-            {{ section.settings.secondary_button_text }}
-          </a>
-        {% endif %}
-      </div>
-    </div>
-    
-    {% if section.settings.show_image %}
-      <div class="hero-image">
-        {% if section.settings.hero_image %}
-          <img src="{{ section.settings.hero_image | img_url: '800x600' }}" alt="{{ section.settings.image_alt | default: 'Hero image' }}" loading="eager">
+<section class="bewild-hero">
+  <div class="hero-carousel">
+    <!-- Slide 1: ROOTS -->
+    <div class="hero-slide active" data-slide="1">
+      <div class="hero-background">
+        {% if section.settings.slide1_image %}
+          <img src="{{ section.settings.slide1_image | img_url: '1920x1080' }}" alt="{{ section.settings.slide1_alt | default: 'Rooted in the Wild' }}" class="hero-bg-image">
         {% else %}
-          <div class="hero-image-placeholder">
-            <span class="hero-emoji">{{ section.settings.placeholder_emoji | default: '🌱' }}</span>
-          </div>
+          <div class="hero-bg-placeholder roots"></div>
         {% endif %}
+        <div class="hero-overlay"></div>
       </div>
-    {% endif %}
-  </div>
-  
-  {% if section.settings.show_scroll_indicator %}
-    <div class="scroll-indicator">
-      <div class="scroll-mouse">
-        <div class="scroll-wheel"></div>
+      <div class="container">
+        <div class="hero-content">
+          <div class="slide-icon">🌱</div>
+          <h1 class="hero-title">
+            {{ section.settings.slide1_title | default: 'Rooted in the Wild' }}
+          </h1>
+          <p class="hero-subtitle">
+            {{ section.settings.slide1_subtitle | default: 'From untouched forest slopes to sun-drenched soil, this is where our journey roots itself.' }}
+          </p>
+          <div class="hero-tagline">
+            {{ section.settings.slide1_tagline | default: 'Every season paints a new story.' }}
+          </div>
+          <div class="hero-buttons">
+            <a href="{{ section.settings.primary_button_link | default: '/collections' }}" class="btn btn-primary">
+              {{ section.settings.primary_button_text | default: 'Shop Now' }}
+            </a>
+            <a href="{{ section.settings.secondary_button_link | default: '/about' }}" class="btn btn-outline">
+              {{ section.settings.secondary_button_text | default: 'Our Story' }}
+            </a>
+          </div>
+        </div>
       </div>
-      <span class="scroll-text">{{ section.settings.scroll_text | default: 'Scroll to explore' }}</span>
     </div>
-  {% endif %}
+
+    <!-- Slide 2: CRAFT -->
+    <div class="hero-slide" data-slide="2">
+      <div class="hero-background">
+        {% if section.settings.slide2_image %}
+          <img src="{{ section.settings.slide2_image | img_url: '1920x1080' }}" alt="{{ section.settings.slide2_alt | default: 'Crafted by Forest Hands' }}" class="hero-bg-image">
+        {% else %}
+          <div class="hero-bg-placeholder craft"></div>
+        {% endif %}
+        <div class="hero-overlay"></div>
+      </div>
+      <div class="container">
+        <div class="hero-content">
+          <div class="slide-icon">🧤</div>
+          <h1 class="hero-title">
+            {{ section.settings.slide2_title | default: 'Crafted by Forest Hands' }}
+          </h1>
+          <p class="hero-subtitle">
+            {{ section.settings.slide2_subtitle | default: 'We don\'t just grow — we care, cultivate, and wait with the wild. This is where hands and heritage shape every seed.' }}
+          </p>
+          <div class="hero-tagline">
+            {{ section.settings.slide2_tagline | default: 'Craft meets climate, care meets time.' }}
+          </div>
+          <div class="hero-buttons">
+            <a href="{{ section.settings.primary_button_link | default: '/collections' }}" class="btn btn-primary">
+              {{ section.settings.primary_button_text | default: 'Shop Now' }}
+            </a>
+            <a href="{{ section.settings.secondary_button_link | default: '/about' }}" class="btn btn-outline">
+              {{ section.settings.secondary_button_text | default: 'Our Story' }}
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 3: TABLE -->
+    <div class="hero-slide" data-slide="3">
+      <div class="hero-background">
+        {% if section.settings.slide3_image %}
+          <img src="{{ section.settings.slide3_image | img_url: '1920x1080' }}" alt="{{ section.settings.slide3_alt | default: 'To Your Table, With Story' }}" class="hero-bg-image">
+        {% else %}
+          <div class="hero-bg-placeholder table"></div>
+        {% endif %}
+        <div class="hero-overlay"></div>
+      </div>
+      <div class="container">
+        <div class="hero-content">
+          <div class="slide-icon">🍵</div>
+          <h1 class="hero-title">
+            {{ section.settings.slide3_title | default: 'To Your Table, With Story' }}
+          </h1>
+          <p class="hero-subtitle">
+            {{ section.settings.slide3_subtitle | default: 'Every cup, leaf, and fruit carries the tale of a forest. Sipped slowly, served consciously.' }}
+          </p>
+          <div class="hero-tagline">
+            {{ section.settings.slide3_tagline | default: 'The wild now waits at your table.' }}
+          </div>
+          <div class="hero-buttons">
+            <a href="{{ section.settings.primary_button_link | default: '/collections' }}" class="btn btn-primary">
+              {{ section.settings.primary_button_text | default: 'Shop Now' }}
+            </a>
+            <a href="{{ section.settings.secondary_button_link | default: '/about' }}" class="btn btn-outline">
+              {{ section.settings.secondary_button_text | default: 'Our Story' }}
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 4: EXPERIENCE -->
+    <div class="hero-slide" data-slide="4">
+      <div class="hero-background">
+        {% if section.settings.slide4_image %}
+          <img src="{{ section.settings.slide4_image | img_url: '1920x1080' }}" alt="{{ section.settings.slide4_alt | default: 'Where You Step Into the Story' }}" class="hero-bg-image">
+        {% else %}
+          <div class="hero-bg-placeholder experience"></div>
+        {% endif %}
+        <div class="hero-overlay"></div>
+      </div>
+      <div class="container">
+        <div class="hero-content">
+          <div class="slide-icon">📷</div>
+          <h1 class="hero-title">
+            {{ section.settings.slide4_title | default: 'Where You Step Into the Story' }}
+          </h1>
+          <p class="hero-subtitle">
+            {{ section.settings.slide4_subtitle | default: 'Come walk our trails, taste our harvests, and feel the forest in every sense. From the collective to the community table.' }}
+          </p>
+          <div class="hero-tagline">
+            {{ section.settings.slide4_tagline | default: 'Because stories are meant to be lived.' }}
+          </div>
+          <div class="hero-buttons">
+            <a href="{{ section.settings.primary_button_link | default: '/collections' }}" class="btn btn-primary">
+              {{ section.settings.primary_button_text | default: 'Shop Now' }}
+            </a>
+            <a href="{{ section.settings.secondary_button_link | default: '/about' }}" class="btn btn-outline">
+              {{ section.settings.secondary_button_text | default: 'Our Story' }}
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 5: HARVESTED -->
+    <div class="hero-slide" data-slide="5">
+      <div class="hero-background">
+        {% if section.settings.slide5_image %}
+          <img src="{{ section.settings.slide5_image | img_url: '1920x1080' }}" alt="{{ section.settings.slide5_alt | default: 'Forest-Grown, Forest-Given' }}" class="hero-bg-image">
+        {% else %}
+          <div class="hero-bg-placeholder harvested"></div>
+        {% endif %}
+        <div class="hero-overlay"></div>
+      </div>
+      <div class="container">
+        <div class="hero-content">
+          <div class="slide-icon">🥝</div>
+          <h1 class="hero-title">
+            {{ section.settings.slide5_title | default: 'Forest-Grown, Forest-Given' }}
+          </h1>
+          <p class="hero-subtitle">
+            {{ section.settings.slide5_subtitle | default: 'From shade-dried single-origin beans and hand-picked pepper to heirloom rice, jam, honey, and veggie bags—each jar and bag carries the forest within.' }}
+          </p>
+          <div class="hero-tagline">
+            {{ section.settings.slide5_tagline | default: 'Provenance in every taste.' }}
+          </div>
+          <div class="hero-buttons">
+            <a href="{{ section.settings.primary_button_link | default: '/collections' }}" class="btn btn-primary">
+              {{ section.settings.primary_button_text | default: 'Shop Now' }}
+            </a>
+            <a href="{{ section.settings.secondary_button_link | default: '/about' }}" class="btn btn-outline">
+              {{ section.settings.secondary_button_text | default: 'Our Story' }}
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navigation Controls -->
+  <div class="hero-navigation">
+    <button class="hero-nav-btn prev" aria-label="Previous slide">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+    <button class="hero-nav-btn next" aria-label="Next slide">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Slide Indicators -->
+  <div class="hero-indicators">
+    <button class="indicator active" data-slide="1" aria-label="Go to slide 1">
+      <span class="indicator-label">Roots</span>
+    </button>
+    <button class="indicator" data-slide="2" aria-label="Go to slide 2">
+      <span class="indicator-label">Craft</span>
+    </button>
+    <button class="indicator" data-slide="3" aria-label="Go to slide 3">
+      <span class="indicator-label">Table</span>
+    </button>
+    <button class="indicator" data-slide="4" aria-label="Go to slide 4">
+      <span class="indicator-label">Experience</span>
+    </button>
+    <button class="indicator" data-slide="5" aria-label="Go to slide 5">
+      <span class="indicator-label">Harvested</span>
+    </button>
+  </div>
+
+  <!-- Progress Bar -->
+  <div class="hero-progress">
+    <div class="progress-bar"></div>
+  </div>
 </section>
 
 <style>
-  .section-hero {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    position: relative;
-    overflow: hidden;
+/* BeWild Hero Section Styles */
+.bewild-hero {
+  position: relative;
+  height: 100vh;
+  min-height: 600px;
+  overflow: hidden;
+  background: #1a1a1a;
+}
+
+.hero-carousel {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.hero-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-slide.active {
+  opacity: 1;
+  z-index: 2;
+}
+
+.hero-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.hero-bg-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 8s ease-out;
+}
+
+.hero-slide.active .hero-bg-image {
+  transform: scale(1.05);
+}
+
+.hero-bg-placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #2d5016 0%, #8fbc8f 50%, #228b22 100%);
+  position: relative;
+}
+
+.hero-bg-placeholder.roots {
+  background: linear-gradient(135deg, #8b4513 0%, #daa520 50%, #9acd32 100%);
+}
+
+.hero-bg-placeholder.craft {
+  background: linear-gradient(135deg, #654321 0%, #deb887 50%, #f4a460 100%);
+}
+
+.hero-bg-placeholder.table {
+  background: linear-gradient(135deg, #2f4f4f 0%, #708090 50%, #b0c4de 100%);
+}
+
+.hero-bg-placeholder.experience {
+  background: linear-gradient(135deg, #556b2f 0%, #6b8e23 50%, #9acd32 100%);
+}
+
+.hero-bg-placeholder.harvested {
+  background: linear-gradient(135deg, #8b008b 0%, #9932cc 50%, #ba55d3 100%);
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.6) 0%,
+    rgba(0, 0, 0, 0.3) 50%,
+    rgba(0, 0, 0, 0.7) 100%
+  );
+  z-index: 2;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  color: white;
+  max-width: 800px;
+  padding: 0 20px;
+  animation: fadeInUp 1s ease-out 0.5s both;
+}
+
+.slide-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  display: block;
+  animation: bounce 2s infinite;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+}
+
+.hero-title {
+  font-family: 'ABCArizonaFlare', serif;
+  font-size: 4.5rem;
+  font-weight: 300;
+  line-height: 1.1;
+  margin-bottom: 2rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  letter-spacing: -0.02em;
+}
+
+.hero-subtitle {
+  font-family: 'ABCArizonaSans', sans-serif;
+  font-size: 1.4rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  opacity: 0.95;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.hero-tagline {
+  font-family: 'ABCArizonaFlare', serif;
+  font-style: italic;
+  font-size: 1.1rem;
+  color: #ffcf83;
+  margin-bottom: 3rem;
+  padding: 10px 20px;
+  border: 1px solid rgba(255, 207, 131, 0.5);
+  border-radius: 25px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  display: inline-block;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 1rem 2.5rem;
+  font-family: 'ABCArizonaSans', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: 2px solid transparent;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.btn-primary {
+  background: linear-gradient(45deg, #344736, #5a7c5a);
+  color: white;
+  border-color: #344736;
+  box-shadow: 0 4px 15px rgba(52, 71, 54, 0.3);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(45deg, #5a7c5a, #344736);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(52, 71, 54, 0.4);
+}
+
+.btn-outline {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border-color: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(10px);
+}
+
+.btn-outline:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: white;
+  transform: translateY(-2px);
+}
+
+/* Navigation Controls */
+.hero-navigation {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 2rem;
+  transform: translateY(-50%);
+}
+
+.hero-nav-btn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.hero-nav-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: scale(1.1);
+}
+
+/* Slide Indicators */
+.hero-indicators {
+  position: absolute;
+  bottom: 3rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 1rem;
+  z-index: 10;
+}
+
+.indicator {
+  position: relative;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  overflow: visible;
+}
+
+.indicator.active {
+  background: #ffcf83;
+  border-color: #ffcf83;
+  transform: scale(1.2);
+}
+
+.indicator-label {
+  position: absolute;
+  bottom: 150%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 15px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.indicator:hover .indicator-label,
+.indicator.active .indicator-label {
+  opacity: 1;
+}
+
+/* Progress Bar */
+.hero-progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.2);
+  z-index: 10;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #ffcf83, #344736);
+  width: 20%;
+  transition: width 0.3s ease;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .hero-title {
+    font-size: 3.5rem;
   }
   
-  .section-hero::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, var(--color-dark-green) 0%, var(--color-medium-green) 50%, var(--color-dark-green) 100%);
-    z-index: -2;
+  .hero-subtitle {
+    font-size: 1.2rem;
   }
   
-  .section-hero::after {
-    content: '';
-    position: absolute;
-    top: 20%;
-    right: -10%;
-    width: 400px;
-    height: 400px;
-    background: radial-gradient(circle, rgba(255, 207, 131, 0.1) 0%, transparent 70%);
-    border-radius: 50%;
-    z-index: -1;
+  .slide-icon {
+    font-size: 3rem;
   }
-  
-  .hero-content {
-    text-align: center;
-    z-index: 2;
-    position: relative;
-  }
-  
-  .hero-tagline {
-    display: inline-block;
-    font-size: 0.9rem;
-    font-weight: bold;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--color-light-yellow);
-    margin-bottom: 1.5rem;
-    padding: 8px 20px;
-    border: 1px solid var(--color-light-yellow);
-    border-radius: 25px;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
+}
+
+@media (max-width: 768px) {
+  .bewild-hero {
+    min-height: 500px;
   }
   
   .hero-title {
-    font-size: 4rem;
-    font-weight: 300;
-    line-height: 1.1;
+    font-size: 2.8rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .hero-tagline {
+    font-size: 0.9rem;
+    padding: 8px 16px;
     margin-bottom: 2rem;
-    color: var(--color-text-light);
-  }
-  
-  .hero-highlight {
-    color: var(--color-light-yellow);
-    font-weight: normal;
-  }
-  
-  .hero-description {
-    font-size: 1.2rem;
-    line-height: 1.8;
-    color: rgba(255, 255, 255, 0.9);
-    max-width: 600px;
-    margin: 0 auto 3rem;
   }
   
   .hero-buttons {
-    display: flex;
-    gap: 1.5rem;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-bottom: 4rem;
-  }
-  
-  .hero-image {
-    margin-top: 3rem;
-    text-align: center;
-  }
-  
-  .hero-image img {
-    max-width: 500px;
-    width: 100%;
-    height: auto;
-    border-radius: 12px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s ease;
-  }
-  
-  .hero-image img:hover {
-    transform: translateY(-10px);
-  }
-  
-  .hero-image-placeholder {
-    width: 400px;
-    height: 300px;
-    margin: 0 auto;
-    background: linear-gradient(135deg, var(--color-light-green), var(--color-light-yellow));
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-  }
-  
-  .hero-emoji {
-    font-size: 6rem;
-    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
-  }
-  
-  .scroll-indicator {
-    position: absolute;
-    bottom: 2rem;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.5rem;
-    color: rgba(255, 255, 255, 0.7);
-    animation: bounce 2s infinite;
+    gap: 1rem;
   }
   
-  .scroll-mouse {
-    width: 24px;
-    height: 36px;
-    border: 2px solid rgba(255, 255, 255, 0.7);
-    border-radius: 12px;
-    position: relative;
+  .btn {
+    padding: 0.8rem 2rem;
+    font-size: 0.9rem;
   }
   
-  .scroll-wheel {
-    width: 4px;
-    height: 8px;
-    background: rgba(255, 255, 255, 0.7);
-    border-radius: 2px;
-    position: absolute;
-    top: 6px;
-    left: 50%;
-    transform: translateX(-50%);
-    animation: scroll 2s infinite;
+  .hero-navigation {
+    padding: 0 1rem;
   }
   
-  .scroll-text {
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+  .hero-nav-btn {
+    width: 40px;
+    height: 40px;
   }
   
-  @keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {
-      transform: translateX(-50%) translateY(0);
-    }
-    40% {
-      transform: translateX(-50%) translateY(-10px);
-    }
-    60% {
-      transform: translateX(-50%) translateY(-5px);
-    }
+  .slide-icon {
+    font-size: 2.5rem;
   }
   
-  @keyframes scroll {
-    0% {
-      top: 6px;
-      opacity: 1;
-    }
-    50% {
-      top: 12px;
-      opacity: 0.5;
-    }
-    100% {
-      top: 18px;
-      opacity: 0;
-    }
+  .hero-indicators {
+    bottom: 2rem;
+    gap: 0.8rem;
   }
   
-  @media (max-width: 768px) {
-    .hero-title {
-      font-size: 2.5rem;
-    }
-    
-    .hero-description {
-      font-size: 1rem;
-    }
-    
-    .hero-buttons {
-      flex-direction: column;
-      align-items: center;
-    }
-    
-    .hero-image-placeholder {
-      width: 300px;
-      height: 200px;
-    }
-    
-    .hero-emoji {
-      font-size: 4rem;
-    }
+  .indicator {
+    width: 10px;
+    height: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 2.2rem;
   }
   
-  @media (max-width: 480px) {
-    .hero-title {
-      font-size: 2rem;
-    }
-    
-    .hero-tagline {
-      font-size: 0.8rem;
-      letter-spacing: 2px;
-      padding: 6px 16px;
-    }
-    
-    .section-hero {
-      padding: 2rem 0;
-    }
+  .hero-subtitle {
+    font-size: 0.9rem;
   }
+  
+  .hero-content {
+    padding: 0 15px;
+  }
+  
+  .hero-indicators {
+    display: none;
+  }
+  
+  .slide-icon {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .hero-overlay {
+    background: rgba(0, 0, 0, 0.8);
+  }
+  
+  .hero-title,
+  .hero-subtitle {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .hero-slide,
+  .hero-bg-image,
+  .hero-content,
+  .btn,
+  .hero-nav-btn,
+  .indicator {
+    transition: none;
+  }
+  
+  .slide-icon {
+    animation: none;
+  }
+  
+  .hero-bg-image {
+    transform: none;
+  }
+}
 </style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const carousel = document.querySelector('.hero-carousel');
+  const slides = document.querySelectorAll('.hero-slide');
+  const indicators = document.querySelectorAll('.indicator');
+  const prevBtn = document.querySelector('.hero-nav-btn.prev');
+  const nextBtn = document.querySelector('.hero-nav-btn.next');
+  const progressBar = document.querySelector('.progress-bar');
+  
+  let currentSlide = 0;
+  let isPlaying = true;
+  let autoPlayInterval;
+  
+  // Auto-play interval (7 seconds per slide)
+  const AUTOPLAY_DELAY = 7000;
+  
+  function updateSlide(slideIndex) {
+    // Remove active class from all slides and indicators
+    slides.forEach(slide => slide.classList.remove('active'));
+    indicators.forEach(indicator => indicator.classList.remove('active'));
+    
+    // Add active class to current slide and indicator
+    slides[slideIndex].classList.add('active');
+    indicators[slideIndex].classList.add('active');
+    
+    // Update progress bar
+    const progressWidth = ((slideIndex + 1) / slides.length) * 100;
+    progressBar.style.width = progressWidth + '%';
+    
+    currentSlide = slideIndex;
+  }
+  
+  function nextSlide() {
+    const next = (currentSlide + 1) % slides.length;
+    updateSlide(next);
+  }
+  
+  function prevSlide() {
+    const prev = (currentSlide - 1 + slides.length) % slides.length;
+    updateSlide(prev);
+  }
+  
+  function startAutoPlay() {
+    if (isPlaying) {
+      autoPlayInterval = setInterval(nextSlide, AUTOPLAY_DELAY);
+    }
+  }
+  
+  function stopAutoPlay() {
+    clearInterval(autoPlayInterval);
+  }
+  
+  function resetAutoPlay() {
+    stopAutoPlay();
+    startAutoPlay();
+  }
+  
+  // Event listeners
+  nextBtn.addEventListener('click', () => {
+    nextSlide();
+    resetAutoPlay();
+  });
+  
+  prevBtn.addEventListener('click', () => {
+    prevSlide();
+    resetAutoPlay();
+  });
+  
+  // Indicator clicks
+  indicators.forEach((indicator, index) => {
+    indicator.addEventListener('click', () => {
+      updateSlide(index);
+      resetAutoPlay();
+    });
+  });
+  
+  // Keyboard navigation
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') {
+      prevSlide();
+      resetAutoPlay();
+    } else if (e.key === 'ArrowRight') {
+      nextSlide();
+      resetAutoPlay();
+    } else if (e.key === ' ') {
+      e.preventDefault();
+      isPlaying = !isPlaying;
+      if (isPlaying) {
+        startAutoPlay();
+      } else {
+        stopAutoPlay();
+      }
+    }
+  });
+  
+  // Pause on hover
+  carousel.addEventListener('mouseenter', stopAutoPlay);
+  carousel.addEventListener('mouseleave', () => {
+    if (isPlaying) startAutoPlay();
+  });
+  
+  // Touch/swipe support
+  let touchStartX = 0;
+  let touchEndX = 0;
+  
+  carousel.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+    stopAutoPlay();
+  });
+  
+  carousel.addEventListener('touchend', (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    const swipeThreshold = 50;
+    
+    if (touchStartX - touchEndX > swipeThreshold) {
+      nextSlide();
+    } else if (touchEndX - touchStartX > swipeThreshold) {
+      prevSlide();
+    }
+    
+    resetAutoPlay();
+  });
+  
+  // Intersection Observer for performance
+  const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.1
+  };
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        startAutoPlay();
+      } else {
+        stopAutoPlay();
+      }
+    });
+  }, observerOptions);
+  
+  observer.observe(carousel);
+  
+  // Initialize
+  updateSlide(0);
+  startAutoPlay();
+});
+</script>
 
 {% schema %}
 {
-  "name": "Hero Section",
+  "name": "BeWild Hero Section",
   "settings": [
     {
-      "type": "text",
-      "id": "tagline",
-      "label": "Tagline",
-      "default": "SUSTAINABLE & ORGANIC FARMING"
+      "type": "header",
+      "content": "Slide 1: ROOTS 🌱"
+    },
+    {
+      "type": "image_picker",
+      "id": "slide1_image",
+      "label": "Slide 1 Background Image"
     },
     {
       "type": "text",
-      "id": "title_line1",
-      "label": "Title Line 1",
-      "default": "Where You Taste"
+      "id": "slide1_alt",
+      "label": "Slide 1 Image Alt Text",
+      "default": "Rooted in the Wild"
     },
     {
       "type": "text",
-      "id": "title_line2",
-      "label": "Title Line 2 (Highlighted)",
-      "default": "Into the Story"
+      "id": "slide1_title",
+      "label": "Slide 1 Title",
+      "default": "Rooted in the Wild"
     },
     {
       "type": "textarea",
-      "id": "description",
-      "label": "Description",
-      "default": "Experience the authentic flavors of farm-fresh produce, grown with care and harvested at peak ripeness. Every bite tells the story of sustainable farming and passionate dedication."
+      "id": "slide1_subtitle",
+      "label": "Slide 1 Subtitle",
+      "default": "From untouched forest slopes to sun-drenched soil, this is where our journey roots itself."
+    },
+    {
+      "type": "text",
+      "id": "slide1_tagline",
+      "label": "Slide 1 Tagline",
+      "default": "Every season paints a new story."
+    },
+    {
+      "type": "header",
+      "content": "Slide 2: CRAFT 🧤"
+    },
+    {
+      "type": "image_picker",
+      "id": "slide2_image",
+      "label": "Slide 2 Background Image"
+    },
+    {
+      "type": "text",
+      "id": "slide2_alt",
+      "label": "Slide 2 Image Alt Text",
+      "default": "Crafted by Forest Hands"
+    },
+    {
+      "type": "text",
+      "id": "slide2_title",
+      "label": "Slide 2 Title",
+      "default": "Crafted by Forest Hands"
+    },
+    {
+      "type": "textarea",
+      "id": "slide2_subtitle",
+      "label": "Slide 2 Subtitle",
+      "default": "We don't just grow — we care, cultivate, and wait with the wild. This is where hands and heritage shape every seed."
+    },
+    {
+      "type": "text",
+      "id": "slide2_tagline",
+      "label": "Slide 2 Tagline",
+      "default": "Craft meets climate, care meets time."
+    },
+    {
+      "type": "header",
+      "content": "Slide 3: TABLE 🍵"
+    },
+    {
+      "type": "image_picker",
+      "id": "slide3_image",
+      "label": "Slide 3 Background Image"
+    },
+    {
+      "type": "text",
+      "id": "slide3_alt",
+      "label": "Slide 3 Image Alt Text",
+      "default": "To Your Table, With Story"
+    },
+    {
+      "type": "text",
+      "id": "slide3_title",
+      "label": "Slide 3 Title",
+      "default": "To Your Table, With Story"
+    },
+    {
+      "type": "textarea",
+      "id": "slide3_subtitle",
+      "label": "Slide 3 Subtitle",
+      "default": "Every cup, leaf, and fruit carries the tale of a forest. Sipped slowly, served consciously."
+    },
+    {
+      "type": "text",
+      "id": "slide3_tagline",
+      "label": "Slide 3 Tagline",
+      "default": "The wild now waits at your table."
+    },
+    {
+      "type": "header",
+      "content": "Slide 4: EXPERIENCE 📷"
+    },
+    {
+      "type": "image_picker",
+      "id": "slide4_image",
+      "label": "Slide 4 Background Image"
+    },
+    {
+      "type": "text",
+      "id": "slide4_alt",
+      "label": "Slide 4 Image Alt Text",
+      "default": "Where You Step Into the Story"
+    },
+    {
+      "type": "text",
+      "id": "slide4_title",
+      "label": "Slide 4 Title",
+      "default": "Where You Step Into the Story"
+    },
+    {
+      "type": "textarea",
+      "id": "slide4_subtitle",
+      "label": "Slide 4 Subtitle",
+      "default": "Come walk our trails, taste our harvests, and feel the forest in every sense. From the collective to the community table."
+    },
+    {
+      "type": "text",
+      "id": "slide4_tagline",
+      "label": "Slide 4 Tagline",
+      "default": "Because stories are meant to be lived."
+    },
+    {
+      "type": "header",
+      "content": "Slide 5: HARVESTED 🥝"
+    },
+    {
+      "type": "image_picker",
+      "id": "slide5_image",
+      "label": "Slide 5 Background Image"
+    },
+    {
+      "type": "text",
+      "id": "slide5_alt",
+      "label": "Slide 5 Image Alt Text",
+      "default": "Forest-Grown, Forest-Given"
+    },
+    {
+      "type": "text",
+      "id": "slide5_title",
+      "label": "Slide 5 Title",
+      "default": "Forest-Grown, Forest-Given"
+    },
+    {
+      "type": "textarea",
+      "id": "slide5_subtitle",
+      "label": "Slide 5 Subtitle",
+      "default": "From shade-dried single-origin beans and hand-picked pepper to heirloom rice, jam, honey, and veggie bags—each jar and bag carries the forest within."
+    },
+    {
+      "type": "text",
+      "id": "slide5_tagline",
+      "label": "Slide 5 Tagline",
+      "default": "Provenance in every taste."
+    },
+    {
+      "type": "header",
+      "content": "Call-to-Action Buttons"
     },
     {
       "type": "text",
@@ -325,53 +1005,18 @@ Hero Section - Main landing section with call-to-action
       "type": "text",
       "id": "secondary_button_text",
       "label": "Secondary Button Text",
-      "default": "Learn More"
+      "default": "Our Story"
     },
     {
       "type": "url",
       "id": "secondary_button_link",
       "label": "Secondary Button Link",
       "default": "/about"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_image",
-      "label": "Show hero image",
-      "default": true
-    },
-    {
-      "type": "image_picker",
-      "id": "hero_image",
-      "label": "Hero Image"
-    },
-    {
-      "type": "text",
-      "id": "image_alt",
-      "label": "Image Alt Text",
-      "default": "Sustainable farming hero image"
-    },
-    {
-      "type": "text",
-      "id": "placeholder_emoji",
-      "label": "Placeholder Emoji (if no image)",
-      "default": "🌱"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_scroll_indicator",
-      "label": "Show scroll indicator",
-      "default": true
-    },
-    {
-      "type": "text",
-      "id": "scroll_text",
-      "label": "Scroll Indicator Text",
-      "default": "Scroll to explore"
     }
   ],
   "presets": [
     {
-      "name": "Hero Section"
+      "name": "BeWild Hero Section"
     }
   ]
 }
